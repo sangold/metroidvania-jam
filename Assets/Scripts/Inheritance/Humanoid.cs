@@ -6,10 +6,38 @@ for any human like figure will inherit this script.
 */
 public class Humanoid : MonoBehaviour
 {
-    private float friction = 0.000083f;// 0.000001 to 1 
-    [HideInInspector]
-    public Rigidbody2D rb;
-    public float HorizontalSpeed = 100;
+    protected Rigidbody2D _rb;
+
+    [SerializeField] 
+    private float _moveSpeed;
+    [SerializeField] 
+    private float _acceleration;
+    [SerializeField] 
+    private float _deceleration;
+    [SerializeField] 
+    private float _airAcceleration;
+    [SerializeField] 
+    private float _airDeceleration;
+    [SerializeField] 
+    private float _velocityPower;
+
+    [SerializeField] 
+    private float _friction = .02f;
+
+    private bool _canMove = true;
+    protected bool _isJumping;
+    
+    [SerializeField] 
+    private float _fallGravityMultiplier;
+
+    [SerializeField] 
+    private float _jumpForce;
+    private float _gravityScale;
+    private float _lastGroundTime;
+    protected float _lastJumpTime;
+    [SerializeField] 
+    private float _jumpCoyoteTime;
+    
 
     //ground collision
     [HideInInspector]
@@ -17,12 +45,10 @@ public class Humanoid : MonoBehaviour
      public Transform GroundCheck1;
      public LayerMask groundLayer;
 
-    [HideInInspector]
-    public float movementX = 0;
-    [HideInInspector]
-    public bool jumpButton = false;
-     [HideInInspector]
-    public bool jumpButtonPressed = false;
+
+    protected float movementX = 0;
+    protected bool jumpButton = false;
+    protected bool jumpButtonPressed = false;
 
     [HideInInspector]
     public float JumpPower = 25;
@@ -33,34 +59,85 @@ public class Humanoid : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _gravityScale = _rb.gravityScale;
     }
+
     public virtual void FixedUpdate()
     {
-        rb.velocity += new Vector2(movementX * HorizontalSpeed * Time.fixedDeltaTime,0);
-        rb.velocity = new Vector2(rb.velocity.x * Mathf.Pow(friction,Time.fixedDeltaTime),rb.velocity.y);
-        isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
-        if (jumpButton && jumpButtonPressed && isGrounded){
-            Jump();
+        if(_canMove)
+        {
+            float targetSpeed = movementX * _moveSpeed;
+            float speedDiff = targetSpeed - _rb.velocity.x;
+            float accelRate;
+            if (_lastGroundTime > 0)
+                accelRate = Mathf.Abs(targetSpeed) > .01f ? _acceleration : _deceleration;
+            else
+                accelRate = Mathf.Abs(targetSpeed) > .01f ? _acceleration * _airAcceleration : _deceleration * _airDeceleration;
+
+            float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, _velocityPower) * Mathf.Sign(speedDiff);
+            _rb.AddForce(movement * Vector2.right);
         }
-        if (jumpButton && jumpButtonPressed && !isGrounded && doubleJumpEnabled && canDoubleJump){
-            DoubleJump();
+
+        if(_lastGroundTime > 0 && !_isJumping && Mathf.Abs(movementX) < .01f)
+        {
+            float fAmount = Mathf.Min(Mathf.Abs(_rb.velocity.x), Mathf.Abs(_friction));
+            fAmount *= -Mathf.Sign(_rb.velocity.x);
+            _rb.AddForce(Vector2.right * fAmount, ForceMode2D.Impulse);
         }
-        if (isGrounded){
-            //allow the ability to double jump again.
-            canDoubleJump = true;
+
+        if(_rb.velocity.y < 0 && _lastGroundTime <= 0)
+        {
+            _rb.gravityScale = _gravityScale * _fallGravityMultiplier;
         }
+        else
+        {
+            _rb.gravityScale = _gravityScale;
+        }
+        
+        //if (jumpButton && jumpButtonPressed && isGrounded){
+        //    Jump();
+        //}
+        //if (jumpButton && jumpButtonPressed && !isGrounded && doubleJumpEnabled && canDoubleJump){
+        //    DoubleJump();
+        //}
+        //if (isGrounded){
+        //    //allow the ability to double jump again.
+        //    canDoubleJump = true;
+        //}
     }
-    private void Jump(){
-        rb.velocity = new Vector2(rb.velocity.x,JumpPower);
+    private void Jump(float jumpForce){
+        _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        _lastJumpTime = 0;
+        _isJumping = true;
+        jumpButtonPressed = true;
     }
     private void DoubleJump(){
-        rb.velocity = new Vector2(rb.velocity.x,JumpPower);
+        _rb.velocity = new Vector2(_rb.velocity.x,JumpPower);
         canDoubleJump = false;
     }
     // Update is called once per frame
     public virtual void Update()
     {
-        
+        isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
+
+        if (isGrounded && !_isJumping)
+            _lastGroundTime = _jumpCoyoteTime;
+
+        if (_rb.velocity.y <= 0)
+            _isJumping = false;
+
+        if (_lastJumpTime > 0 && !_isJumping && jumpButtonPressed)
+        {
+            if (_lastGroundTime > 0)
+            {
+                _lastGroundTime = 0;
+                Jump(_jumpForce);
+            }
+        }
+
+        _lastGroundTime -= Time.deltaTime;
+        _lastJumpTime -= Time.deltaTime;
+
     }
 }

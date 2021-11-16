@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -324,10 +324,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: m_Mass
-      value: 1.7853982
-      objectReference: {fileID: 0}
-    - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
@@ -335,10 +331,6 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 2207745698da14f4da894117c6ff29ea, type: 2}
-    - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -349,15 +341,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_UseAutoMass
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: m_GravityScale
-      value: 5
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515952590322010346, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7468836473888323115, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _friction
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _jumpForce
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _moveSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _acceleration
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _deceleration
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _velocityPower
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _jumpCoyoteTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _airAcceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _airDeceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: doubleJumpEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _jumpShortMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _fallGravityMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8472733911598202967, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_RootOrder

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Player : Humanoid
 {
+    [SerializeField]
+    private float _jumpShortMultiplier;
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
     }
     public override void FixedUpdate(){
-        Inputs();
         base.FixedUpdate();
     }
     private void Inputs(){
@@ -20,19 +21,30 @@ public class Player : Humanoid
         So we have to make our own button pressed so the button press can work.
         */
         movementX = Input.GetAxis("Horizontal");
-        if (jumpButton != Input.GetButton("Jump")){
+        if(Input.GetButton("Jump"))
+        {
+            Debug.Log("Pressed");
+
             jumpButtonPressed = true;
-            jumpButton = Input.GetButton("Jump");
-        } else {
+            _lastJumpTime = .1f;
+        }
+        if(Input.GetButtonUp("Jump"))
+        {
+            Debug.Log("Release");
             jumpButtonPressed = false;
-            jumpButton = Input.GetButton("Jump");
+            if(_rb.velocity.y > 0 && _isJumping)
+            {
+                _rb.AddForce(Vector2.down * _rb.velocity.y * (1 - _jumpShortMultiplier), ForceMode2D.Impulse);
+            }
+
+            _lastJumpTime = 0;
         }
         
     }
     // Update is called once per frame
     public override void Update()
     {
-        
+        Inputs();
         base.Update();
     }
 }
