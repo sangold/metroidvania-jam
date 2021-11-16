@@ -19,6 +19,17 @@ public class Humanoid : MonoBehaviour
 
     [HideInInspector]
     public float movementX = 0;
+    [HideInInspector]
+    public bool jumpButton = false;
+     [HideInInspector]
+    public bool jumpButtonPressed = false;
+
+    [HideInInspector]
+    public float JumpPower = 25;
+
+
+    private bool canDoubleJump = false;// Can I doubleJump?
+    public bool doubleJumpEnabled = true;// Do you have the ability?
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -29,6 +40,23 @@ public class Humanoid : MonoBehaviour
         rb.velocity += new Vector2(movementX * HorizontalSpeed * Time.fixedDeltaTime,0);
         rb.velocity = new Vector2(rb.velocity.x * Mathf.Pow(friction,Time.fixedDeltaTime),rb.velocity.y);
         isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
+        if (jumpButton && jumpButtonPressed && isGrounded){
+            Jump();
+        }
+        if (jumpButton && jumpButtonPressed && !isGrounded && doubleJumpEnabled && canDoubleJump){
+            DoubleJump();
+        }
+        if (isGrounded){
+            //allow the ability to double jump again.
+            canDoubleJump = true;
+        }
+    }
+    private void Jump(){
+        rb.velocity = new Vector2(rb.velocity.x,JumpPower);
+    }
+    private void DoubleJump(){
+        rb.velocity = new Vector2(rb.velocity.x,JumpPower);
+        canDoubleJump = false;
     }
     // Update is called once per frame
     public virtual void Update()
