@@ -18,7 +18,11 @@ public class Player : Humanoid
         {
             Jump();
         }
-        if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
+        else if (_jumpButtonPressed && _lastGroundTime <= 0 && canWallJump)
+        {
+            WallJump();
+        }
+        else if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
         {
             DoubleJump();
         }
