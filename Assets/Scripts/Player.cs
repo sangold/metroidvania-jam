@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Player : Humanoid
 {
+
+    private bool _jumpButtonPressed;
+    [SerializeField]
+    private float _jumpCutGravityMultiplier;
+
     public override void Start()
     {
         base.Start();
     }
     public override void FixedUpdate(){
         base.FixedUpdate();
+        if (_rb.velocity.y > 0 && !_jumpButtonPressed)
+        {
+            _rb.velocity += Vector2.up * Physics2D.gravity.y * (_jumpCutGravityMultiplier - 1) * Time.fixedDeltaTime;
+        }
     }
     private void Inputs(){
         //reads all the player inputs here
@@ -18,17 +27,21 @@ public class Player : Humanoid
         So we have to make our own button pressed so the button press can work.
         */
         movementX = Input.GetAxis("Horizontal");
-        Walk(new Vector2(movementX, 0));
-        if(Input.GetButtonDown("Jump") && _lastGroundTime > 0f)
+        if(Input.GetButtonDown("Jump"))
         {
-            jumpButtonPressed = true;
-            Jump(Vector2.up);
-            _lastJumpTime = .1f;
+            _jumpButtonPressed = true;
+            if (_lastGroundTime > 0f)
+                Jump(Vector2.up);
+            else if (_canDoubleJump)
+            {
+                Jump(Vector2.up);
+                _canDoubleJump = false;
+            }
+            
         }
         if(Input.GetButtonUp("Jump"))
         {
-            jumpButtonPressed = false;
-            _lastJumpTime = 0;
+            _jumpButtonPressed = false;
         }
         
     }

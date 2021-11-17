@@ -360,14 +360,6 @@ PrefabInstance:
       value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: _jumpForce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: _moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: _acceleration
       value: 13
       objectReference: {fileID: 0}
@@ -380,10 +372,6 @@ PrefabInstance:
       value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: _jumpCoyoteTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: _airAcceleration
       value: 1
       objectReference: {fileID: 0}
@@ -392,20 +380,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: doubleJumpEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: _lowJumpMultiplier
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: _jumpShortMultiplier
       value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795952289003816024, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
-      propertyPath: _fallGravityMultiplier
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8472733911598202967, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_RootOrder
