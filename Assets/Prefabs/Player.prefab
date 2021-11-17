@@ -159,17 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2043eac93a44c46a88a84c7d9abe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  rb: {fileID: 0}
-  HorizontalSpeed: 200
-  isGrounded: 0
-  GroundCheck1: {fileID: 7938734749152730031}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  movementX: 0
-  JumpPower: 25
-=======
   _groundHorizontalSpeed: 100
   _airHorizontalSpeed: 250
   _maxHorizontalSpeed: 15
@@ -181,7 +170,6 @@ MonoBehaviour:
   _jumpForce: 30
   hasDoubleJump: 1
   _jumpShortMultiplier: 0
->>>>>>> Stashed changes
 --- !u!50 &4515952590322010346
 Rigidbody2D:
   serializedVersion: 4
