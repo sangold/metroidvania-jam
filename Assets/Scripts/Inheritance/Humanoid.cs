@@ -34,6 +34,7 @@ public class Humanoid : MonoBehaviour
     private float _jumpCoyoteTime = .16f;
 
     protected float _movementX = 0;
+    protected float _movementY = 0;
     protected bool _jumpButton = false;
     protected bool _jumpButtonSwitch = false;
     protected bool _jumpButtonPressed = false;
@@ -49,7 +50,7 @@ public class Humanoid : MonoBehaviour
     public bool hasDoubleJump = true;// Do you have the ability?
     public bool hasWallJump = true;
 
-    private float _gravityScale;
+    protected float _gravityScale;
     // Start is called before the first frame update
     public virtual void Start()
     {

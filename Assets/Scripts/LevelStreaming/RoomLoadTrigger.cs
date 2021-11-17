@@ -31,7 +31,10 @@ public class RoomLoadTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        
+        if (other.gameObject.name == "RoomTriggerCollider"){
+        Player player = other.gameObject.GetComponentInParent<Player>();
+        Debug.Log(player);
         if (player != null)
         {
             if (isLoadedScene == false)
@@ -39,6 +42,7 @@ public class RoomLoadTrigger : MonoBehaviour
                 SceneManager.LoadScene(sceneNameToLoad, LoadSceneMode.Additive);
                 isLoadedScene = true;
             }
+            player._touchingARoom = sceneNameToLoad;
             /*Camera.main.GetComponent<CameraScript>().SetBounds(
                 gameObject.transform.position.x,
                 gameObject.transform.position.x + _spriteRenderer.sprite.rect.width / 2,
@@ -46,16 +50,21 @@ public class RoomLoadTrigger : MonoBehaviour
                 gameObject.transform.position.y + _spriteRenderer.sprite.rect.height / 2);
             */
         }
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player != null)
-        {
-            if (isLoadedScene == true)
-            {
-                SceneManager.UnloadSceneAsync(sceneNameToLoad);
-                isLoadedScene = false;
+        if (other.gameObject.name == "RoomTriggerCollider"){
+            Player player = other.gameObject.GetComponentInParent<Player>();
+            if (player != null) {
+                if (isLoadedScene == true)
+                {
+                 SceneManager.UnloadSceneAsync(sceneNameToLoad);
+                  isLoadedScene = false;
+                }
+                if (player._touchingARoom == sceneNameToLoad){
+                     player._touchingARoom = null;
+                }
             }
         }
     }
