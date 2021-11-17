@@ -11,9 +11,9 @@ public class Humanoid : MonoBehaviour
     [SerializeField]
     private float _groundHorizontalSpeed = 100;
     [SerializeField]
-    private float _airHorizontalSpeed = 50;
+    protected float _airHorizontalSpeed = 50;
     [SerializeField]
-    private float _maxHorizontalSpeed = 15;
+    protected float _maxHorizontalSpeed = 15;
 
     //ground collision
     protected bool isGrounded = false;
@@ -64,12 +64,7 @@ public class Humanoid : MonoBehaviour
             } else {
                  _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);
             }
-            if (_rb.velocity.x > _maxHorizontalSpeed){
-                _rb.velocity = new Vector2(_maxHorizontalSpeed,_rb.velocity.y);
-            }
-            if (_rb.velocity.x < -_maxHorizontalSpeed){
-                 _rb.velocity = new Vector2(-_maxHorizontalSpeed,_rb.velocity.y);
-            }
+            _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x,-_maxHorizontalSpeed,_maxHorizontalSpeed),_rb.velocity.y);
         }
         if (Mathf.Abs(_rb.velocity.x) < .01f){
             _rb.velocity = new Vector2(0, _rb.velocity.y);
