@@ -25,7 +25,7 @@ public class Humanoid : MonoBehaviour
     
 
     //ground collision
-    protected bool isGrounded = false;
+    protected bool _isGrounded = false;
     public Transform GroundCheck1;
     public LayerMask groundLayer;
 
@@ -44,14 +44,14 @@ public class Humanoid : MonoBehaviour
 
     public virtual void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
+        _isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
 
         Walk(new Vector2(movementX, 0));
 
-        if (isGrounded && !_isJumping)
+        if (_isGrounded && !_isJumping)
             _lastGroundTime = _jumpCoyoteTime;
 
-        if (isGrounded)
+        if (_isGrounded)
         {
             _isJumping = false;
             _canDoubleJump = true;
@@ -60,13 +60,6 @@ public class Humanoid : MonoBehaviour
         _lastGroundTime -= Time.deltaTime;
     }
 
-    private void Walk(Vector2 dir)
-    {
-        if (!_canMove)
-            return;
-
-        _rb.velocity = new Vector2(dir.x * _moveSpeed, _rb.velocity.y);
-    }
 
     public virtual void FixedUpdate()
     {
@@ -74,6 +67,13 @@ public class Humanoid : MonoBehaviour
         {
             _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fallGravityMultiplier - 1) * Time.fixedDeltaTime;
         }
+    }
+    private void Walk(Vector2 dir)
+    {
+        if (!_canMove)
+            return;
+
+        _rb.velocity = new Vector2(dir.x * _moveSpeed, _rb.velocity.y);
     }
     protected void Jump(Vector2 direction){
         _rb.velocity = new Vector2(_rb.velocity.x, 0);

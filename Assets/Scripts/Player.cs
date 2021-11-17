@@ -4,6 +4,7 @@ public class Player : Humanoid
 {
 
     private bool _jumpButtonPressed;
+    private bool _jumpButtonMidAirReleased;
     [SerializeField]
     private float _jumpCutGravityMultiplier;
 
@@ -17,7 +18,7 @@ public class Player : Humanoid
         {
             Jump(Vector2.up);
         }
-        else if (_jumpButtonPressed && _canDoubleJump)
+        else if (_jumpButtonPressed && _jumpButtonMidAirReleased && _canDoubleJump)
         {
             Jump(Vector2.up);
             _canDoubleJump = false;
@@ -42,6 +43,7 @@ public class Player : Humanoid
         if(Input.GetButtonUp("Jump"))
         {
             _jumpButtonPressed = false;
+            _jumpButtonMidAirReleased = true;
         }
         
     }
@@ -50,5 +52,7 @@ public class Player : Humanoid
     {
         Inputs();
         base.Update();
+        if (_isGrounded)
+            _jumpButtonMidAirReleased = false;
     }
 }
