@@ -7,7 +7,7 @@ public class Player : Humanoid
     [SerializeField]
     private float _jumpShortMultiplier;
 
-    private enum _finiteState {stand,walk,attack,hurt,slide,walling,dead}
+    private enum _finiteState {stand,walk,attack,hurt,slide,walling,wallJumping,dead}
     private _finiteState state = _finiteState.stand;
 
 
@@ -41,14 +41,13 @@ public class Player : Humanoid
             } else {
                 state = _finiteState.stand;
             }
+            if (canWallJump){
+                state = _finiteState.walling;
+            }
         ShortHop();
         if (_jumpButtonPressed && _lastGroundTime > 0)
         {
             Jump();
-        }
-        else if (_jumpButtonPressed && _lastGroundTime <= 0 && canWallJump)
-        {
-            WallJump();
         }
         else if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
         {
@@ -68,6 +67,30 @@ public class Player : Humanoid
             if (Mathf.Abs(_rb.velocity.x) < 10){
                 state = _finiteState.stand;
                 _canMove = true;
+            }
+        }
+        if (state == _finiteState.walling){
+            if (_jumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
+                WallJump();
+                state = _finiteState.wallJumping;
+            }
+            if (_isAgainstLeftWall){
+                TurnRight();
+            }
+            if (_isAgainstRightWall){
+                TurnLeft();
+            }
+            if (isGrounded){
+                state = _finiteState.stand;
+            }
+            if (_slideButtonPressed){
+                Slide();
+            }
+        }
+        if (state == _finiteState.wallJumping){
+            _friction = 1;
+            if (_canMove == true){
+                state = _finiteState.stand;
             }
         }
         base.FixedUpdate();

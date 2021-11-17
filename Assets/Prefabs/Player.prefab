@@ -82,6 +82,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1848253856273722119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5594814242427977930}
+  m_Layer: 0
+  m_Name: RightWallChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5594814242427977930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848253856273722119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.541, y: 0.025, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1222171809203494678}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2411521757771023310
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +144,36 @@ Transform:
   m_Father: {fileID: 5778996484583117239}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2437987387912715054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6020324262647028325}
+  m_Layer: 0
+  m_Name: LeftWallChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6020324262647028325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2437987387912715054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.547, y: -0.006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1222171809203494678}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2886185943059140829
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +202,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7938734749152730031}
+  - {fileID: 6020324262647028325}
+  - {fileID: 5594814242427977930}
   m_Father: {fileID: 5778996484583117239}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -306,6 +368,8 @@ MonoBehaviour:
   _groundHorizontalSpeed: 100
   _airHorizontalSpeed: 250
   _maxHorizontalSpeed: 15
+  _leftWallCheck: {fileID: 6020324262647028325}
+  _righttWallCheck: {fileID: 5594814242427977930}
   _groundCheck1: {fileID: 7938734749152730031}
   _groundLayer:
     serializedVersion: 2
@@ -313,6 +377,7 @@ MonoBehaviour:
   _jumpCoyoteTime: 0.16
   _jumpForce: 30
   hasDoubleJump: 1
+  hasWallJump: 1
   _jumpShortMultiplier: 0
   _spriteGameObject: {fileID: 2411521757771023310}
   _maxHorizontalSlideSpeed: 35
