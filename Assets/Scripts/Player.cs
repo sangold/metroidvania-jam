@@ -13,6 +13,16 @@ public class Player : Humanoid
     }
     public override void FixedUpdate(){
         base.FixedUpdate();
+        if (_jumpButtonPressed && _lastGroundTime > 0f)
+        {
+            Jump(Vector2.up);
+        }
+        else if (_jumpButtonPressed && _canDoubleJump)
+        {
+            Jump(Vector2.up);
+            _canDoubleJump = false;
+        }
+
         if (_rb.velocity.y > 0 && !_jumpButtonPressed)
         {
             _rb.velocity += Vector2.up * Physics2D.gravity.y * (_jumpCutGravityMultiplier - 1) * Time.fixedDeltaTime;
@@ -28,14 +38,6 @@ public class Player : Humanoid
         if(Input.GetButtonDown("Jump"))
         {
             _jumpButtonPressed = true;
-            if (_lastGroundTime > 0f)
-                Jump(Vector2.up);
-            else if (_canDoubleJump)
-            {
-                Jump(Vector2.up);
-                _canDoubleJump = false;
-            }
-            
         }
         if(Input.GetButtonUp("Jump"))
         {
