@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Player : Humanoid
 {
-    [SerializeField]
-    private float _jumpShortMultiplier;
-    // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
@@ -21,22 +18,16 @@ public class Player : Humanoid
         So we have to make our own button pressed so the button press can work.
         */
         movementX = Input.GetAxis("Horizontal");
-        if(Input.GetButton("Jump"))
+        Walk(new Vector2(movementX, 0));
+        if(Input.GetButtonDown("Jump") && _lastGroundTime > 0f)
         {
-            Debug.Log("Pressed");
-
             jumpButtonPressed = true;
+            Jump(Vector2.up);
             _lastJumpTime = .1f;
         }
         if(Input.GetButtonUp("Jump"))
         {
-            Debug.Log("Release");
             jumpButtonPressed = false;
-            if(_rb.velocity.y > 0 && _isJumping)
-            {
-                _rb.AddForce(Vector2.down * _rb.velocity.y * (1 - _jumpShortMultiplier), ForceMode2D.Impulse);
-            }
-
             _lastJumpTime = 0;
         }
         
