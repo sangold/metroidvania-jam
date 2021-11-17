@@ -6,12 +6,6 @@ for any human like figure will inherit this script.
 */
 public class Humanoid : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    private float friction = 0.000083f;// 0.000001 to 1 
-    [HideInInspector]
-    public Rigidbody2D rb;
-    public float HorizontalSpeed = 100;
-=======
     private float _friction = 0.000001f;// 0.000001 to 1 
     protected Rigidbody2D _rb;
     [SerializeField]
@@ -20,7 +14,6 @@ public class Humanoid : MonoBehaviour
     private float _airHorizontalSpeed = 50;
     [SerializeField]
     private float _maxHorizontalSpeed = 15;
->>>>>>> Stashed changes
 
     //ground collision
     protected bool isGrounded = false;
@@ -34,17 +27,12 @@ public class Humanoid : MonoBehaviour
     [SerializeField]
     private float _jumpCoyoteTime = .16f;
 
-<<<<<<< Updated upstream
-    [HideInInspector]
-    public float JumpPower = 25;
-=======
     protected float _movementX = 0;
     protected bool _jumpButton = false;
     protected bool _jumpButtonSwitch = false;
     protected bool _jumpButtonPressed = false;
     [SerializeField]
     private float _jumpForce = 50;
->>>>>>> Stashed changes
 
 
     protected bool canDoubleJump = false;// Can I doubleJump?
@@ -57,16 +45,6 @@ public class Humanoid : MonoBehaviour
     }
     public virtual void FixedUpdate()
     {
-<<<<<<< Updated upstream
-        rb.velocity += new Vector2(movementX * HorizontalSpeed * Time.fixedDeltaTime,0);
-        rb.velocity = new Vector2(rb.velocity.x * Mathf.Pow(friction,Time.fixedDeltaTime),rb.velocity.y);
-        isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
-        if (jumpButton && jumpButtonPressed && isGrounded){
-            Jump();
-        }
-        if (jumpButton && jumpButtonPressed && !isGrounded && doubleJumpEnabled && canDoubleJump){
-            DoubleJump();
-=======
         if (isGrounded){
             _rb.velocity = new Vector2(_movementX * _groundHorizontalSpeed,_rb.velocity.y);
         } else {
@@ -80,7 +58,6 @@ public class Humanoid : MonoBehaviour
         }
         if (Mathf.Abs(_rb.velocity.x) < .01f){
             _rb.velocity = new Vector2(0, _rb.velocity.y);
->>>>>>> Stashed changes
         }
         _rb.velocity = new Vector2(_rb.velocity.x * Mathf.Pow(_friction,Time.fixedDeltaTime),_rb.velocity.y);
         isGrounded = Physics2D.OverlapCircle(_groundCheck1.position, 0.15f, _groundLayer);
