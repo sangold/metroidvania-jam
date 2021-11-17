@@ -6,37 +6,58 @@ for any human like figure will inherit this script.
 */
 public class Humanoid : MonoBehaviour
 {
+<<<<<<< Updated upstream
     private float friction = 0.000083f;// 0.000001 to 1 
     [HideInInspector]
     public Rigidbody2D rb;
     public float HorizontalSpeed = 100;
+=======
+    private float _friction = 0.000001f;// 0.000001 to 1 
+    protected Rigidbody2D _rb;
+    [SerializeField]
+    private float _groundHorizontalSpeed = 100;
+    [SerializeField]
+    private float _airHorizontalSpeed = 50;
+    [SerializeField]
+    private float _maxHorizontalSpeed = 15;
+>>>>>>> Stashed changes
 
     //ground collision
-    [HideInInspector]
-     public bool isGrounded = false;
-     public Transform GroundCheck1;
-     public LayerMask groundLayer;
+    protected bool isGrounded = false;
+    [SerializeField]
+    private Transform _groundCheck1;
+    [SerializeField]
+    private LayerMask _groundLayer;
 
-    [HideInInspector]
-    public float movementX = 0;
-    [HideInInspector]
-    public bool jumpButton = false;
-     [HideInInspector]
-    public bool jumpButtonPressed = false;
+    protected float _lastGroundTime;
+    protected float _lastJumpTime;
+    [SerializeField]
+    private float _jumpCoyoteTime = .16f;
 
+<<<<<<< Updated upstream
     [HideInInspector]
     public float JumpPower = 25;
+=======
+    protected float _movementX = 0;
+    protected bool _jumpButton = false;
+    protected bool _jumpButtonSwitch = false;
+    protected bool _jumpButtonPressed = false;
+    [SerializeField]
+    private float _jumpForce = 50;
+>>>>>>> Stashed changes
 
 
-    private bool canDoubleJump = false;// Can I doubleJump?
-    public bool doubleJumpEnabled = true;// Do you have the ability?
+    protected bool canDoubleJump = false;// Can I doubleJump?
+    
+    public bool hasDoubleJump = true;// Do you have the ability?
     // Start is called before the first frame update
     public virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
     public virtual void FixedUpdate()
     {
+<<<<<<< Updated upstream
         rb.velocity += new Vector2(movementX * HorizontalSpeed * Time.fixedDeltaTime,0);
         rb.velocity = new Vector2(rb.velocity.x * Mathf.Pow(friction,Time.fixedDeltaTime),rb.velocity.y);
         isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
@@ -45,17 +66,38 @@ public class Humanoid : MonoBehaviour
         }
         if (jumpButton && jumpButtonPressed && !isGrounded && doubleJumpEnabled && canDoubleJump){
             DoubleJump();
-        }
+=======
         if (isGrounded){
-            //allow the ability to double jump again.
+            _rb.velocity = new Vector2(_movementX * _groundHorizontalSpeed,_rb.velocity.y);
+        } else {
+            _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);
+        }
+        if (_rb.velocity.x > _maxHorizontalSpeed){
+            _rb.velocity = new Vector2(_maxHorizontalSpeed,_rb.velocity.y);
+        }
+        if (_rb.velocity.x < -_maxHorizontalSpeed){
+            _rb.velocity = new Vector2(-_maxHorizontalSpeed,_rb.velocity.y);
+        }
+        if (Mathf.Abs(_rb.velocity.x) < .01f){
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+>>>>>>> Stashed changes
+        }
+        _rb.velocity = new Vector2(_rb.velocity.x * Mathf.Pow(_friction,Time.fixedDeltaTime),_rb.velocity.y);
+        isGrounded = Physics2D.OverlapCircle(_groundCheck1.position, 0.15f, _groundLayer);
+        if (isGrounded){
+            _lastGroundTime = _jumpCoyoteTime;
             canDoubleJump = true;
         }
+        _lastGroundTime -= Time.fixedDeltaTime;
+        _lastJumpTime -= Time.fixedDeltaTime;
     }
-    private void Jump(){
-        rb.velocity = new Vector2(rb.velocity.x,JumpPower);
+    protected void Jump(){
+        _rb.velocity = new Vector2(_rb.velocity.x,_jumpForce);
+        _lastJumpTime = 0;
     }
-    private void DoubleJump(){
-        rb.velocity = new Vector2(rb.velocity.x,JumpPower);
+    protected void DoubleJump(){
+        _rb.velocity = new Vector2(_rb.velocity.x,_jumpForce);
+        _lastJumpTime = 0;
         canDoubleJump = false;
     }
     // Update is called once per frame
