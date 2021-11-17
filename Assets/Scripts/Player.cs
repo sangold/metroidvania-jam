@@ -14,6 +14,9 @@ public class Player : Humanoid
     }
     public override void FixedUpdate(){
         base.FixedUpdate();
+        if (_isGrounded)
+            _jumpButtonMidAirReleased = false;
+
         if (_jumpButtonPressed && _lastGroundTime > 0f)
         {
             Jump(Vector2.up);
@@ -52,7 +55,5 @@ public class Player : Humanoid
     {
         Inputs();
         base.Update();
-        if (_isGrounded)
-            _jumpButtonMidAirReleased = false;
     }
 }

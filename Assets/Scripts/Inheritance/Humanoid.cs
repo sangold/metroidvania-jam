@@ -44,6 +44,14 @@ public class Humanoid : MonoBehaviour
 
     public virtual void Update()
     {
+        
+    }
+
+
+    public virtual void FixedUpdate()
+    {
+        Walk(new Vector2(movementX, 0));
+
         _isGrounded = Physics2D.OverlapCircle(GroundCheck1.position, 0.15f, groundLayer);
 
 
@@ -56,18 +64,12 @@ public class Humanoid : MonoBehaviour
             _canDoubleJump = true;
         }
 
-        _lastGroundTime -= Time.deltaTime;
-    }
-
-
-    public virtual void FixedUpdate()
-    {
-        Walk(new Vector2(movementX, 0));
-
         if (_rb.velocity.y < 0)
         {
             _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fallGravityMultiplier - 1) * Time.fixedDeltaTime;
         }
+
+        _lastGroundTime -= Time.fixedDeltaTime;
     }
     private void Walk(Vector2 dir)
     {
