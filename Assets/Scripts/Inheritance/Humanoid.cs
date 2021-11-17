@@ -6,7 +6,7 @@ for any human like figure will inherit this script.
 */
 public class Humanoid : MonoBehaviour
 {
-    private float _friction = 0.000001f;// 0.000001 to 1 
+    protected float _friction = 0.000001f;// 0.000001 to 1 
     protected Rigidbody2D _rb;
     [SerializeField]
     private float _groundHorizontalSpeed = 100;
@@ -17,8 +17,8 @@ public class Humanoid : MonoBehaviour
 
     //ground collision
     protected bool isGrounded = false;
-    private bool _isAgainstLeftWall = false;
-    private bool _isAgainstRightWall = false;
+    protected bool _isAgainstLeftWall = false;
+    protected bool _isAgainstRightWall = false;
     [SerializeField]
     private Transform _leftWallCheck;
     [SerializeField]
@@ -30,7 +30,6 @@ public class Humanoid : MonoBehaviour
 
     protected float _lastGroundTime;
     protected float _lastJumpTime;
-    protected bool _canMove;
     [SerializeField]
     private float _jumpCoyoteTime = .16f;
 
@@ -40,6 +39,8 @@ public class Humanoid : MonoBehaviour
     protected bool _jumpButtonPressed = false;
     [SerializeField]
     private float _jumpForce = 50;
+
+    protected bool _canMove = true;
 
 
     protected bool canDoubleJump = false;// Can I doubleJump?
@@ -54,40 +55,30 @@ public class Humanoid : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _gravityScale = _rb.gravityScale;
-        _canMove = true;
     }
     public virtual void FixedUpdate()
     {
-        if(_canMove)
-        {
+        if (_canMove){
             if (isGrounded){
                 _rb.velocity = new Vector2(_movementX * _groundHorizontalSpeed,_rb.velocity.y);
             } else {
-                _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);
+                 _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);
             }
             if (_rb.velocity.x > _maxHorizontalSpeed){
                 _rb.velocity = new Vector2(_maxHorizontalSpeed,_rb.velocity.y);
             }
             if (_rb.velocity.x < -_maxHorizontalSpeed){
-                _rb.velocity = new Vector2(-_maxHorizontalSpeed,_rb.velocity.y);
+                 _rb.velocity = new Vector2(-_maxHorizontalSpeed,_rb.velocity.y);
             }
-            if (Mathf.Abs(_rb.velocity.x) < .01f){
-                _rb.velocity = new Vector2(0, _rb.velocity.y);
-            }
-            _rb.velocity = new Vector2(_rb.velocity.x * Mathf.Pow(_friction,Time.fixedDeltaTime),_rb.velocity.y);
         }
-
+        if (Mathf.Abs(_rb.velocity.x) < .01f){
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
         #region CollisionDetection
         isGrounded = Physics2D.OverlapCircle(_groundCheck1.position, 0.15f, _groundLayer);
-        if (isGrounded)
-        {
-            _lastGroundTime = _jumpCoyoteTime;
-            canDoubleJump = true;
-        }
-
         _isAgainstLeftWall = Physics2D.OverlapCircle(_leftWallCheck.position, 0.15f, _groundLayer);
         _isAgainstRightWall = Physics2D.OverlapCircle(_righttWallCheck.position, 0.15f, _groundLayer);
-        if(_isAgainstLeftWall || _isAgainstRightWall)
+        if((_isAgainstLeftWall || _isAgainstRightWall) && !isGrounded)
         {
             canWallJump = true;
             if(_rb.velocity.y <= 0)
@@ -98,25 +89,27 @@ public class Humanoid : MonoBehaviour
             canWallJump = false;
             _rb.gravityScale = _gravityScale;
         }
+        _rb.velocity = new Vector2(_rb.velocity.x * Mathf.Pow(_friction,Time.fixedDeltaTime),_rb.velocity.y);
+        if (isGrounded){
+            _lastGroundTime = _jumpCoyoteTime;
+            canDoubleJump = true;
+        }
         #endregion
-
         #region Timers
         _lastGroundTime -= Time.fixedDeltaTime;
         _lastJumpTime -= Time.fixedDeltaTime;
         #endregion
     }
-
     protected void WallJump()
     {
-        StopCoroutine(DisableMovement(0));
-        StartCoroutine(DisableMovement(.1f));
+        StopCoroutine(DisableMovementForWallJump(0));
+        StartCoroutine(DisableMovementForWallJump(.1f));
 
         Vector2 jumpDirection = _isAgainstRightWall ? Vector2.left : Vector2.right;
         _rb.velocity = new Vector2(_rb.velocity.x, 0);
         _rb.velocity += (Vector2.up + jumpDirection).normalized * _jumpForce;
     }
-
-    private IEnumerator DisableMovement(float time)
+    private IEnumerator DisableMovementForWallJump(float time)
     {
         _canMove = false;
         yield return new WaitForSeconds(time);
