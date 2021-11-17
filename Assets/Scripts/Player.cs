@@ -6,15 +6,22 @@ public class Player : Humanoid
 {
     [SerializeField]
     private float _jumpShortMultiplier;
-
-    private enum _finiteState {stand,walk,attack,hurt,slide,walling,wallJumping,dead}
-    private _finiteState state = _finiteState.stand;
+    [HideInInspector]
+    public enum _finiteState {stand,walk,attack,hurt,slide,walling,wallJumping,dead}
+    [HideInInspector]
+    public _finiteState state = _finiteState.stand;
+    [SerializeField]
+    private Animator _animator;
 
 
     //button presses/release/held
     private bool _slideButton = false;
     private bool _slideButtonSwitch = false;
     private bool _slideButtonPressed = false;
+
+    private bool _attackButton = false;
+    private bool _attackButtonSwitch = false;
+    private bool _attackButtonPressed = false;
     [SerializeField]
     private GameObject _spriteGameObject;
 
@@ -22,6 +29,7 @@ public class Player : Humanoid
     private float _maxHorizontalSlideSpeed = 25;
     [SerializeField]
     private float _slideFriction = .005f;
+    
     // Start is called before the first frame update
     public override void Start()
     {
@@ -30,6 +38,7 @@ public class Player : Humanoid
     public override void FixedUpdate(){
         Inputs();
         if (state == _finiteState.stand || state == _finiteState.walk){
+            
             _canMove = true;
             _friction = 0.000001f;
             if (_movementX > 0){
@@ -44,18 +53,34 @@ public class Player : Humanoid
             if (canWallJump){
                 state = _finiteState.walling;
             }
-        ShortHop();
-        if (_jumpButtonPressed && _lastGroundTime > 0)
-        {
+            ShortHop();
+            if (_jumpButtonPressed && _lastGroundTime > 0){
             Jump();
-        }
-        else if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
-        {
+            }
+            else if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
+            {
             DoubleJump();
-        }
-        if (_slideButtonPressed){
-            Slide();
-        }
+            }
+            if (_slideButtonPressed){
+                Slide();
+            }
+            if (_attackButtonPressed){
+                Attack();
+            }
+            if (state == _finiteState.stand){
+                if (isGrounded){
+                    _animator.PlayInFixedTime("Stand",-1,Time.fixedDeltaTime);
+                } else {
+                    _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
+                }
+            }
+            if (state == _finiteState.walk){
+                if (isGrounded){
+                    _animator.PlayInFixedTime("Walk",-1,Time.fixedDeltaTime);
+                } else {
+                    _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
+                }
+            }
         }
         if (state == _finiteState.slide){
             _movementX = 0;
@@ -70,6 +95,7 @@ public class Player : Humanoid
             }
         }
         if (state == _finiteState.walling){
+            _animator.PlayInFixedTime("Walling",-1,Time.fixedDeltaTime);
             if (_jumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
                 WallJump();
                 state = _finiteState.wallJumping;
@@ -88,9 +114,19 @@ public class Player : Humanoid
             }
         }
         if (state == _finiteState.wallJumping){
+            _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
             _friction = 1;
             if (_canMove == true){
                 state = _finiteState.stand;
+            }
+        }
+        if (state == _finiteState.attack){
+            if (!isGrounded){
+                _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);
+                _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x,-_maxHorizontalSpeed,_maxHorizontalSpeed),_rb.velocity.y);
+            }
+            if (_slideButtonPressed){
+                Slide();
             }
         }
         base.FixedUpdate();
@@ -131,6 +167,14 @@ public class Player : Humanoid
         _slideButton = Input.GetButton("Slide");
         _slideButtonPressed = _slideButton && _slideButtonSwitch;
 
+        if (_attackButton != Input.GetButton("Attack")){
+            _attackButtonSwitch = true;
+        } else {
+            _attackButtonSwitch = false;
+        }
+        _attackButton = Input.GetButton("Attack");
+        _attackButtonPressed = _attackButton && _attackButtonSwitch;
+
 
     }
     private void ShortHop(){
@@ -143,9 +187,15 @@ public class Player : Humanoid
         }
     }
     private void Slide(){
+        _animator.PlayInFixedTime("Sliding",-1,Time.fixedDeltaTime);
         _rb.velocity = new Vector2(100 * GetFaceDirection(),_rb.velocity.y);
         _friction = _slideFriction;
         state = _finiteState.slide;
+        _canMove = false;
+    }
+    private void Attack(){
+        _animator.PlayInFixedTime("Attacking",-1,Time.fixedDeltaTime);
+        state = _finiteState.attack;
         _canMove = false;
     }
     // Update is called once per frame
