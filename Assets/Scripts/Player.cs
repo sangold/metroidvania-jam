@@ -7,11 +7,7 @@ public class Player : Humanoid
     [SerializeField]
     private float _jumpShortMultiplier;
     [HideInInspector]
-<<<<<<< Updated upstream
-    public enum _finiteState {stand,walk,attack,hurt,slide,walling,wallJumping,dead}
-=======
     public enum _finiteState {stand,walk,attack,ghostDash,hurt,slide,walling,wallJumping,dead}
->>>>>>> Stashed changes
     [HideInInspector]
     public _finiteState state = _finiteState.stand;
     [SerializeField]
@@ -26,8 +22,6 @@ public class Player : Humanoid
     private bool _attackButton = false;
     private bool _attackButtonSwitch = false;
     private bool _attackButtonPressed = false;
-<<<<<<< Updated upstream
-=======
 
     private bool _ghostDashButton = false;
     private bool _ghostDashButtonSwitch = false;
@@ -37,7 +31,6 @@ public class Player : Humanoid
     [SerializeField]
     private float _ghostDashSpeed = 25;
     
->>>>>>> Stashed changes
     [SerializeField]
     private GameObject _spriteGameObject;
 
@@ -45,14 +38,11 @@ public class Player : Humanoid
     private float _maxHorizontalSlideSpeed = 25;
     [SerializeField]
     private float _slideFriction = .005f;
-<<<<<<< Updated upstream
-=======
 
     [SerializeField]
     private CapsuleCollider2D _capsuleCollider2D;
 
     public string _touchingARoom = null;
->>>>>>> Stashed changes
     
     // Start is called before the first frame update
     public override void Start()
@@ -92,12 +82,9 @@ public class Player : Humanoid
             if (_attackButtonPressed){
                 Attack();
             }
-<<<<<<< Updated upstream
-=======
             if (_ghostDashButtonPressed){
                 GhostDash();
             }
->>>>>>> Stashed changes
             if (state == _finiteState.stand){
                 if (isGrounded){
                     _animator.PlayInFixedTime("Stand",-1,Time.fixedDeltaTime);
@@ -226,8 +213,6 @@ public class Player : Humanoid
         _attackButton = Input.GetButton("Attack");
         _attackButtonPressed = _attackButton && _attackButtonSwitch;
 
-<<<<<<< Updated upstream
-=======
         if (_ghostDashButton != Input.GetButton("GhostDash")){
             _ghostDashButtonSwitch = true;
         } else {
@@ -236,7 +221,6 @@ public class Player : Humanoid
         _ghostDashButton = Input.GetButton("GhostDash");
         _ghostDashButtonPressed = _ghostDashButton && _ghostDashButtonSwitch;
 
->>>>>>> Stashed changes
 
     }
     private void ShortHop(){
@@ -260,8 +244,6 @@ public class Player : Humanoid
         state = _finiteState.attack;
         _canMove = false;
     }
-<<<<<<< Updated upstream
-=======
     private void GhostDash(){
         _rb.velocity = new Vector2(0,0);
         _lastNoneGhostPosition = new Vector2(transform.position.x,transform.position.y);
@@ -270,7 +252,6 @@ public class Player : Humanoid
         _canMove = false;
         _snapTolastNoneGhostPosition = true;
     }
->>>>>>> Stashed changes
     // Update is called once per frame
     public override void Update()
     {

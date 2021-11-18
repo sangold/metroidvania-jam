@@ -475,10 +475,7 @@ MonoBehaviour:
   _jumpShortMultiplier: 0
   state: 0
   _animator: {fileID: 7336888154783809966}
-<<<<<<< Updated upstream
-=======
   _ghostDashSpeed: 2.25
->>>>>>> Stashed changes
   _spriteGameObject: {fileID: 2411521757771023310}
   _maxHorizontalSlideSpeed: 35
   _slideFriction: 0.05

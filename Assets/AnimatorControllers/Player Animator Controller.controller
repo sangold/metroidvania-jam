@@ -208,12 +208,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 6956047625067224143}
     m_Position: {x: 410, y: 390, z: 0}
-<<<<<<< Updated upstream
-=======
   - serializedVersion: 1
     m_State: {fileID: 6322184822995649204}
     m_Position: {x: 445, y: 455, z: 0}
->>>>>>> Stashed changes
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -224,8 +221,6 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -8383036138882940173}
-<<<<<<< Updated upstream
-=======
 --- !u!1102 &6322184822995649204
 AnimatorState:
   serializedVersion: 6
@@ -252,7 +247,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
->>>>>>> Stashed changes
 --- !u!1102 &6956047625067224143
 AnimatorState:
   serializedVersion: 6

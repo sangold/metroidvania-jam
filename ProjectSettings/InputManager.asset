@@ -515,8 +515,6 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-<<<<<<< Updated upstream
-=======
     axis: 5
     joyNum: 0
   - serializedVersion: 3
@@ -533,6 +531,5 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
->>>>>>> Stashed changes
     axis: 5
     joyNum: 0
