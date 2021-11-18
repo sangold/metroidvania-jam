@@ -7,7 +7,7 @@ public class Player : Humanoid
     [SerializeField]
     private float _jumpShortMultiplier;
     [HideInInspector]
-    public enum _finiteState {stand,walk,attack,hurt,slide,walling,wallJumping,dead}
+    public enum _finiteState {stand,walk,attack,ghostDash,hurt,slide,walling,wallJumping,dead}
     [HideInInspector]
     public _finiteState state = _finiteState.stand;
     [SerializeField]
@@ -22,6 +22,15 @@ public class Player : Humanoid
     private bool _attackButton = false;
     private bool _attackButtonSwitch = false;
     private bool _attackButtonPressed = false;
+
+    private bool _ghostDashButton = false;
+    private bool _ghostDashButtonSwitch = false;
+    private bool _ghostDashButtonPressed = false;
+    private Vector2 _lastNoneGhostPosition;
+    private bool _snapTolastNoneGhostPosition = false;
+    [SerializeField]
+    private float _ghostDashSpeed = 25;
+    
     [SerializeField]
     private GameObject _spriteGameObject;
 
@@ -29,11 +38,17 @@ public class Player : Humanoid
     private float _maxHorizontalSlideSpeed = 25;
     [SerializeField]
     private float _slideFriction = .005f;
+
+    [SerializeField]
+    private CapsuleCollider2D _capsuleCollider2D;
+
+    public string _touchingARoom = null;
     
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
     public override void FixedUpdate(){
         Inputs();
@@ -66,6 +81,9 @@ public class Player : Humanoid
             }
             if (_attackButtonPressed){
                 Attack();
+            }
+            if (_ghostDashButtonPressed){
+                GhostDash();
             }
             if (state == _finiteState.stand){
                 if (isGrounded){
@@ -112,6 +130,9 @@ public class Player : Humanoid
             if (_slideButtonPressed){
                 Slide();
             }
+            if (_ghostDashButtonPressed){
+                GhostDash();
+            }
         }
         if (state == _finiteState.wallJumping){
             _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
@@ -130,6 +151,19 @@ public class Player : Humanoid
             }
         }
         base.FixedUpdate();
+        if (state == _finiteState.ghostDash){
+            _canMove = false;
+            _rb.velocity = new Vector2(_movementX * _ghostDashSpeed,_movementY * _ghostDashSpeed);
+            _rb.gravityScale = 0;
+            _capsuleCollider2D.enabled = false;
+
+        } else {
+            if (_snapTolastNoneGhostPosition && isGrounded && _isAgainstLeftWall && _isAgainstRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
+                transform.position = _lastNoneGhostPosition;
+            }
+            _snapTolastNoneGhostPosition = false;
+            _capsuleCollider2D.enabled = true;
+        }
     }
     private void TurnRight(){
         _spriteGameObject.transform.localScale = new Vector2(1,1);
@@ -149,7 +183,11 @@ public class Player : Humanoid
         using a combination of _jumpButton && _jumpButtonPressed
         */
         _movementX = Input.GetAxis("Horizontal");
-
+        if (state == _finiteState.ghostDash){
+            _movementY = Input.GetAxis("Vertical");
+        } else {
+            _movementY = 0;
+        }
         // for jump pressed to work in one frame.
         if (_jumpButton != Input.GetButton("Jump")){
             _jumpButtonSwitch = true;
@@ -175,6 +213,14 @@ public class Player : Humanoid
         _attackButton = Input.GetButton("Attack");
         _attackButtonPressed = _attackButton && _attackButtonSwitch;
 
+        if (_ghostDashButton != Input.GetButton("GhostDash")){
+            _ghostDashButtonSwitch = true;
+        } else {
+            _ghostDashButtonSwitch = false;
+        }
+        _ghostDashButton = Input.GetButton("GhostDash");
+        _ghostDashButtonPressed = _ghostDashButton && _ghostDashButtonSwitch;
+
 
     }
     private void ShortHop(){
@@ -197,6 +243,14 @@ public class Player : Humanoid
         _animator.PlayInFixedTime("Attacking",-1,Time.fixedDeltaTime);
         state = _finiteState.attack;
         _canMove = false;
+    }
+    private void GhostDash(){
+        _rb.velocity = new Vector2(0,0);
+        _lastNoneGhostPosition = new Vector2(transform.position.x,transform.position.y);
+        _animator.PlayInFixedTime("GhostDash",-1,Time.fixedDeltaTime);
+        state = _finiteState.ghostDash;
+        _canMove = false;
+        _snapTolastNoneGhostPosition = true;
     }
     // Update is called once per frame
     public override void Update()
