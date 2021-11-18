@@ -120,9 +120,10 @@ public class Player : Humanoid
             }
             if (_isAgainstLeftWall){
                 TurnRight();
-            }
-            if (_isAgainstRightWall){
+            } else if (_isAgainstRightWall){
                 TurnLeft();
+            } else {
+                state = _finiteState.stand;
             }
             if (isGrounded){
                 state = _finiteState.stand;
