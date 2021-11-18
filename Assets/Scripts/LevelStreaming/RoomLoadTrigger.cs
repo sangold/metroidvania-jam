@@ -29,26 +29,36 @@ public class RoomLoadTrigger : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        
+        if (other.gameObject.name == "RoomTriggerCollider"){
+        Player player = other.gameObject.GetComponentInParent<Player>();
+        if (player != null)
+        {
+            if (isLoadedScene == false)
+            {
+                    SceneManager.LoadScene(sceneNameToLoad, LoadSceneMode.Additive);
+                    isLoadedScene = true;
+            }
+             player._touchingARoom = sceneNameToLoad;
+                CameraScript cs = Camera.main.GetComponent<CameraScript>();
+                cs.SetBounds(
+                _spriteRenderer.bounds.min.x,
+                _spriteRenderer.bounds.max.x,
+                _spriteRenderer.bounds.min.y,
+                _spriteRenderer.bounds.max.y);
+        }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         
         if (other.gameObject.name == "RoomTriggerCollider"){
         Player player = other.gameObject.GetComponentInParent<Player>();
-        Debug.Log(player);
         if (player != null)
         {
-            if (isLoadedScene == false)
-            {
-                SceneManager.LoadScene(sceneNameToLoad, LoadSceneMode.Additive);
-                isLoadedScene = true;
-            }
-            player._touchingARoom = sceneNameToLoad;
-            /*Camera.main.GetComponent<CameraScript>().SetBounds(
-                gameObject.transform.position.x,
-                gameObject.transform.position.x + _spriteRenderer.sprite.rect.width / 2,
-                gameObject.transform.position.y,
-                gameObject.transform.position.y + _spriteRenderer.sprite.rect.height / 2);
-            */
+            player._touchingARoom = sceneNameToLoad;        
         }
         }
     }
@@ -59,13 +69,23 @@ public class RoomLoadTrigger : MonoBehaviour
             if (player != null) {
                 if (isLoadedScene == true)
                 {
-                 SceneManager.UnloadSceneAsync(sceneNameToLoad);
-                  isLoadedScene = false;
+                    StartCoroutine(UnloadRoom(1));
+                    
                 }
                 if (player._touchingARoom == sceneNameToLoad){
                      player._touchingARoom = null;
                 }
             }
+        }
+    }
+
+    private IEnumerator UnloadRoom(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if (SceneManager.GetSceneByName(sceneNameToLoad).IsValid())
+        {
+            SceneManager.UnloadSceneAsync(sceneNameToLoad);
+            isLoadedScene = false;
         }
     }
 }
