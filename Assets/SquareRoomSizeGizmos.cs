@@ -14,7 +14,7 @@ public class SquareRoomSizeGizmos : MonoBehaviour
     private Vector2 _mapSize = new Vector2(10, 10);
 
     [SerializeField]
-    private Color gridColor;
+    private Color _gridColor = Color.red;
 
     void OnDrawGizmos()
     {
@@ -30,7 +30,7 @@ public class SquareRoomSizeGizmos : MonoBehaviour
                 Vector2 position = new Vector2(x * screenSizeX, y * screenSizeY);
                 Vector2 size = new Vector3(screenSizeX, screenSizeY);
 
-                Gizmos.color = gridColor;
+                Gizmos.color = _gridColor;
                 Gizmos.DrawLine(position, new Vector2(position.x + screenSizeX,position.y));
                 Gizmos.DrawLine(new Vector2(position.x + screenSizeX, position.y), new Vector2(position.x + screenSizeX, position.y + screenSizeY));
                 Gizmos.DrawLine(new Vector2(position.x, position.y + screenSizeY), new Vector2(position.x, position.y));
