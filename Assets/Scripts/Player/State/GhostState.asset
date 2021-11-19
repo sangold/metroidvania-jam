@@ -17,7 +17,7 @@ MonoBehaviour:
   HorizontalSpeed: 10
   JumpForce: 0
   MaxHSpeed: 15
-  MaxVSpeed: 15
+  MaxVSpeed: 0
   Friction: 0.000001
   CanMove: 1
   CanDash: 0

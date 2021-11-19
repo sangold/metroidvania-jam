@@ -69,6 +69,7 @@ public class Player : Humanoid
         }
         if (_currentState.CanJump && _playerInputs.JumpButtonPressed)
         {
+            SetState(PlayerState.INAIR);
             Jump();
             OnJump?.Invoke(this, null);
         }
