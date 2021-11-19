@@ -1,3 +1,4 @@
+using MV.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,19 +15,8 @@ public class Player : Humanoid
     [SerializeField]
     private Animator _animator;
 
-
-    //button presses/release/held
-    private bool _slideButton = false;
-    private bool _slideButtonSwitch = false;
-    private bool _slideButtonPressed = false;
-
-    private bool _attackButton = false;
-    private bool _attackButtonSwitch = false;
-    private bool _attackButtonPressed = false;
-
-    private bool _ghostDashButton = false;
-    private bool _ghostDashButtonSwitch = false;
-    private bool _ghostDashButtonPressed = false;
+    private PlayerInputs _playerInputs;
+    
     private Vector2 _lastNoneGhostPosition;
     private bool _snapTolastNoneGhostPosition = false;
     [SerializeField]
@@ -52,7 +42,11 @@ public class Player : Humanoid
     public float VerticalSpeed { get => _rb.velocity.y; }
 
     public event EventHandler OnJump;
-    
+
+    private void Awake()
+    {
+        _playerInputs = new PlayerInputs();
+    }
     // Start is called before the first frame update
     public override void Start()
     {
@@ -61,7 +55,16 @@ public class Player : Humanoid
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
     public override void FixedUpdate(){
-        Inputs();
+        _playerInputs.GetInputs();
+        _movementX = _playerInputs.MovementX;
+        if (state == _finiteState.ghostDash)
+        {
+            _movementY = _playerInputs.MovementY;
+        }
+        else
+        {
+            _movementY = 0;
+        }
         if (state == _finiteState.stand || state == _finiteState.walk){
             
             _canMove = true;
@@ -79,22 +82,22 @@ public class Player : Humanoid
                 state = _finiteState.walling;
             }
             ShortHop();
-            if (_jumpButtonPressed && _lastGroundTime > 0){
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime > 0){
                 Jump();
                 OnJump?.Invoke(this, null);
             }
-            else if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
+            else if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
             {
                 DoubleJump();
                 OnJump?.Invoke(this, null);
             }
-            if (_slideButtonPressed){
+            if (_playerInputs.SlideButtonPressed){
                 Slide();
             }
-            if (_attackButtonPressed){
+            if (_playerInputs.AttackButtonPressed){
                 Attack();
             }
-            if (_ghostDashButtonPressed){
+            if (_playerInputs.GhostDashButtonPressed){
                 GhostDash();
             }
             //if (state == _finiteState.stand){
@@ -126,7 +129,7 @@ public class Player : Humanoid
         }
         if (state == _finiteState.walling){
             //_animator.PlayInFixedTime("Walling",-1,Time.fixedDeltaTime);
-            if (_jumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
                 WallJump();
                 state = _finiteState.wallJumping;
             }
@@ -140,10 +143,10 @@ public class Player : Humanoid
             if (isGrounded){
                 state = _finiteState.stand;
             }
-            if (_slideButtonPressed){
+            if (_playerInputs.SlideButtonPressed){
                 Slide();
             }
-            if (_ghostDashButtonPressed){
+            if (_playerInputs.GhostDashButtonPressed){
                 GhostDash();
             }
         }
@@ -159,7 +162,7 @@ public class Player : Humanoid
                 _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);
                 _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x,-_maxHorizontalSpeed,_maxHorizontalSpeed),_rb.velocity.y);
             }
-            if (_slideButtonPressed){
+            if (_playerInputs.SlideButtonPressed){
                 Slide();
             }
         }
@@ -194,57 +197,8 @@ public class Player : Humanoid
     private float GetFaceDirection(){
         return _spriteGameObject.transform.localScale.x;
     }
-    private void Inputs(){
-        //reads all the player inputs here
-        /*
-        Unity Input only updates in update not fixed update. 
-        So we have to make our own button pressed so the button press can work.
-
-        using a combination of _jumpButton && _jumpButtonPressed
-        */
-        _movementX = Input.GetAxis("Horizontal");
-        if (state == _finiteState.ghostDash){
-            _movementY = Input.GetAxis("Vertical");
-        } else {
-            _movementY = 0;
-        }
-        // for jump pressed to work in one frame.
-        if (_jumpButton != Input.GetButton("Jump")){
-            _jumpButtonSwitch = true;
-        } else {
-            _jumpButtonSwitch = false;
-        }
-        _jumpButton = Input.GetButton("Jump");
-        _jumpButtonPressed = _jumpButton && _jumpButtonSwitch;
-
-        if (_slideButton != Input.GetButton("Slide")){
-            _slideButtonSwitch = true;
-        } else {
-            _slideButtonSwitch = false;
-        }
-        _slideButton = Input.GetButton("Slide");
-        _slideButtonPressed = _slideButton && _slideButtonSwitch;
-
-        if (_attackButton != Input.GetButton("Attack")){
-            _attackButtonSwitch = true;
-        } else {
-            _attackButtonSwitch = false;
-        }
-        _attackButton = Input.GetButton("Attack");
-        _attackButtonPressed = _attackButton && _attackButtonSwitch;
-
-        if (_ghostDashButton != Input.GetButton("GhostDash")){
-            _ghostDashButtonSwitch = true;
-        } else {
-            _ghostDashButtonSwitch = false;
-        }
-        _ghostDashButton = Input.GetButton("GhostDash");
-        _ghostDashButtonPressed = _ghostDashButton && _ghostDashButtonSwitch;
-
-
-    }
     private void ShortHop(){
-        if (_jumpButton == false && !isGrounded)
+        if (!_playerInputs.JumpButton && !isGrounded)
         {
             if (_rb.velocity.y > 0 && _lastJumpTime > -.5f)
             {
