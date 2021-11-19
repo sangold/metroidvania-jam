@@ -35,9 +35,6 @@ public class Humanoid : MonoBehaviour
 
     protected float _movementX = 0;
     protected float _movementY = 0;
-    protected bool _jumpButton = false;
-    protected bool _jumpButtonSwitch = false;
-    protected bool _jumpButtonPressed = false;
     [SerializeField]
     private float _jumpForce = 50;
 
