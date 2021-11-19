@@ -18,6 +18,8 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _main.state = Player._finiteState.stand;
         _animator.PlayInFixedTime("Stand", -1, Time.fixedDeltaTime);
+        _animator.SetBool("isLanding", false);
+
     }
 
         private void OnJump(object sender, EventArgs e)
@@ -29,6 +31,11 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _animator.SetFloat("VerticalSpeed", _main.VerticalSpeed);
         _animator.SetBool("isGrounded", _main.isGrounded);
+        if (_main.state == Player._finiteState.ghostDash){
+        _animator.SetBool("isGhostDashing", true);
+        } else {
+        _animator.SetBool("isGhostDashing", false);
+        }
     }
 
 

@@ -139,9 +139,11 @@ public class Player : Humanoid
                 TurnLeft();
             } else {
                 state = _finiteState.stand;
+                _rb.gravityScale = _gravityScale;
             }
             if (isGrounded){
                 state = _finiteState.stand;
+                _rb.gravityScale = _gravityScale;
             }
             if (_playerInputs.SlideButtonPressed){
                 Slide();
