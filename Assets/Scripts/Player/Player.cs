@@ -72,6 +72,16 @@ public class Player : Humanoid
             Jump();
             OnJump?.Invoke(this, null);
         }
+        if (_currentState.StateType == PlayerState.INAIR)
+        {
+
+            // Specific movement
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !isGrounded)
+            {
+                DoubleJump();
+                OnJump?.Invoke(this, null);
+            }
+        }
 
         ShortHop();
 
@@ -92,7 +102,7 @@ public class Player : Humanoid
         }
 
 
-        if (_currentState.StateType == PlayerState.STANDARD){
+        if (_currentState.StateType == PlayerState.STANDARD || _currentState.StateType == PlayerState.INAIR){
             
             // Visual Update
             if (_movementX > 0){
@@ -103,13 +113,13 @@ public class Player : Humanoid
                 // if no movement
             }    
         }
-        else if (_currentState.StateType == PlayerState.SLIDE){
+        if (_currentState.StateType == PlayerState.SLIDE){
             // Transition
             if (Mathf.Abs(_rb.velocity.x) < 2f){
                 SetState(isGrounded ? PlayerState.STANDARD : PlayerState.INAIR);
             }
         }
-        else if (_currentState.StateType == PlayerState.WALLING)
+        if (_currentState.StateType == PlayerState.WALLING)
         {
             // Specific movement
             if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
@@ -122,20 +132,15 @@ public class Player : Humanoid
                 TurnRight();
             } else if (_isAgainstRightWall){
                 TurnLeft();
+            } else {
+                SetState(PlayerState.INAIR);
+            }
+            if (isGrounded){
+                SetState(PlayerState.STANDARD);
             }
         }
 
-        else if (_currentState.StateType == PlayerState.INAIR){
-            
-            // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
-            {
-                DoubleJump();
-                OnJump?.Invoke(this, null);
-            }
-        }
-
-        else if (_currentState.StateType == PlayerState.ATTACK){
+        if (_currentState.StateType == PlayerState.ATTACK){
             if (!isGrounded){
                 _rb.velocity += new Vector2(_movementX * _horizontalSpeed * Time.fixedDeltaTime,0);   
             }
@@ -163,9 +168,10 @@ public class Player : Humanoid
 
     public void SetState(PlayerState targetState)
     {
+        Debug.Log(_states[(int)targetState]);
         if (_currentState != null && _currentState.StateType == targetState)
             return;
-
+        
         _currentState = _states[(int)targetState];
         _friction = _currentState.Friction;
         _rb.gravityScale = _currentState.GravityScale;
@@ -174,8 +180,6 @@ public class Player : Humanoid
         _maxHorizontalSpeed = _currentState.MaxHSpeed;
         _maxVerticalSpeed = _currentState.MaxVSpeed;
         _jumpForce = _currentState.JumpForce;
-
-        Debug.Log(_jumpForce);
     }
     private void TurnRight(){
         _spriteGameObject.transform.localScale = new Vector2(1,1);
@@ -223,7 +227,6 @@ public class Player : Humanoid
             //already dead. Do not take any more damage.
             return;
         }
-        _canMove = false;
         SetState(PlayerState.HURT);
         _stunDuration = stunDuration;
         _rb.velocity = knockBack;

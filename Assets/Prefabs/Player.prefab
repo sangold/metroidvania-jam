@@ -460,9 +460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2043eac93a44c46a88a84c7d9abe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalSpeed: 100
-  _maxHorizontalSpeed: 15
-  _maxVerticalSpeed: 15
   isGrounded: 0
   _leftWallCheck: {fileID: 6020324262647028325}
   _rightWallCheck: {fileID: 5594814242427977930}
@@ -471,7 +468,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _jumpCoyoteTime: 0.16
-  _jumpForce: 30
   hasDoubleJump: 1
   hasWallJump: 1
   _jumpShortMultiplier: 0
@@ -480,12 +476,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 499d3fca81823cc46bdace3c988a8bd0, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: 67a30bb885e21764a8dfc6ed160a1bc5, type: 2}
-  - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: 399f6141b1f9c3744b1a5869d53cc9d2, type: 2}
   - {fileID: 11400000, guid: 8921da50530eaa84b8b94f7dfc945853, type: 2}
   - {fileID: 11400000, guid: d5dfefadf2c1fe54db33166fe2900b35, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
-  _animator: {fileID: 7336888154783809966}
   _spriteGameObject: {fileID: 2411521757771023310}
   _capsuleCollider2D: {fileID: 0}
   maxHealth: 100
