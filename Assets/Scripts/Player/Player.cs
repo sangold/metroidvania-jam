@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,6 +49,9 @@ public class Player : Humanoid
     private float _stunDuration = 0;
 
     public string _touchingARoom = null;
+    public float VerticalSpeed { get => _rb.velocity.y; }
+
+    public event EventHandler OnJump;
     
     // Start is called before the first frame update
     public override void Start()
@@ -76,11 +80,13 @@ public class Player : Humanoid
             }
             ShortHop();
             if (_jumpButtonPressed && _lastGroundTime > 0){
-            Jump();
+                Jump();
+                OnJump?.Invoke(this, null);
             }
             else if (_jumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
             {
-            DoubleJump();
+                DoubleJump();
+                OnJump?.Invoke(this, null);
             }
             if (_slideButtonPressed){
                 Slide();
@@ -91,20 +97,20 @@ public class Player : Humanoid
             if (_ghostDashButtonPressed){
                 GhostDash();
             }
-            if (state == _finiteState.stand){
-                if (isGrounded){
-                    _animator.PlayInFixedTime("Stand",-1,Time.fixedDeltaTime);
-                } else {
-                    _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
-                }
-            }
-            if (state == _finiteState.walk){
-                if (isGrounded){
-                    _animator.PlayInFixedTime("Walk",-1,Time.fixedDeltaTime);
-                } else {
-                    _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
-                }
-            }
+            //if (state == _finiteState.stand){
+            //    if (isGrounded){
+            //        _animator.PlayInFixedTime("Stand",-1,Time.fixedDeltaTime);
+            //    } else {
+            //        _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
+            //    }
+            //}
+            //if (state == _finiteState.walk){
+            //    if (isGrounded){
+            //        _animator.PlayInFixedTime("Walk",-1,Time.fixedDeltaTime);
+            //    } else {
+            //        _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
+            //    }
+            //}
         }
         if (state == _finiteState.slide){
             _movementX = 0;
@@ -119,7 +125,7 @@ public class Player : Humanoid
             }
         }
         if (state == _finiteState.walling){
-            _animator.PlayInFixedTime("Walling",-1,Time.fixedDeltaTime);
+            //_animator.PlayInFixedTime("Walling",-1,Time.fixedDeltaTime);
             if (_jumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
                 WallJump();
                 state = _finiteState.wallJumping;
@@ -142,7 +148,7 @@ public class Player : Humanoid
             }
         }
         if (state == _finiteState.wallJumping){
-            _animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
+            //_animator.PlayInFixedTime("Jump",-1,Time.fixedDeltaTime);
             _friction = 1;
             if (_canMove == true){
                 state = _finiteState.stand;
