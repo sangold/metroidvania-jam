@@ -14,13 +14,7 @@ public class PlayerAnimationEvents : MonoBehaviour
         _main.OnJump += OnJump;
     }
 
-    public void ReturnToStand()
-    {
-        _main.state = Player._finiteState.stand;
-        _animator.PlayInFixedTime("Stand", -1, Time.fixedDeltaTime);
-    }
-
-        private void OnJump(object sender, EventArgs e)
+    private void OnJump(object sender, EventArgs e)
     {
         _animator.SetTrigger("Jump");
     }
