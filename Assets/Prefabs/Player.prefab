@@ -426,7 +426,6 @@ GameObject:
   - component: {fileID: 7795952289003816024}
   - component: {fileID: 4515952590322010346}
   - component: {fileID: 8901867945249327929}
-  - component: {fileID: 3555160915010275458}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -461,27 +460,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2043eac93a44c46a88a84c7d9abe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundHorizontalSpeed: 100
-  _airHorizontalSpeed: 250
-  _maxHorizontalSpeed: 15
   isGrounded: 0
   _leftWallCheck: {fileID: 6020324262647028325}
-  _righttWallCheck: {fileID: 5594814242427977930}
+  _rightWallCheck: {fileID: 5594814242427977930}
   _groundCheck1: {fileID: 7938734749152730031}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
   _jumpCoyoteTime: 0.16
-  _jumpForce: 30
   hasDoubleJump: 1
   hasWallJump: 1
   _jumpShortMultiplier: 0
-  state: 0
-  _animator: {fileID: 7336888154783809966}
-  _ghostDashSpeed: 2.25
+  _states:
+  - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: 499d3fca81823cc46bdace3c988a8bd0, type: 2}
+  - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: 67a30bb885e21764a8dfc6ed160a1bc5, type: 2}
+  - {fileID: 11400000, guid: 399f6141b1f9c3744b1a5869d53cc9d2, type: 2}
+  - {fileID: 11400000, guid: 8921da50530eaa84b8b94f7dfc945853, type: 2}
+  - {fileID: 11400000, guid: d5dfefadf2c1fe54db33166fe2900b35, type: 2}
+  - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   _spriteGameObject: {fileID: 2411521757771023310}
-  _maxHorizontalSlideSpeed: 35
-  _slideFriction: 0.05
   _capsuleCollider2D: {fileID: 0}
   maxHealth: 100
   _touchingARoom: 
@@ -493,19 +493,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7468836473888323115}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.9708035
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_AngularDrag: 0
+  m_GravityScale: 10
+  m_Material: {fileID: 6200000, guid: 2207745698da14f4da894117c6ff29ea, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &8901867945249327929
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -522,25 +522,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03, y: 0.12}
   m_Size: {x: 1.12, y: 2}
   m_Direction: 0
---- !u!95 &3555160915010275458
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468836473888323115}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e4ddabeae0fa9284a9c79902550f15de, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8336131431407130333
 GameObject:
   m_ObjectHideFlags: 0
