@@ -299,7 +299,6 @@ Transform:
   - {fileID: 6020324262647028325}
   - {fileID: 5594814242427977930}
   - {fileID: 3402442635757812559}
-  - {fileID: 4516230892041491185}
   m_Father: {fileID: 5778996484583117239}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -542,36 +541,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &8191998029613668898
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4516230892041491185}
-  m_Layer: 9
-  m_Name: LandingChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4516230892041491185
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191998029613668898}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -1.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1222171809203494678}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8336131431407130333
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,14 +646,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe214f74b2c57e4f977ce383987b7b7, type: 3}
---- !u!4 &66273793067546359 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2007752454275958374, guid: efe214f74b2c57e4f977ce383987b7b7, type: 3}
-  m_PrefabInstance: {fileID: 1961189621383360657}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3781719866355416675 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3408334035495816946, guid: efe214f74b2c57e4f977ce383987b7b7, type: 3}
+  m_PrefabInstance: {fileID: 1961189621383360657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &66273793067546359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2007752454275958374, guid: efe214f74b2c57e4f977ce383987b7b7, type: 3}
   m_PrefabInstance: {fileID: 1961189621383360657}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7953175470299386889
