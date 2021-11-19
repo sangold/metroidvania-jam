@@ -42,11 +42,17 @@ public class Player : Humanoid
     [SerializeField]
     private CapsuleCollider2D _capsuleCollider2D;
 
+    [SerializeField]
+    private float maxHealth = 100;
+    private float health = 0;
+    private float _stunDuration = 0;
+
     public string _touchingARoom = null;
     
     // Start is called before the first frame update
     public override void Start()
     {
+        health = maxHealth;
         base.Start();
         _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
@@ -156,14 +162,21 @@ public class Player : Humanoid
             _canMove = false;
             _rb.velocity = new Vector2(_movementX * _ghostDashSpeed,_movementY * _ghostDashSpeed);
             _rb.gravityScale = 0;
-            _capsuleCollider2D.enabled = false;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
 
         } else {
             if (_snapTolastNoneGhostPosition && isGrounded && _isAgainstLeftWall && _isAgainstRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
                 transform.position = _lastNoneGhostPosition;
             }
             _snapTolastNoneGhostPosition = false;
-            _capsuleCollider2D.enabled = true;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"), false);
+        }
+        if (state == _finiteState.hurt){
+            _stunDuration -= Time.deltaTime;
+            if (_stunDuration <= 0){
+                state = _finiteState.stand;
+                _stunDuration = 0;
+            }
         }
     }
     private void TurnRight(){
@@ -252,6 +265,23 @@ public class Player : Humanoid
         state = _finiteState.ghostDash;
         _canMove = false;
         _snapTolastNoneGhostPosition = true;
+    }
+    public void TakeDamage(float damage, float stunDuration, Vector2 knockBack, float friction){
+        if (health <= 0)
+        {
+            //already dead. Do not take any more damage.
+            return;
+        }
+        _canMove = false;
+        state = _finiteState.hurt;
+        _stunDuration = stunDuration;
+        _rb.velocity = knockBack;
+        _friction = friction;
+        health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        if (health == 0){
+            Debug.Log("dead");
+        }
     }
     // Update is called once per frame
     public override void Update()
