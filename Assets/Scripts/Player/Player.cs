@@ -36,6 +36,15 @@ public class Player : Humanoid
     [SerializeField]
     private float maxHealth = 100;
     private float health = 0;
+    public float Health {
+        get {
+            return health;
+        }
+        set
+        {
+            health = Mathf.Clamp(value, 0, maxHealth);
+        }
+    }
     private float _stunDuration = 0;
 
     public string _touchingARoom = null;
@@ -247,5 +256,15 @@ public class Player : Humanoid
     public override void Update()
     {
         base.Update();
+        /* debug buttons */
+        if (GameDataManager.hasDebugButtons){
+            if (Input.GetKeyDown(KeyCode.Alpha1)){
+                GameDataManager.saveData();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                GameDataManager.loadData();
+            }
+        }
     }
 }
