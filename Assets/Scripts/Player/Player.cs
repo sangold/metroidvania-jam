@@ -79,13 +79,17 @@ public class Player : Humanoid
 
         if(_currentState.HasStandardTransition)
         {
-            if (canWallJump)
+            if (isGrounded && _rb.velocity.y <= 0.1f)
+            {
+                SetState(PlayerState.STANDARD);
+            }
+            else if (canWallJump)
             {
                 SetState(PlayerState.WALLING);
             }
-            if (isGrounded && _rb.velocity.y <= 0f)
+            else if (!isGrounded)
             {
-                SetState(PlayerState.STANDARD);
+                SetState(PlayerState.INAIR);
             }
         }
 
@@ -101,13 +105,13 @@ public class Player : Humanoid
                 // if no movement
             }    
         }
-        if (_currentState.StateType == PlayerState.SLIDE){
+        else if (_currentState.StateType == PlayerState.SLIDE){
             // Transition
-            if (Mathf.Abs(_rb.velocity.x) < 10){
-                SetState(PlayerState.STANDARD);
+            if (Mathf.Abs(_rb.velocity.x) < 2f){
+                SetState(isGrounded ? PlayerState.STANDARD : PlayerState.INAIR);
             }
         }
-        if (_currentState.StateType == PlayerState.WALLING)
+        else if (_currentState.StateType == PlayerState.WALLING)
         {
             // Specific movement
             if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
@@ -123,7 +127,7 @@ public class Player : Humanoid
             }
         }
 
-        if (_currentState.StateType == PlayerState.INAIR){
+        else if (_currentState.StateType == PlayerState.INAIR){
             
             // Specific movement
             if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump)
@@ -133,14 +137,14 @@ public class Player : Humanoid
             }
         }
 
-        if (_currentState.StateType == PlayerState.ATTACK){
+        else if (_currentState.StateType == PlayerState.ATTACK){
             if (!isGrounded){
-                _rb.velocity += new Vector2(_movementX * _airHorizontalSpeed * Time.fixedDeltaTime,0);   
+                _rb.velocity += new Vector2(_movementX * _horizontalSpeed * Time.fixedDeltaTime,0);   
             }
         }
 
         if (_currentState.StateType == PlayerState.GHOSTDASH){
-            _rb.velocity = new Vector2(_movementX * _groundHorizontalSpeed,_movementY * _groundHorizontalSpeed);
+            _rb.velocity = new Vector2(_movementX * _horizontalSpeed,_movementY * _horizontalSpeed);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
         } else {
             if (_snapTolastNoneGhostPosition && isGrounded && _isAgainstLeftWall && _isAgainstRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
@@ -166,13 +170,14 @@ public class Player : Humanoid
 
         _currentState = _states[(int)targetState];
         _friction = _currentState.Friction;
-        _rb.gravityScale = _currentState.gravityScale;
+        _rb.gravityScale = _currentState.GravityScale;
         _canMove = _currentState.CanMove;
-        _groundHorizontalSpeed = _currentState.HSpeed;
+        _horizontalSpeed = _currentState.HorizontalSpeed;
         _maxHorizontalSpeed = _currentState.MaxHSpeed;
         _maxVerticalSpeed = _currentState.MaxVSpeed;
-        _jumpForce = _currentState.VSpeed;
-        Debug.Log(_currentState);
+        _jumpForce = _currentState.JumpForce;
+
+        Debug.Log(_jumpForce);
     }
     private void TurnRight(){
         _spriteGameObject.transform.localScale = new Vector2(1,1);
@@ -195,7 +200,7 @@ public class Player : Humanoid
     private void Slide(){
         _animator.PlayInFixedTime("Sliding",-1,Time.fixedDeltaTime);
         SetState(PlayerState.SLIDE);
-        _rb.velocity = new Vector2(_groundHorizontalSpeed * GetFaceDirection(),_rb.velocity.y);
+        _rb.velocity = new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
     }
     private void Attack(){
         _animator.PlayInFixedTime("Attacking",-1,Time.fixedDeltaTime);
@@ -227,7 +232,6 @@ public class Player : Humanoid
         SetState(PlayerState.HURT);
         _stunDuration = stunDuration;
         _rb.velocity = knockBack;
-        _friction = friction;
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
         if (health == 0){

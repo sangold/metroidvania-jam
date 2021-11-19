@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GhostState
   m_EditorClassIdentifier: 
   StateType: 3
-  gravityScale: 0
-  HSpeed: 10
-  VSpeed: 25
+  GravityScale: 0
+  HorizontalSpeed: 10
+  JumpForce: 0
   MaxHSpeed: 15
   MaxVSpeed: 0
   Friction: 0.000001

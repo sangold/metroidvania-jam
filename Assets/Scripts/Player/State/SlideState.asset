@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: SlideState
   m_EditorClassIdentifier: 
   StateType: 5
-  gravityScale: 10
-  HSpeed: 50
-  VSpeed: 50
-  MaxHSpeed: 35
+  GravityScale: 0
+  HorizontalSpeed: 50
+  JumpForce: 0
+  MaxHSpeed: 50
   MaxVSpeed: 50
-  Friction: 0.001
+  Friction: 0.0005
   CanMove: 0
   CanDash: 0
   CanGhost: 0
   CanAttack: 0
-  CanJump: 1
+  CanJump: 0
   HasStandardTransition: 0

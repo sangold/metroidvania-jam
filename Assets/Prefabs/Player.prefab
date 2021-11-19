@@ -461,12 +461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2043eac93a44c46a88a84c7d9abe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundHorizontalSpeed: 100
-  _airHorizontalSpeed: 250
+  _horizontalSpeed: 100
   _maxHorizontalSpeed: 15
+  _maxVerticalSpeed: 15
   isGrounded: 0
   _leftWallCheck: {fileID: 6020324262647028325}
-  _righttWallCheck: {fileID: 5594814242427977930}
+  _rightWallCheck: {fileID: 5594814242427977930}
   _groundCheck1: {fileID: 7938734749152730031}
   _groundLayer:
     serializedVersion: 2
@@ -486,12 +486,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5dfefadf2c1fe54db33166fe2900b35, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
-  state: 0
   _animator: {fileID: 7336888154783809966}
-  _ghostDashSpeed: 10
   _spriteGameObject: {fileID: 2411521757771023310}
-  _maxHorizontalSlideSpeed: 35
-  _slideFriction: 0.05
   _capsuleCollider2D: {fileID: 0}
   maxHealth: 100
   _touchingARoom: 

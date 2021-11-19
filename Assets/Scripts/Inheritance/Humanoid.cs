@@ -1,21 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 /*
 for any human like figure will inherit this script.
 */
 public class Humanoid : MonoBehaviour
 {
-    protected float _friction = 0.000001f;// 0.000001 to 1 
+    protected float _friction;// 0.000001 to 1 
     protected Rigidbody2D _rb;
-    [SerializeField]
-    protected float _groundHorizontalSpeed = 100;
-    [SerializeField]
-    protected float _airHorizontalSpeed = 50;
-    [SerializeField]
-    protected float _maxHorizontalSpeed = 15;
-    [SerializeField]
-    protected float _maxVerticalSpeed = 15;
+    protected float _horizontalSpeed;
+    protected float _maxHorizontalSpeed;
+    protected float _maxVerticalSpeed;
 
     //ground collision
     public bool isGrounded = false;
@@ -24,7 +18,7 @@ public class Humanoid : MonoBehaviour
     [SerializeField]
     private Transform _leftWallCheck;
     [SerializeField]
-    private Transform _righttWallCheck;
+    private Transform _rightWallCheck;
     [SerializeField]
     private Transform _groundCheck1;
     [SerializeField]
@@ -37,8 +31,7 @@ public class Humanoid : MonoBehaviour
 
     protected float _movementX = 0;
     protected float _movementY = 0;
-    [SerializeField]
-    protected float _jumpForce = 50;
+    protected float _jumpForce;
 
     protected bool _canMove = true;
     protected bool _disableMovement;
@@ -57,7 +50,6 @@ public class Humanoid : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _gravityScale = _rb.gravityScale;
-        Debug.Log(_gravityScale);
     }
     public virtual void FixedUpdate()
     {
@@ -65,21 +57,22 @@ public class Humanoid : MonoBehaviour
         {
             if (isGrounded)
             {
-                _rb.velocity = new Vector2(_movementX * _groundHorizontalSpeed, _rb.velocity.y);
+                _rb.velocity = new Vector2(_movementX * _horizontalSpeed, _rb.velocity.y);
             }
             else
             {
-                _rb.velocity = new Vector2(_movementX * _airHorizontalSpeed, _rb.velocity.y);
+                _rb.velocity += new Vector2(_movementX * _horizontalSpeed, 0);
             }
-            _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed), Mathf.Clamp(_rb.velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed));
         }
         if (Mathf.Abs(_rb.velocity.x) < .01f){
             _rb.velocity = new Vector2(0, _rb.velocity.y);
         }
+        _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed), Mathf.Clamp(_rb.velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed));
+
         #region CollisionDetection
         isGrounded = Physics2D.OverlapCircle(_groundCheck1.position, 0.15f, _groundLayer);
         _isAgainstLeftWall = Physics2D.OverlapCircle(_leftWallCheck.position, 0.15f, _groundLayer) && _canGrab;
-        _isAgainstRightWall = Physics2D.OverlapCircle(_righttWallCheck.position, 0.15f, _groundLayer) && _canGrab;
+        _isAgainstRightWall = Physics2D.OverlapCircle(_rightWallCheck.position, 0.15f, _groundLayer) && _canGrab;
         if((_isAgainstLeftWall || _isAgainstRightWall) && !isGrounded)
         {
             canWallJump = true;
@@ -97,6 +90,7 @@ public class Humanoid : MonoBehaviour
             canDoubleJump = true;
         }
         #endregion
+
         #region Timers
         _lastGroundTime -= Time.fixedDeltaTime;
         _lastJumpTime -= Time.fixedDeltaTime;
@@ -105,11 +99,10 @@ public class Humanoid : MonoBehaviour
     protected void WallJump()
     {
         StopCoroutine(DisableMovementForWallJump(0));
-        StartCoroutine(DisableMovementForWallJump(.15f));
+        StartCoroutine(DisableMovementForWallJump(.35f));
 
         Vector2 jumpDirection = _isAgainstRightWall ? Vector2.left : Vector2.right;
-        _rb.velocity = new Vector2(_rb.velocity.x, 0);
-        _rb.velocity += (Vector2.up + jumpDirection).normalized * _jumpForce;
+        _rb.velocity = new Vector2(_horizontalSpeed * jumpDirection.x, _jumpForce);
     }
     private IEnumerator DisableMovementForWallJump(float time)
     {
