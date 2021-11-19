@@ -12,8 +12,6 @@ public class Player : Humanoid
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
     private List<PlayerStateSO> _states;
-    [SerializeField]
-    private Animator _animator;
 
     private PlayerInputs _playerInputs;
     
@@ -163,7 +161,7 @@ public class Player : Humanoid
         base.FixedUpdate();
     }
 
-    private void SetState(PlayerState targetState)
+    public void SetState(PlayerState targetState)
     {
         if (_currentState != null && _currentState.StateType == targetState)
             return;
@@ -198,19 +196,16 @@ public class Player : Humanoid
         }
     }
     private void Slide(){
-        _animator.PlayInFixedTime("Sliding",-1,Time.fixedDeltaTime);
         SetState(PlayerState.SLIDE);
         _rb.velocity = new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
     }
     private void Attack(){
-        _animator.PlayInFixedTime("Attacking",-1,Time.fixedDeltaTime);
         SetState(PlayerState.ATTACK);
         StartCoroutine(WaitAnim(.5f));
     }
     private void GhostDash(){
         _rb.velocity = new Vector2(0,0);
         _lastNoneGhostPosition = new Vector2(transform.position.x,transform.position.y);
-        _animator.PlayInFixedTime("GhostDash",-1,Time.fixedDeltaTime);
         SetState(PlayerState.GHOSTDASH);
         StartCoroutine(WaitAnim(10f/60f));
         _snapTolastNoneGhostPosition = true;

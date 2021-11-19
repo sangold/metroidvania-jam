@@ -13,7 +13,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _main.OnJump += OnJump;
     }
-
+    
     private void OnJump(object sender, EventArgs e)
     {
         _animator.SetTrigger("Jump");
@@ -23,6 +23,16 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _animator.SetFloat("VerticalSpeed", _main.VerticalSpeed);
         _animator.SetBool("isGrounded", _main.isGrounded);
+        if (_main.CurrentState.StateType == PlayerState.GHOSTDASH){
+        _animator.SetBool("isGhostDashing", true);
+        } else {
+        _animator.SetBool("isGhostDashing", false);
+        }
+        if (_main.CurrentState.StateType == PlayerState.ATTACK){
+        _animator.SetBool("isAttacking", true);
+        } else {
+        _animator.SetBool("isAttacking", false);
+        }
     }
 
 
