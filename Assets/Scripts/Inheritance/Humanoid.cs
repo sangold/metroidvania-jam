@@ -16,7 +16,7 @@ public class Humanoid : MonoBehaviour
     protected float _maxHorizontalSpeed = 15;
 
     //ground collision
-    protected bool isGrounded = false;
+    public bool isGrounded = false;
     protected bool _isAgainstLeftWall = false;
     protected bool _isAgainstRightWall = false;
     [SerializeField]
