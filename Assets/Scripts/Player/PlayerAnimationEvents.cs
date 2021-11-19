@@ -36,6 +36,11 @@ public class PlayerAnimationEvents : MonoBehaviour
         } else {
         _animator.SetBool("isGhostDashing", false);
         }
+        if (_main.state == Player._finiteState.attack){
+        _animator.SetBool("isAttacking", true);
+        } else {
+        _animator.SetBool("isAttacking", false);
+        }
     }
 
 
