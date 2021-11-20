@@ -86,7 +86,7 @@ public class Player : Humanoid
         {
 
             // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !isGrounded)
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !PlayerCollision.OnGround)
             {
                 DoubleJump();
                 OnJump?.Invoke(this, null);
@@ -97,7 +97,7 @@ public class Player : Humanoid
 
         if(_currentState.HasStandardTransition)
         {
-            if (isGrounded && _rb.velocity.y <= 0.1f)
+            if (PlayerCollision.OnGround && _rb.velocity.y <= 0.1f)
             {
                 SetState(PlayerState.STANDARD);
             }
@@ -105,7 +105,7 @@ public class Player : Humanoid
             {
                 SetState(PlayerState.WALLING);
             }
-            else if (!isGrounded)
+            else if (!PlayerCollision.OnGround)
             {
                 SetState(PlayerState.INAIR);
             }
@@ -126,7 +126,7 @@ public class Player : Humanoid
         if (_currentState.StateType == PlayerState.SLIDE){
             // Transition
             if (Mathf.Abs(_rb.velocity.x) < 2f){
-                SetState(isGrounded ? PlayerState.STANDARD : PlayerState.INAIR);
+                SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
             }
         }
         if (_currentState.StateType == PlayerState.WALLING)
@@ -138,20 +138,22 @@ public class Player : Humanoid
             }
 
             // Visual Update
-            if (_isAgainstLeftWall){
+            if (PlayerCollision.OnLeftWall){
                 TurnRight();
-            } else if (_isAgainstRightWall){
+            } else if (PlayerCollision.OnRightWall)
+            {
                 TurnLeft();
             } else {
                 SetState(PlayerState.INAIR);
             }
-            if (isGrounded){
+            if (PlayerCollision.OnGround){
                 SetState(PlayerState.STANDARD);
             }
         }
 
         if (_currentState.StateType == PlayerState.ATTACK){
-            if (!isGrounded){
+            if (!PlayerCollision.OnGround)
+            {
                 _rb.velocity += new Vector2(_movementX * _horizontalSpeed * Time.fixedDeltaTime,0);   
             }
         }
@@ -160,7 +162,7 @@ public class Player : Humanoid
             _rb.velocity = new Vector2(_movementX * _horizontalSpeed,_movementY * _horizontalSpeed);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
         } else {
-            if (_snapTolastNoneGhostPosition && isGrounded && _isAgainstLeftWall && _isAgainstRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
+            if (_snapTolastNoneGhostPosition && PlayerCollision.OnGround && PlayerCollision.OnLeftWall && PlayerCollision.OnRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
                 transform.position = _lastNoneGhostPosition;
             }
             _snapTolastNoneGhostPosition = false;
@@ -201,7 +203,7 @@ public class Player : Humanoid
         return _spriteGameObject.transform.localScale.x;
     }
     private void ShortHop(){
-        if (!_playerInputs.JumpButton && !isGrounded)
+        if (!_playerInputs.JumpButton && !PlayerCollision.OnGround)
         {
             if (_rb.velocity.y > 0 && _lastJumpTime > -.5f)
             {
@@ -228,7 +230,7 @@ public class Player : Humanoid
     private IEnumerator WaitAnim(float time)
     {
         yield return new WaitForSeconds(time);
-        SetState(isGrounded ? PlayerState.STANDARD : PlayerState.INAIR);
+        SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
     }
 
     public void TakeDamage(float damage, float stunDuration, Vector2 knockBack, float friction){
