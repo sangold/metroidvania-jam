@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StateType: 3
   GravityScale: 3
-  HorizontalSpeed: 3.5
+  HorizontalSpeed: 6
   JumpForce: 0
   MaxHSpeed: 50
   MaxVSpeed: 0
