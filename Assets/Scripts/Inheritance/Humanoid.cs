@@ -58,7 +58,6 @@ public class Humanoid : MonoBehaviour
         if(_isWallJumping)
         {
             _rb.velocity = Vector2.Lerp(_rb.velocity, new Vector2( _horizontalSpeed, _rb.velocity.y), _wallJumpAcceleration * Time.fixedDeltaTime);
-            Debug.Log(_rb.velocity);
             return;
         }
         if(PlayerCollision.OnGround)
@@ -72,6 +71,7 @@ public class Humanoid : MonoBehaviour
 
     protected void WallSlide()
     {
+        Debug.Log("WallSliding");
         StopCoroutine(DisableMovementForWallJump(0));
         _isWallJumping = false;
         bool towardWall = (_rb.velocity.x > 0 && PlayerCollision.OnRightWall) || (_rb.velocity.x < 0 && PlayerCollision.OnLeftWall);
@@ -89,6 +89,7 @@ public class Humanoid : MonoBehaviour
     private IEnumerator DisableMovementForWallJump(float time)
     {
         _isWallJumping = true;
+        
         yield return new WaitForSeconds(time);
         _isWallJumping = false;
     }

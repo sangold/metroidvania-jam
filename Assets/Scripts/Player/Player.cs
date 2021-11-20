@@ -106,6 +106,7 @@ public class Player : Humanoid
             }
             else if (PlayerCollision.IsPushingAgainstAWall(_movementX))
             {
+                if((PlayerCollision.OnLeftWall && _rb.velocity.x <= 0) || (PlayerCollision.OnRightWall && _rb.velocity.x >= 0))
                 SetState(PlayerState.WALL_SLIDE);
             }
             else if (!PlayerCollision.OnGround)
