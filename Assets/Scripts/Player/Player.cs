@@ -162,14 +162,10 @@ public class Player : Humanoid
         }
 
         if (_currentState.StateType == PlayerState.ATTACK){
-            if (!PlayerCollision.OnGround)
-            {
-                _rb.velocity += new Vector2(_movementX * _horizontalSpeed * Time.fixedDeltaTime,0);   
-            }
+            
         }
 
         if (_currentState.StateType == PlayerState.GHOSTDASH){
-            _rb.velocity = new Vector2(_movementX * _horizontalSpeed,_movementY * _horizontalSpeed);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
         } else {
             if (_snapTolastNoneGhostPosition && PlayerCollision.OnGround && PlayerCollision.OnLeftWall && PlayerCollision.OnRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
@@ -227,7 +223,9 @@ public class Player : Humanoid
     }
     private void Attack(){
         SetState(PlayerState.ATTACK);
-        WaitStateDuration(.5f);
+        if (!PlayerCollision.OnGround)
+            _rb.velocity += new Vector2(_movementX * _horizontalSpeed, 0);
+        WaitStateDuration(.1f);
     }
     private void GhostDash(){
         _rb.velocity = new Vector2(0,0);

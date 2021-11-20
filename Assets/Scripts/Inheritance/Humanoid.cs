@@ -39,7 +39,7 @@ public class Humanoid : MonoBehaviour
     }
     public virtual void FixedUpdate()
     {
-        Walk(new Vector2(_movementX,0));
+        Walk(new Vector2(_movementX, _movementY));
 
         #region CollisionDetection
         if (PlayerCollision.OnGround){
