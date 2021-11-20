@@ -71,7 +71,7 @@ public class Player : Humanoid
 
         if (_currentState.CanDash && _playerInputs.SlideButtonPressed)
         {
-            Slide();
+            Dash();
         }
         if (_currentState.CanAttack && _playerInputs.AttackButtonPressed)
         {
@@ -130,7 +130,7 @@ public class Player : Humanoid
                 // if no movement
             }    
         }
-        if (_currentState.StateType == PlayerState.SLIDE){
+        if (_currentState.StateType == PlayerState.DASH){
             // Transition
             if (Mathf.Abs(_rb.velocity.x) < 2f){
                 SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
@@ -219,20 +219,28 @@ public class Player : Humanoid
             _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fastFallMultiplier - 1) * Time.fixedDeltaTime;
         }
     }
-    private void Slide(){
-        SetState(PlayerState.SLIDE);
-        _rb.velocity = new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
+    private void Dash(){
+        SetState(PlayerState.DASH);
+        _rb.velocity = Vector2.zero;
+        _rb.velocity += new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
+        WaitStateDuration(.2f);
     }
     private void Attack(){
         SetState(PlayerState.ATTACK);
-        StartCoroutine(WaitAnim(.5f));
+        WaitStateDuration(.5f);
     }
     private void GhostDash(){
         _rb.velocity = new Vector2(0,0);
         _lastNoneGhostPosition = new Vector2(transform.position.x,transform.position.y);
         SetState(PlayerState.GHOSTDASH);
-        StartCoroutine(WaitAnim(10f/60f));
+        WaitStateDuration(.5f);
         _snapTolastNoneGhostPosition = true;
+    }
+
+    private void WaitStateDuration(float duration)
+    {
+        StopCoroutine(WaitAnim(0));
+        StartCoroutine(WaitAnim(duration));
     }
 
     private IEnumerator WaitAnim(float time)

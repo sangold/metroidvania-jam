@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public enum PlayerState { STANDARD, INAIR, ATTACK, GHOSTDASH, HURT, SLIDE, WALL_SLIDE, WALLJUMPING, DEAD }
+public enum PlayerState { STANDARD, INAIR, ATTACK, GHOSTDASH, HURT, DASH, WALL_SLIDE, WALLJUMPING, DEAD }
 [CreateAssetMenu(fileName = "PlayerState", menuName = "Assets/Player/State")]
 public class PlayerStateSO : ScriptableObject
 {
