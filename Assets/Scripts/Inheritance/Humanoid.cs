@@ -71,7 +71,6 @@ public class Humanoid : MonoBehaviour
 
     protected void WallSlide()
     {
-        Debug.Log("WallSliding");
         StopCoroutine(DisableMovementForWallJump(0));
         _isWallJumping = false;
         bool towardWall = (_rb.velocity.x > 0 && PlayerCollision.OnRightWall) || (_rb.velocity.x < 0 && PlayerCollision.OnLeftWall);
