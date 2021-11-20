@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: InAirState
   m_EditorClassIdentifier: 
   StateType: 1
-  GravityScale: 10
-  HorizontalSpeed: 30
-  JumpForce: 30
-  MaxHSpeed: 15
+  GravityScale: 3
+  HorizontalSpeed: 7
+  JumpForce: 12
+  MaxHSpeed: 50
   MaxVSpeed: 50
-  Friction: 0.1
   CanMove: 1
   CanDash: 1
   CanGhost: 1

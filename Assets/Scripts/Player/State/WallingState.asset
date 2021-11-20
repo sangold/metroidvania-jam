@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: WallingState
   m_EditorClassIdentifier: 
   StateType: 6
-  GravityScale: 2
-  HorizontalSpeed: 100
-  JumpForce: 0
-  MaxHSpeed: 15
-  MaxVSpeed: 10
-  Friction: 0.000001
+  GravityScale: 3
+  HorizontalSpeed: 7
+  JumpForce: 12
+  MaxHSpeed: 50
+  MaxVSpeed: 1
   CanMove: 1
   CanDash: 1
   CanGhost: 1

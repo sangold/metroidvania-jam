@@ -5,7 +5,6 @@ for any human like figure will inherit this script.
 */
 public class Humanoid : MonoBehaviour
 {
-    protected float _friction;// 0.000001 to 1 
     protected Rigidbody2D _rb;
     protected float _horizontalSpeed;
     protected float _maxHorizontalSpeed;
@@ -14,7 +13,6 @@ public class Humanoid : MonoBehaviour
     public PlayerCollision PlayerCollision { get; private set; }
 
     protected float _lastGroundTime;
-    protected float _lastJumpTime;
     [SerializeField]
     private float _jumpCoyoteTime = .16f;
 
@@ -26,9 +24,7 @@ public class Humanoid : MonoBehaviour
     protected bool _disableMovement;
     protected bool _canGrab = true;
 
-
     protected bool canDoubleJump = false;// Can I doubleJump?
-    protected bool canWallJump = false;
     
     public bool hasDoubleJump = true;// Do you have the ability?
     public bool hasWallJump = true;
@@ -43,21 +39,7 @@ public class Humanoid : MonoBehaviour
     }
     public virtual void FixedUpdate()
     {
-        if (_canMove && !_disableMovement)
-        {
-            if (PlayerCollision.OnGround)
-            {
-                _rb.velocity = new Vector2(_movementX * _horizontalSpeed, _rb.velocity.y);
-            }
-            else
-            {
-                _rb.velocity += new Vector2(_movementX * _horizontalSpeed, 0);
-            }
-        }
-        if (Mathf.Abs(_rb.velocity.x) < .01f){
-            _rb.velocity = new Vector2(0, _rb.velocity.y);
-        }
-        _rb.velocity = new Vector2(Mathf.Clamp(_rb.velocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed), Mathf.Clamp(_rb.velocity.y, -_maxVerticalSpeed, _maxVerticalSpeed));
+        Walk(new Vector2(_movementX,0));
 
         #region CollisionDetection
         if (PlayerCollision.OnGround){
@@ -68,15 +50,30 @@ public class Humanoid : MonoBehaviour
 
         #region Timers
         _lastGroundTime -= Time.fixedDeltaTime;
-        _lastJumpTime -= Time.fixedDeltaTime;
         #endregion
     }
+
+    protected void Walk(Vector2 dir)
+    {
+        if (!_canMove)
+            return;
+        _rb.velocity = new Vector2(dir.x * _horizontalSpeed, _rb.velocity.y);
+    }
+
+    protected void WallSlide()
+    {
+        bool towardWall = (_rb.velocity.x > 0 && PlayerCollision.OnRightWall) || (_rb.velocity.x < 0 && PlayerCollision.OnLeftWall);
+        _rb.velocity = new Vector2(towardWall ? 0 : _rb.velocity.x, -_maxVerticalSpeed);
+    }
+
     protected void WallJump()
     {
         StopCoroutine(DisableMovementForWallJump(0));
         StartCoroutine(DisableMovementForWallJump(.35f));
-        _rb.velocity = new Vector2(_horizontalSpeed * -PlayerCollision.WallSide, _jumpForce);
+
+        Jump((Vector2.up + new Vector2(PlayerCollision.WallSide, 0)).normalized);
     }
+
     private IEnumerator DisableMovementForWallJump(float time)
     {
         _disableMovement = true;
@@ -85,18 +82,11 @@ public class Humanoid : MonoBehaviour
         _canGrab = true;
         _disableMovement = false;
     }
-    protected void Jump(){
-        _rb.velocity = new Vector2(_rb.velocity.x,_jumpForce);
-        _lastJumpTime = 0;
+
+    protected void Jump(Vector2 dir){
+        _rb.velocity = new Vector2(_rb.velocity.x,0);
+        _rb.velocity += dir * _jumpForce;
     }
-    protected void DoubleJump(){
-        _rb.velocity = new Vector2(_rb.velocity.x,_jumpForce);
-        _lastJumpTime = 0;
-        canDoubleJump = false;
-    }
-    // Update is called once per frame
-    public virtual void Update()
-    {
-        
-    }
+
+    public virtual void Update(){}
 }

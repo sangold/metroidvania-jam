@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class Player : Humanoid
 {
+
     [SerializeField]
-    private float _jumpShortMultiplier;
+    private float _fallMultiplier = 3f;
+    [SerializeField]
+    private float _fastFallMultiplier = 8f;
     private PlayerStateSO _currentState;
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
@@ -53,6 +56,8 @@ public class Player : Humanoid
     }
 
     public override void FixedUpdate(){
+        base.FixedUpdate();
+
         _playerInputs.GetInputs();
         _movementX = _playerInputs.MovementX;
         if (_currentState.StateType == PlayerState.GHOSTDASH)
@@ -79,7 +84,7 @@ public class Player : Humanoid
         if (_currentState.CanJump && _playerInputs.JumpButtonPressed)
         {
             SetState(PlayerState.INAIR);
-            Jump();
+            Jump(Vector2.up);
             OnJump?.Invoke(this, null);
         }
         if (_currentState.StateType == PlayerState.INAIR)
@@ -88,12 +93,14 @@ public class Player : Humanoid
             // Specific movement
             if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !PlayerCollision.OnGround)
             {
-                DoubleJump();
+                Jump(Vector2.up);
+                canDoubleJump = false;
                 OnJump?.Invoke(this, null);
             }
         }
-
-        ShortHop();
+        
+        if(_canMove)
+            SnappyJump();
 
         if(_currentState.HasStandardTransition)
         {
@@ -101,9 +108,9 @@ public class Player : Humanoid
             {
                 SetState(PlayerState.STANDARD);
             }
-            else if (canWallJump)
+            else if (PlayerCollision.OnWall)
             {
-                SetState(PlayerState.WALLING);
+                SetState(PlayerState.WALL_SLIDE);
             }
             else if (!PlayerCollision.OnGround)
             {
@@ -129,10 +136,13 @@ public class Player : Humanoid
                 SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
             }
         }
-        if (_currentState.StateType == PlayerState.WALLING)
+        if (_currentState.StateType == PlayerState.WALL_SLIDE)
         {
+            WallSlide();
+
             // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && hasWallJump)
+            {
                 SetState(PlayerState.INAIR);
                 WallJump();
             }
@@ -175,17 +185,14 @@ public class Player : Humanoid
                 _stunDuration = 0;
             }
         }
-        base.FixedUpdate();
     }
 
     public void SetState(PlayerState targetState)
     {
-        Debug.Log(_states[(int)targetState]);
         if (_currentState != null && _currentState.StateType == targetState)
             return;
         
         _currentState = _states[(int)targetState];
-        _friction = _currentState.Friction;
         _rb.gravityScale = _currentState.GravityScale;
         _canMove = _currentState.CanMove;
         _horizontalSpeed = _currentState.HorizontalSpeed;
@@ -202,13 +209,14 @@ public class Player : Humanoid
     private float GetFaceDirection(){
         return _spriteGameObject.transform.localScale.x;
     }
-    private void ShortHop(){
-        if (!_playerInputs.JumpButton && !PlayerCollision.OnGround)
+    private void SnappyJump(){
+        if(_rb.velocity.y < 0)
         {
-            if (_rb.velocity.y > 0 && _lastJumpTime > -.5f)
-            {
-                _rb.AddForce(Vector2.down * _rb.velocity.y * (1 - _jumpShortMultiplier), ForceMode2D.Impulse);
-            }
+            _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (!_playerInputs.JumpButton && _rb.velocity.y > 0)
+        {
+            _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fastFallMultiplier - 1) * Time.fixedDeltaTime;
         }
     }
     private void Slide(){
