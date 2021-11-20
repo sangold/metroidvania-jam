@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: HurtState
   m_EditorClassIdentifier: 
   StateType: 4
-  GravityScale: 0
-  HorizontalSpeed: 0
-  JumpForce: 0
-  MaxHSpeed: 100
-  MaxVSpeed: 100
-  Friction: 1
+  GravityScale: 3
+  HorizontalSpeed: 3
+  JumpForce: 12
+  MaxHSpeed: 50
+  MaxVSpeed: 50
   CanMove: 0
   CanDash: 0
   CanGhost: 0

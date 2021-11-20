@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class Player : Humanoid
 {
+
     [SerializeField]
-    private float _jumpShortMultiplier;
+    private float _fallMultiplier = 3f;
+    [SerializeField]
+    private float _fastFallMultiplier = 8f;
     private PlayerStateSO _currentState;
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
@@ -20,9 +23,6 @@ public class Player : Humanoid
     
     [SerializeField]
     private GameObject _spriteGameObject;
-
-    [SerializeField]
-    private CapsuleCollider2D _capsuleCollider2D;
 
     [SerializeField]
     private float maxHealth = 100;
@@ -49,10 +49,11 @@ public class Player : Humanoid
         _playerInputs = new PlayerInputs();
         SetState(PlayerState.STANDARD);
         health = maxHealth;
-        _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     public override void FixedUpdate(){
+        base.FixedUpdate();
+
         _playerInputs.GetInputs();
         _movementX = _playerInputs.MovementX;
         if (_currentState.StateType == PlayerState.GHOSTDASH)
@@ -66,7 +67,7 @@ public class Player : Humanoid
 
         if (_currentState.CanDash && _playerInputs.SlideButtonPressed)
         {
-            Slide();
+            Dash();
         }
         if (_currentState.CanAttack && _playerInputs.AttackButtonPressed)
         {
@@ -79,33 +80,36 @@ public class Player : Humanoid
         if (_currentState.CanJump && _playerInputs.JumpButtonPressed)
         {
             SetState(PlayerState.INAIR);
-            Jump();
+            Jump(Vector2.up);
             OnJump?.Invoke(this, null);
         }
         if (_currentState.StateType == PlayerState.INAIR)
         {
 
             // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !isGrounded)
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !PlayerCollision.OnGround)
             {
-                DoubleJump();
+                Jump(Vector2.up);
+                canDoubleJump = false;
                 OnJump?.Invoke(this, null);
             }
         }
-
-        ShortHop();
+        
+        if(_canMove)
+            SnappyJump();
 
         if(_currentState.HasStandardTransition)
         {
-            if (isGrounded && _rb.velocity.y <= 0.1f)
+            if (PlayerCollision.OnGround && _rb.velocity.y <= 0.1f)
             {
                 SetState(PlayerState.STANDARD);
             }
-            else if (canWallJump)
+            else if (PlayerCollision.IsPushingAgainstAWall(_movementX) && _lastGroundTime < 0)
             {
-                SetState(PlayerState.WALLING);
+                if((PlayerCollision.OnLeftWall && _rb.velocity.x <= 0) || (PlayerCollision.OnRightWall && _rb.velocity.x >= 0))
+                SetState(PlayerState.WALL_SLIDE);
             }
-            else if (!isGrounded)
+            else if (!PlayerCollision.OnGround)
             {
                 SetState(PlayerState.INAIR);
             }
@@ -115,7 +119,11 @@ public class Player : Humanoid
         if (_currentState.StateType == PlayerState.STANDARD || _currentState.StateType == PlayerState.INAIR){
             
             // Visual Update
-            if (_movementX > 0){
+            if(_isWallJumping)
+            {
+
+            }
+            else if (_movementX > 0){
                 TurnRight();
             } else if (_movementX < 0){
                 TurnLeft();
@@ -123,44 +131,45 @@ public class Player : Humanoid
                 // if no movement
             }    
         }
-        if (_currentState.StateType == PlayerState.SLIDE){
+        if (_currentState.StateType == PlayerState.DASH){
             // Transition
             if (Mathf.Abs(_rb.velocity.x) < 2f){
-                SetState(isGrounded ? PlayerState.STANDARD : PlayerState.INAIR);
+                SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
             }
         }
-        if (_currentState.StateType == PlayerState.WALLING)
+        if (_currentState.StateType == PlayerState.WALL_SLIDE)
         {
+            WallSlide();
+
             // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canWallJump){
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && hasWallJump)
+            {
                 SetState(PlayerState.INAIR);
                 WallJump();
             }
 
             // Visual Update
-            if (_isAgainstLeftWall){
+            if (PlayerCollision.OnLeftWall){
                 TurnRight();
-            } else if (_isAgainstRightWall){
+            } else if (PlayerCollision.OnRightWall)
+            {
                 TurnLeft();
             } else {
                 SetState(PlayerState.INAIR);
             }
-            if (isGrounded){
+            if (PlayerCollision.OnGround){
                 SetState(PlayerState.STANDARD);
             }
         }
 
         if (_currentState.StateType == PlayerState.ATTACK){
-            if (!isGrounded){
-                _rb.velocity += new Vector2(_movementX * _horizontalSpeed * Time.fixedDeltaTime,0);   
-            }
+            
         }
 
         if (_currentState.StateType == PlayerState.GHOSTDASH){
-            _rb.velocity = new Vector2(_movementX * _horizontalSpeed,_movementY * _horizontalSpeed);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
         } else {
-            if (_snapTolastNoneGhostPosition && isGrounded && _isAgainstLeftWall && _isAgainstRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
+            if (_snapTolastNoneGhostPosition && PlayerCollision.OnGround && PlayerCollision.OnLeftWall && PlayerCollision.OnRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
                 transform.position = _lastNoneGhostPosition;
             }
             _snapTolastNoneGhostPosition = false;
@@ -173,22 +182,18 @@ public class Player : Humanoid
                 _stunDuration = 0;
             }
         }
-        base.FixedUpdate();
     }
 
     public void SetState(PlayerState targetState)
     {
-        Debug.Log(_states[(int)targetState]);
         if (_currentState != null && _currentState.StateType == targetState)
             return;
         
         _currentState = _states[(int)targetState];
-        _friction = _currentState.Friction;
         _rb.gravityScale = _currentState.GravityScale;
         _canMove = _currentState.CanMove;
         _horizontalSpeed = _currentState.HorizontalSpeed;
-        _maxHorizontalSpeed = _currentState.MaxHSpeed;
-        _maxVerticalSpeed = _currentState.MaxVSpeed;
+        _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
     }
     private void TurnRight(){
@@ -200,35 +205,46 @@ public class Player : Humanoid
     private float GetFaceDirection(){
         return _spriteGameObject.transform.localScale.x;
     }
-    private void ShortHop(){
-        if (!_playerInputs.JumpButton && !isGrounded)
+    private void SnappyJump(){
+        if(_rb.velocity.y < 0)
         {
-            if (_rb.velocity.y > 0 && _lastJumpTime > -.5f)
-            {
-                _rb.AddForce(Vector2.down * _rb.velocity.y * (1 - _jumpShortMultiplier), ForceMode2D.Impulse);
-            }
+            _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (!_playerInputs.JumpButton && _rb.velocity.y > 0)
+        {
+            _rb.velocity += Vector2.up * Physics2D.gravity.y * (_fastFallMultiplier - 1) * Time.fixedDeltaTime;
         }
     }
-    private void Slide(){
-        SetState(PlayerState.SLIDE);
-        _rb.velocity = new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
+    private void Dash(){
+        SetState(PlayerState.DASH);
+        _rb.velocity = Vector2.zero;
+        _rb.velocity += new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
+        WaitStateDuration(.2f);
     }
     private void Attack(){
         SetState(PlayerState.ATTACK);
-        StartCoroutine(WaitAnim(.5f));
+        if (!PlayerCollision.OnGround)
+            _rb.velocity += new Vector2(_movementX * _horizontalSpeed, 0);
+        WaitStateDuration(.1f);
     }
     private void GhostDash(){
         _rb.velocity = new Vector2(0,0);
         _lastNoneGhostPosition = new Vector2(transform.position.x,transform.position.y);
         SetState(PlayerState.GHOSTDASH);
-        StartCoroutine(WaitAnim(10f/60f));
+        WaitStateDuration(.5f);
         _snapTolastNoneGhostPosition = true;
+    }
+
+    private void WaitStateDuration(float duration)
+    {
+        StopCoroutine(WaitAnim(0));
+        StartCoroutine(WaitAnim(duration));
     }
 
     private IEnumerator WaitAnim(float time)
     {
         yield return new WaitForSeconds(time);
-        SetState(isGrounded ? PlayerState.STANDARD : PlayerState.INAIR);
+        SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
     }
 
     public void TakeDamage(float damage, float stunDuration, Vector2 knockBack, float friction){

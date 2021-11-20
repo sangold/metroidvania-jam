@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce2ca199d8102614990340907e5c01bf, type: 3}
-  m_Name: StandardState
+  m_Name: AttackState
   m_EditorClassIdentifier: 
-  StateType: 0
-  GravityScale: 3
-  HorizontalSpeed: 10
-  JumpForce: 12
-  MaxHSpeed: 200
+  StateType: 2
+  GravityScale: 0
+  HorizontalSpeed: 5
+  JumpForce: 0
+  MaxHSpeed: 50
   MaxVSpeed: 50
-  CanMove: 1
-  CanDash: 1
-  CanGhost: 1
-  CanAttack: 1
-  CanJump: 1
-  HasStandardTransition: 1
+  CanMove: 0
+  CanDash: 0
+  CanGhost: 0
+  CanAttack: 0
+  CanJump: 0
+  HasStandardTransition: 0

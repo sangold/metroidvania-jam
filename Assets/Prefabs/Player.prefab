@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1222171809203494678}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4570115887092365357
 BoxCollider2D:
@@ -139,36 +139,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1848253856273722119
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5594814242427977930}
-  m_Layer: 9
-  m_Name: RightWallChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5594814242427977930
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848253856273722119}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.541, y: 0.025, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1222171809203494678}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2411521757771023310
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,36 +208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 7336888154783809966}
   _main: {fileID: 7795952289003816024}
---- !u!1 &2437987387912715054
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6020324262647028325}
-  m_Layer: 9
-  m_Name: LeftWallChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6020324262647028325
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2437987387912715054}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.547, y: -0.006, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1222171809203494678}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2886185943059140829
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1222171809203494678}
   m_Layer: 9
-  m_Name: Collidier
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,42 +235,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7938734749152730031}
-  - {fileID: 6020324262647028325}
-  - {fileID: 5594814242427977930}
   - {fileID: 3402442635757812559}
   m_Father: {fileID: 5778996484583117239}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7325768617297659089
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7938734749152730031}
-  m_Layer: 9
-  m_Name: GroundChecker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7938734749152730031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7325768617297659089}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.86, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1222171809203494678}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7439411863000382174
 GameObject:
@@ -424,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8472733911598202967}
   - component: {fileID: 7795952289003816024}
+  - component: {fileID: 5399301505037127093}
   - component: {fileID: 4515952590322010346}
   - component: {fileID: 8901867945249327929}
   m_Layer: 9
@@ -460,21 +368,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2043eac93a44c46a88a84c7d9abe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
-  _leftWallCheck: {fileID: 6020324262647028325}
-  _rightWallCheck: {fileID: 5594814242427977930}
-  _groundCheck1: {fileID: 7938734749152730031}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   _jumpCoyoteTime: 0.16
   hasDoubleJump: 1
   hasWallJump: 1
-  _jumpShortMultiplier: 0
+  _fallMultiplier: 3
+  _fastFallMultiplier: 8
   _states:
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: 499d3fca81823cc46bdace3c988a8bd0, type: 2}
-  - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: ba8cf59cf6c67c54eae39cfc65dd69e3, type: 2}
   - {fileID: 11400000, guid: 67a30bb885e21764a8dfc6ed160a1bc5, type: 2}
   - {fileID: 11400000, guid: 399f6141b1f9c3744b1a5869d53cc9d2, type: 2}
   - {fileID: 11400000, guid: 8921da50530eaa84b8b94f7dfc945853, type: 2}
@@ -485,6 +387,30 @@ MonoBehaviour:
   _capsuleCollider2D: {fileID: 0}
   maxHealth: 100
   _touchingARoom: 
+--- !u!114 &5399301505037127093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7468836473888323115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9f35858881f194cb0f217baa7a9cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnGround: 0
+  OnWall: 0
+  OnRightWall: 0
+  OnLeftWall: 0
+  WallSide: 0
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _collisionRadius: 0.15
+  _bottomOffset: {x: -0.03, y: -0.89}
+  _rightOffset: {x: 0.57, y: 0}
+  _leftOffset: {x: -0.65, y: 0}
 --- !u!50 &4515952590322010346
 Rigidbody2D:
   serializedVersion: 4
@@ -500,7 +426,7 @@ Rigidbody2D:
   m_Mass: 1.9708035
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 10
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 2207745698da14f4da894117c6ff29ea, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1

@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: GhostState
   m_EditorClassIdentifier: 
   StateType: 3
-  GravityScale: 0
-  HorizontalSpeed: 10
+  GravityScale: 3
+  HorizontalSpeed: 6
   JumpForce: 0
-  MaxHSpeed: 15
   MaxVSpeed: 0
-  Friction: 0.000001
   CanMove: 1
   CanDash: 0
   CanGhost: 0
   CanAttack: 0
-  CanJump: 1
+  CanJump: 0
   HasStandardTransition: 0

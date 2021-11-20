@@ -22,7 +22,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void FixedUpdate()
     {
         _animator.SetFloat("VerticalSpeed", _main.VerticalSpeed);
-        _animator.SetBool("isGrounded", _main.isGrounded);
+        _animator.SetBool("isGrounded", _main.PlayerCollision.OnGround);
         if (_main.CurrentState.StateType == PlayerState.GHOSTDASH){
         _animator.SetBool("isGhostDashing", true);
         } else {

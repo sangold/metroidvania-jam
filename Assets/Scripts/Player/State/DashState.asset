@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce2ca199d8102614990340907e5c01bf, type: 3}
-  m_Name: SlideState
+  m_Name: DashState
   m_EditorClassIdentifier: 
   StateType: 5
   GravityScale: 0
-  HorizontalSpeed: 50
+  HorizontalSpeed: 40
   JumpForce: 0
   MaxHSpeed: 50
   MaxVSpeed: 50
-  Friction: 0.0005
   CanMove: 0
   CanDash: 0
   CanGhost: 0
