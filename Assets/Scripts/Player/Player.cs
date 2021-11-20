@@ -104,7 +104,7 @@ public class Player : Humanoid
             {
                 SetState(PlayerState.STANDARD);
             }
-            else if (PlayerCollision.IsPushingAgainstAWall(_movementX))
+            else if (PlayerCollision.IsPushingAgainstAWall(_movementX) && _lastGroundTime < 0)
             {
                 if((PlayerCollision.OnLeftWall && _rb.velocity.x <= 0) || (PlayerCollision.OnRightWall && _rb.velocity.x >= 0))
                 SetState(PlayerState.WALL_SLIDE);
