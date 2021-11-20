@@ -14,6 +14,11 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private Vector2 _bottomOffset, _rightOffset, _leftOffset;
 
+    public bool IsPushingAgainstAWall(float dir)
+    {
+        return (dir < 0 && OnLeftWall) || (dir > 0 && OnRightWall);
+    }
+
     private void FixedUpdate()
     {
         OnGround = Physics2D.OverlapCircle((Vector2)transform.position + _bottomOffset, _collisionRadius, _groundLayer);
