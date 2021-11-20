@@ -10,8 +10,7 @@ public class PlayerStateSO : ScriptableObject
     public float GravityScale;
     public float HorizontalSpeed;
     public float JumpForce;
-    public float MaxHSpeed;
-    public float MaxVSpeed;
+    public float VerticalSpeed;
     public bool CanMove;
     public bool CanDash;
     public bool CanGhost;

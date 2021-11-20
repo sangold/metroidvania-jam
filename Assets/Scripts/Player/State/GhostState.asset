@@ -16,11 +16,10 @@ MonoBehaviour:
   GravityScale: 3
   HorizontalSpeed: 6
   JumpForce: 0
-  MaxHSpeed: 50
   MaxVSpeed: 0
   CanMove: 1
   CanDash: 0
   CanGhost: 0
   CanAttack: 0
-  CanJump: 1
+  CanJump: 0
   HasStandardTransition: 0

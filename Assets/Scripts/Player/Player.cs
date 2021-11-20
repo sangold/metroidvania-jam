@@ -25,9 +25,6 @@ public class Player : Humanoid
     private GameObject _spriteGameObject;
 
     [SerializeField]
-    private CapsuleCollider2D _capsuleCollider2D;
-
-    [SerializeField]
     private float maxHealth = 100;
     private float health = 0;
     public float Health {
@@ -52,7 +49,6 @@ public class Player : Humanoid
         _playerInputs = new PlayerInputs();
         SetState(PlayerState.STANDARD);
         health = maxHealth;
-        _capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     public override void FixedUpdate(){
@@ -122,7 +118,11 @@ public class Player : Humanoid
         if (_currentState.StateType == PlayerState.STANDARD || _currentState.StateType == PlayerState.INAIR){
             
             // Visual Update
-            if (_movementX > 0){
+            if(_isWallJumping)
+            {
+
+            }
+            else if (_movementX > 0){
                 TurnRight();
             } else if (_movementX < 0){
                 TurnLeft();
@@ -192,8 +192,7 @@ public class Player : Humanoid
         _rb.gravityScale = _currentState.GravityScale;
         _canMove = _currentState.CanMove;
         _horizontalSpeed = _currentState.HorizontalSpeed;
-        _maxHorizontalSpeed = _currentState.MaxHSpeed;
-        _maxVerticalSpeed = _currentState.MaxVSpeed;
+        _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
     }
     private void TurnRight(){
