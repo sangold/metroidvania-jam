@@ -16,10 +16,20 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2228651116" Language="SFX" Hash="3659513767">
+		<SoundBank Id="2228651116" Language="SFX" Hash="1629971845">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main_SoundBank</ObjectPath>
 			<ShortName>Main_SoundBank</ShortName>
 			<Path>Main_SoundBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2625026092" Name="Player_Slash" ObjectPath="\Events\Default Work Unit\Player_Slash" DurationType="OneShot" DurationMin="2.724000" DurationMax="2.724000">
+					<IncludedMemoryFiles>
+						<File Id="167790127" Language="SFX">
+							<ShortName>Sounds\SD Scythe Slash.wav</ShortName>
+							<Path>SFX\Sounds\SD Scythe Slash_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

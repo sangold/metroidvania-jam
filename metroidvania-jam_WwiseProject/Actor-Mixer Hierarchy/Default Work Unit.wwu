@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Sounds" ID="{8B4340DD-BB8E-4B25-854D-FF546F9F7C32}" ShortID="1016473938">
+					<ChildrenList>
+						<Sound Name="SD Hit Enemy" ID="{6C991830-B14F-4333-A74C-E1A55CDC7611}" ShortID="639843421">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Hit Enemy" ID="{DECF8F43-11BC-4E0F-AABA-7F156043DB40}">
+									<Language>SFX</Language>
+									<AudioFile>Sounds\SD Hit Enemy.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="176384298"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Hit Enemy" ID="{DECF8F43-11BC-4E0F-AABA-7F156043DB40}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SD Scythe Slash With Hit Enemy" ID="{9A1C1184-6DA1-4640-93D6-D91856AE91B6}" ShortID="656342786">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Scythe Slash With Hit Enemy" ID="{98C482B2-3410-4A2B-AC30-D81BB6E02C30}">
+									<Language>SFX</Language>
+									<AudioFile>Sounds\SD Scythe Slash With Hit Enemy.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="106478363"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Scythe Slash With Hit Enemy" ID="{98C482B2-3410-4A2B-AC30-D81BB6E02C30}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SD Scythe Slash" ID="{EA2E8049-CCE0-4BB1-94B1-06CC4B8D28C5}" ShortID="273117999">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Scythe Slash" ID="{3C4976FE-0F2F-477B-BA7B-1DE1CFA673D7}">
+									<Language>SFX</Language>
+									<AudioFile>Sounds\SD Scythe Slash.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="167790127"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Scythe Slash" ID="{3C4976FE-0F2F-477B-BA7B-1DE1CFA673D7}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
