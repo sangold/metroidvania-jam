@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PostWiseEvent : MonoBehaviour
+public class PlayerPostWiseEvent : MonoBehaviour
 {
     public AK.Wwise.Event Player_Slash_Event;
     public AK.Wwise.Event Player_Slide_Event;

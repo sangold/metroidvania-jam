@@ -28,7 +28,7 @@ public class Player : Humanoid
     private float maxHealth = 100;
     private float health = 0;
 
-    private PostWiseEvent _postWiseEvent;
+    private PlayerPostWiseEvent _postWiseEvent;
     public float Health {
         get {
             return health;
@@ -51,7 +51,7 @@ public class Player : Humanoid
         _playerInputs = new PlayerInputs();
         SetState(PlayerState.STANDARD);
         health = maxHealth;
-        _postWiseEvent = GetComponent<PostWiseEvent>();
+        _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
     }
 
     public override void FixedUpdate(){
@@ -97,6 +97,11 @@ public class Player : Humanoid
                 canDoubleJump = false;
                 OnJump?.Invoke(this, null);
                 _postWiseEvent.Player_Double_Jump_Event.Post(this.gameObject);
+            }
+            //sound
+            if (PlayerCollision.OnGround && _rb.velocity.y <= 0){
+                Debug.Log("landed on ground");
+                _postWiseEvent.Player_Landed_Event.Post(this.gameObject);
             }
         }
         
