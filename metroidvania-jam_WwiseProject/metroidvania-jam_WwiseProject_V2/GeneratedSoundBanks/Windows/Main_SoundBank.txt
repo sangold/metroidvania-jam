@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2625026092	Player_Slash			\Default Work Unit\Player_Slash	
-
-In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	167790127	SD Scythe Slash	C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\Sounds\SD Scythe Slash_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\SD Scythe Slash		523200
-

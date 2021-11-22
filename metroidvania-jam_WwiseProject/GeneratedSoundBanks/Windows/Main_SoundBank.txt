@@ -2,5 +2,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2625026092	Player_Slash			\Default Work Unit\Player_Slash	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	167790127	SD Scythe Slash	C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\Sounds\SD Scythe Slash_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\SD Scythe Slash		523200
+	569327657	SD Scythe Slash_1_V2	C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\.cache\Windows\SFX\SD Scythe Slash_1_V2_5E5E87B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\SD Scythe Slash\SD Scythe Slash_1_V2		80876
+	690740967	SD Scythe Slash_3_V2	C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\.cache\Windows\SFX\SD Scythe Slash_3_V2_508B2E4E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\SD Scythe Slash\SD Scythe Slash_3_V2		90028
+	895970190	SD Scythe Slash_2_V2	C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\.cache\Windows\SFX\SD Scythe Slash_2_V2_0F189DD8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\SD Scythe Slash\SD Scythe Slash_2_V2		80880
 

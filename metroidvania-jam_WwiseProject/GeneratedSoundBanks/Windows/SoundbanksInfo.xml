@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,16 +16,24 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2228651116" Language="SFX" Hash="1629971845">
+		<SoundBank Id="2228651116" Language="SFX" Hash="3287552888">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main_SoundBank</ObjectPath>
 			<ShortName>Main_SoundBank</ShortName>
 			<Path>Main_SoundBank.bnk</Path>
 			<IncludedEvents>
-				<Event Id="2625026092" Name="Player_Slash" ObjectPath="\Events\Default Work Unit\Player_Slash" DurationType="OneShot" DurationMin="2.724000" DurationMax="2.724000">
+				<Event Id="2625026092" Name="Player_Slash" ObjectPath="\Events\Default Work Unit\Player_Slash" DurationType="OneShot" DurationMin="0.385976" DurationMax="0.496422">
 					<IncludedMemoryFiles>
-						<File Id="167790127" Language="SFX">
-							<ShortName>Sounds\SD Scythe Slash.wav</ShortName>
-							<Path>SFX\Sounds\SD Scythe Slash_10C4C929.wem</Path>
+						<File Id="569327657" Language="SFX">
+							<ShortName>SD Scythe Slash_1_V2.wav</ShortName>
+							<Path>SFX\SD Scythe Slash_1_V2_5E5E87B6.wem</Path>
+						</File>
+						<File Id="690740967" Language="SFX">
+							<ShortName>SD Scythe Slash_3_V2.wav</ShortName>
+							<Path>SFX\SD Scythe Slash_3_V2_508B2E4E.wem</Path>
+						</File>
+						<File Id="895970190" Language="SFX">
+							<ShortName>SD Scythe Slash_2_V2.wav</ShortName>
+							<Path>SFX\SD Scythe Slash_2_V2_0F189DD8.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
