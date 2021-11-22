@@ -15,8 +15,8 @@ public class Player : Humanoid
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
     private List<PlayerStateSO> _states;
-    [HideInInspector]
-    public PlayerInputs _playerInputs;
+    
+    private PlayerInputs _playerInputs;
     
     private Vector2 _lastNoneGhostPosition;
     private bool _snapTolastNoneGhostPosition = false;
