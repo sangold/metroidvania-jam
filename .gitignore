@@ -101,3 +101,4 @@ crashlytics-build.properties
 #    then, it's OK to ignore this file.
 # 
 # Assets/Wwise/Editor/ProjectData.meta
+/logRunSetup.txt
