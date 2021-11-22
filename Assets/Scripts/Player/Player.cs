@@ -15,8 +15,8 @@ public class Player : Humanoid
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
     private List<PlayerStateSO> _states;
-
-    private PlayerInputs _playerInputs;
+    [HideInInspector]
+    public PlayerInputs _playerInputs;
     
     private Vector2 _lastNoneGhostPosition;
     private bool _snapTolastNoneGhostPosition = false;
@@ -44,6 +44,7 @@ public class Player : Humanoid
     public float VerticalSpeed { get => _rb.velocity.y; }
 
     public event EventHandler OnJump;
+    public event EventHandler OnAttack;
 
     protected override void Awake()
     {
@@ -53,7 +54,6 @@ public class Player : Humanoid
         health = maxHealth;
         _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
     }
-
     public override void FixedUpdate(){
         base.FixedUpdate();
 
@@ -235,6 +235,7 @@ public class Player : Humanoid
         _postWiseEvent.Player_Slide_Event.Post(this.gameObject);
     }
     private void Attack(){
+        OnAttack?.Invoke(this, null);
         SetState(PlayerState.ATTACK);
         WaitStateDuration(.1f);
         _postWiseEvent.Player_Slash_Event.Post(this.gameObject);
