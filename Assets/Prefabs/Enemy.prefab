@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138973400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Patrol Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 411303882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Patrol point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4041428142296669553}
   - component: {fileID: 8203111300491092142}
   - component: {fileID: 952884764414893129}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 3
+  _sr: {fileID: 347964579065457877}
 --- !u!1 &6968725762490429392
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127087557417050397}
   - component: {fileID: 347964579065457877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
