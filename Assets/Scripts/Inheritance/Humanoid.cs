@@ -18,6 +18,11 @@ public class Humanoid : MonoBehaviour
     protected float _wallJumpAcceleration = 5f;
 
     protected float _movementX = 0;
+    public float MovementX {
+        get{
+            return _movementX;
+        }
+    }
     protected float _movementY = 0;
     protected float _jumpForce;
 

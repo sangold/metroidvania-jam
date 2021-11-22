@@ -12,11 +12,16 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void Start()
     {
         _main.OnJump += OnJump;
+        _main.OnAttack += OnAttack;
     }
     
     private void OnJump(object sender, EventArgs e)
     {
         _animator.SetTrigger("Jump");
+    }
+    private void OnAttack(object sender, EventArgs e)
+    {
+        _animator.PlayInFixedTime("Attacking",-1,0);
     }
 
     private void FixedUpdate()
@@ -32,6 +37,17 @@ public class PlayerAnimationEvents : MonoBehaviour
         _animator.SetBool("isAttacking", true);
         } else {
         _animator.SetBool("isAttacking", false);
+        }
+        if (Mathf.Abs(_main.HorizontalSpeed) > .01){
+            _animator.SetBool("Walking", true);
+        } else {
+            _animator.SetBool("Walking", false);
+        }
+        if (_main.CurrentState.StateType == PlayerState.DASH){
+        _animator.SetBool("isDashing", true);
+        _animator.SetBool("Walking", false);
+        } else {
+        _animator.SetBool("isDashing", false);
         }
     }
 
