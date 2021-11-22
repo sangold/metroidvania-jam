@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour
+public class CollisionDetector : MonoBehaviour
 {
     [HideInInspector]
     public bool OnGround, OnWall, OnRightWall, OnLeftWall;

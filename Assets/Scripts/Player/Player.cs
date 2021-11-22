@@ -42,7 +42,7 @@ public class Player : Humanoid
 
     public string _touchingARoom = null;
     public float VerticalSpeed { get => _rb.velocity.y; }
-
+    public float HorizontalSpeed { get => _rb.velocity.x; }
     public event EventHandler OnJump;
     public event EventHandler OnAttack;
 

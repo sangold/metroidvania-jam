@@ -38,7 +38,7 @@ public class PlayerAnimationEvents : MonoBehaviour
         } else {
         _animator.SetBool("isAttacking", false);
         }
-        if (Mathf.Abs(_main._playerInputs.MovementX) > .01){
+        if (Mathf.Abs(_main.HorizontalSpeed) > .01){
             _animator.SetBool("Walking", true);
         } else {
             _animator.SetBool("Walking", false);

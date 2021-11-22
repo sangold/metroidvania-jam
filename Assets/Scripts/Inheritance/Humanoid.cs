@@ -9,7 +9,7 @@ public class Humanoid : MonoBehaviour
     protected float _horizontalSpeed;
     protected float _verticalSpeed;
 
-    public PlayerCollision PlayerCollision { get; private set; }
+    public CollisionDetector PlayerCollision { get; private set; }
 
     protected float _lastGroundTime;
     [SerializeField]
@@ -18,6 +18,11 @@ public class Humanoid : MonoBehaviour
     protected float _wallJumpAcceleration = 5f;
 
     protected float _movementX = 0;
+    public float MovementX {
+        get{
+            return _movementX;
+        }
+    }
     protected float _movementY = 0;
     protected float _jumpForce;
 
@@ -33,7 +38,7 @@ public class Humanoid : MonoBehaviour
     protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        PlayerCollision = GetComponent<PlayerCollision>();
+        PlayerCollision = GetComponent<CollisionDetector>();
     }
     public virtual void FixedUpdate()
     {
