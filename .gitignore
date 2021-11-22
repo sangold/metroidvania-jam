@@ -71,11 +71,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # project stuff
-metroidvania-jam_WwiseProject/.cache/
-metroidvania-jam_WwiseProject/*.prof
-metroidvania-jam_WwiseProject/*_WwiseProject.*.validationcache
-metroidvania-jam_WwiseProject/*_WwiseProject.*.wsettings
-metroidvania-jam_WwiseProject/**/*.akd
+/metroidvania-jam_WwiseProject/.cache
+/metroidvania-jam_WwiseProject/*.prof
+/metroidvania-jam_WwiseProject/*_WwiseProject_*.*.validationcache
+/metroidvania-jam_WwiseProject/*_WwiseProject_*.*.wsettings
+/metroidvania-jam_WwiseProject/**/*.akd
 
 # build stuff (unsure?)
 # Assets/Wwise/Deployment/Plugins/Windows/**/*.meta
