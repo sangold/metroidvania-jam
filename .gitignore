@@ -77,9 +77,16 @@ crashlytics-build.properties
 /metroidvania-jam_WwiseProject/*_WwiseProject_*.*.wsettings
 /metroidvania-jam_WwiseProject/**/*.akd
 
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Mac/PluginInfo.xml
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Mac/SoundbanksInfo.xml
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Windows/PluginInfo.xml
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Windows/SoundbanksInfo.xml
+
 # build stuff (unsure?)
 /Assets/Wwise/Deployment/Plugins/Windows/**/*.meta
 /Assets/Wwise/Deployment/Plugins/Mac/**/*.meta
+
+/Assets/WwiseSettings.xml
 
 # WWise Picker (editor)
 # from https://www.audiokinetic.com/library/edge/?source=Unity&id=unity__troubleshooting.html

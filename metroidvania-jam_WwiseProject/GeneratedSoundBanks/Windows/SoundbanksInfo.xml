@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\ThunderPowa\Documents\GitHub\metroidvania-jam-others-copy\metroidvania-jam_WwiseProject\metroidvania-jam_WwiseProject_V2\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2228651116" Language="SFX" Hash="3287552888">
+		<SoundBank Id="2228651116" Language="SFX" Hash="1232923379">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main_SoundBank</ObjectPath>
 			<ShortName>Main_SoundBank</ShortName>
 			<Path>Main_SoundBank.bnk</Path>
