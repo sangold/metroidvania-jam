@@ -78,14 +78,15 @@ crashlytics-build.properties
 /metroidvania-jam_WwiseProject/**/*.akd
 
 # build stuff (unsure?)
-# Assets/Wwise/Deployment/Plugins/Windows/**/*.meta
+Assets/Wwise/Deployment/Plugins/Windows/**/*.meta
+Assets/Wwise/Deployment/Plugins/Mac/**/*.meta
 
 # WWise Picker (editor)
 # from https://www.audiokinetic.com/library/edge/?source=Unity&id=unity__troubleshooting.html
 # >> Do not keep AkWwiseProjectData.asset under version control! 
 # >> This is a temporary cache file for the Wwise project data, 
 # >> so as to avoid having the Wwise Picker continuously parse the Work Unit files.
-Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset*
+Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
 
 # notes:
 # 1) if any other files go in Assets/Wwise/Editor/ProjectData/ besides AkWwiseProjectData.asset*,
