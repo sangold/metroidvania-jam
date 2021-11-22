@@ -69,3 +69,35 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# project stuff
+/metroidvania-jam_WwiseProject/.cache
+/metroidvania-jam_WwiseProject/*.prof
+/metroidvania-jam_WwiseProject/*_WwiseProject_*.*.validationcache
+/metroidvania-jam_WwiseProject/*_WwiseProject_*.*.wsettings
+/metroidvania-jam_WwiseProject/**/*.akd
+
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Mac/PluginInfo.xml
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Mac/SoundbanksInfo.xml
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Windows/PluginInfo.xml
+/metroidvania-jam_WwiseProject/GeneratedSoundBanks/Windows/SoundbanksInfo.xml
+
+# build stuff (unsure?)
+/Assets/Wwise/Deployment/Plugins/Windows/**/*.meta
+/Assets/Wwise/Deployment/Plugins/Mac/**/*.meta
+
+/Assets/WwiseSettings.xml
+
+# WWise Picker (editor)
+# from https://www.audiokinetic.com/library/edge/?source=Unity&id=unity__troubleshooting.html
+# >> Do not keep AkWwiseProjectData.asset under version control! 
+# >> This is a temporary cache file for the Wwise project data, 
+# >> so as to avoid having the Wwise Picker continuously parse the Work Unit files.
+/Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
+
+# notes:
+# 1) if any other files go in Assets/Wwise/Editor/ProjectData/ besides AkWwiseProjectData.asset*,
+#    then don't ignore Assets/Wwise/Editor/ProjectData.meta. If AkWwiseProjectData.asset is the only item in there,
+#    then, it's OK to ignore this file.
+# 
+# Assets/Wwise/Editor/ProjectData.meta

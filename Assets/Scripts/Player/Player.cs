@@ -27,6 +27,8 @@ public class Player : Humanoid
     [SerializeField]
     private float maxHealth = 100;
     private float health = 0;
+
+    private PlayerPostWiseEvent _postWiseEvent;
     public float Health {
         get {
             return health;
@@ -49,6 +51,7 @@ public class Player : Humanoid
         _playerInputs = new PlayerInputs();
         SetState(PlayerState.STANDARD);
         health = maxHealth;
+        _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
     }
 
     public override void FixedUpdate(){
@@ -82,6 +85,7 @@ public class Player : Humanoid
             SetState(PlayerState.INAIR);
             Jump(Vector2.up);
             OnJump?.Invoke(this, null);
+            _postWiseEvent.Player_Jump_Event.Post(this.gameObject);
         }
         if (_currentState.StateType == PlayerState.INAIR)
         {
@@ -92,6 +96,12 @@ public class Player : Humanoid
                 Jump(Vector2.up);
                 canDoubleJump = false;
                 OnJump?.Invoke(this, null);
+                _postWiseEvent.Player_Double_Jump_Event.Post(this.gameObject);
+            }
+            //sound
+            if (PlayerCollision.OnGround && _rb.velocity.y <= 0){
+                Debug.Log("landed on ground");
+                _postWiseEvent.Player_Landed_Event.Post(this.gameObject);
             }
         }
         
@@ -146,6 +156,7 @@ public class Player : Humanoid
             {
                 SetState(PlayerState.INAIR);
                 WallJump();
+                _postWiseEvent.Player_Jump_Event.Post(this.gameObject);
             }
 
             // Visual Update
@@ -163,7 +174,8 @@ public class Player : Humanoid
         }
 
         if (_currentState.StateType == PlayerState.ATTACK){
-            
+            if (!PlayerCollision.OnGround)
+                Walk(new Vector2(_movementX * _horizontalSpeed, 0));
         }
 
         if (_currentState.StateType == PlayerState.GHOSTDASH){
@@ -220,12 +232,12 @@ public class Player : Humanoid
         _rb.velocity = Vector2.zero;
         _rb.velocity += new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
         WaitStateDuration(.2f);
+        _postWiseEvent.Player_Slide_Event.Post(this.gameObject);
     }
     private void Attack(){
         SetState(PlayerState.ATTACK);
-        if (!PlayerCollision.OnGround)
-            _rb.velocity += new Vector2(_movementX * _horizontalSpeed, 0);
         WaitStateDuration(.1f);
+        _postWiseEvent.Player_Slash_Event.Post(this.gameObject);
     }
     private void GhostDash(){
         _rb.velocity = new Vector2(0,0);
@@ -233,6 +245,7 @@ public class Player : Humanoid
         SetState(PlayerState.GHOSTDASH);
         WaitStateDuration(.5f);
         _snapTolastNoneGhostPosition = true;
+        _postWiseEvent.Player_Ghost_Dash_Event.Post(this.gameObject);
     }
 
     private void WaitStateDuration(float duration)

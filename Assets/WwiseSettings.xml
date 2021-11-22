@@ -10,7 +10,7 @@
   <ShowSpatialAudioWarningMsg>true</ShowSpatialAudioWarningMsg>
   <WwiseInstallationPathMac />
   <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2021.1.4.7707</WwiseInstallationPathWindows>
-  <WwiseProjectPath>../metroidvania-jam_WwiseProject/metroidvania-jam_WwiseProject.wproj</WwiseProjectPath>
+  <WwiseProjectPath>../../metroidvania-jam-others-copy/metroidvania-jam_WwiseProject/metroidvania-jam_WwiseProject_V2.wproj</WwiseProjectPath>
   <UseWaapi>true</UseWaapi>
   <WaapiPort>8080</WaapiPort>
   <WaapiIP>127.0.0.1</WaapiIP>
