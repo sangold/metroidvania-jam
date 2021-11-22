@@ -29,6 +29,7 @@ public class Player : Humanoid
     private float health = 0;
 
     private PlayerPostWiseEvent _postWiseEvent;
+    private MeleeAttackComponent _meleeAttackComponent;
     public float Health {
         get {
             return health;
@@ -53,6 +54,7 @@ public class Player : Humanoid
         SetState(PlayerState.STANDARD);
         health = maxHealth;
         _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
+        _meleeAttackComponent = GetComponent<MeleeAttackComponent>();
     }
     public override void FixedUpdate(){
         base.FixedUpdate();
@@ -237,6 +239,7 @@ public class Player : Humanoid
     private void Attack(){
         OnAttack?.Invoke(this, null);
         SetState(PlayerState.ATTACK);
+        _meleeAttackComponent.Attack();
         WaitStateDuration(.1f);
         _postWiseEvent.Player_Slash_Event.Post(this.gameObject);
     }
