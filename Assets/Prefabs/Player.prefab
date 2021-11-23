@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5dfefadf2c1fe54db33166fe2900b35, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: 09711d1d12168444ba2707e39fb31afd, type: 2}
   _spriteGameObject: {fileID: 8336131431407130333}
   maxHealth: 100
   _touchingARoom: 

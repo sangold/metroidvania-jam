@@ -22,4 +22,5 @@ MonoBehaviour:
   CanGhost: 1
   CanAttack: 1
   CanJump: 0
+  CanChargeAttack: 1
   HasStandardTransition: 1

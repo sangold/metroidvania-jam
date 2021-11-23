@@ -13,6 +13,7 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _main.OnJump += OnJump;
         _main.OnAttack += OnAttack;
+        _main.OnChargeSpinAttack += OnChargeSpinAttack;
     }
     
     private void OnJump(object sender, EventArgs e)
@@ -22,6 +23,14 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void OnAttack(object sender, EventArgs e)
     {
         _animator.PlayInFixedTime("Attacking",-1,0);
+    }
+    private void OnChargeSpinAttack(object sender, EventArgs e)
+    {
+        _animator.PlayInFixedTime("ScytheSpinAttack",-1,0);
+    }
+    private void ReturnToIdle(){
+        //this method is call in the ScytheSpinAttack animation.
+        _main.SetState(PlayerState.STANDARD);
     }
 
     private void FixedUpdate()
@@ -34,6 +43,8 @@ public class PlayerAnimationEvents : MonoBehaviour
         _animator.SetBool("isGhostDashing", false);
         }
         if (_main.CurrentState.StateType == PlayerState.ATTACK){
+        _animator.SetBool("isAttacking", true);
+        } else if (_main.CurrentState.StateType == PlayerState.SPIN_ATTACK){
         _animator.SetBool("isAttacking", true);
         } else {
         _animator.SetBool("isAttacking", false);

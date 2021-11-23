@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce2ca199d8102614990340907e5c01bf, type: 3}
-  m_Name: DashState
+  m_Name: SpinAttackState
   m_EditorClassIdentifier: 
-  StateType: 5
+  StateType: 9
   GravityScale: 0
   HorizontalSpeed: 20
   JumpForce: 0
   VerticalSpeed: 0
-  CanMove: 0
+  CanMove: 1
   CanDash: 0
   CanGhost: 0
   CanAttack: 0
   CanJump: 0
-  CanChargeAttack: 1
+  CanChargeAttack: 0
   HasStandardTransition: 0

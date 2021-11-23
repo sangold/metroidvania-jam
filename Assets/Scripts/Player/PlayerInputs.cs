@@ -17,6 +17,7 @@ namespace MV.Player
         public bool JumpButton { get => _jumpButton; }
         public bool JumpButtonPressed { get =>_jumpButton && _jumpButtonSwitch; }
         public bool SlideButtonPressed { get => _slideButton && _slideButtonSwitch; }
+        public bool AttackButton { get => _attackButton; }
         public bool AttackButtonPressed { get => _attackButton && _attackButtonSwitch; }
         public bool GhostDashButtonPressed { get => _ghostDashButton && _ghostDashButtonSwitch; }
         public float MovementX { get; private set; }
