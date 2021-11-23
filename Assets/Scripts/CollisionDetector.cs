@@ -9,6 +9,9 @@ public class CollisionDetector : MonoBehaviour
     
     [SerializeField]
     private LayerMask _groundLayer;
+
+    [SerializeField]
+    private LayerMask _platformLayer;
     [SerializeField]
     private float _collisionRadius = .25f;
     [SerializeField]
@@ -21,7 +24,7 @@ public class CollisionDetector : MonoBehaviour
 
     private void FixedUpdate()
     {
-        OnGround = Physics2D.OverlapCircle((Vector2)transform.position + _bottomOffset, _collisionRadius, _groundLayer);
+        OnGround = Physics2D.OverlapCircle((Vector2)transform.position + _bottomOffset, _collisionRadius, _groundLayer) || Physics2D.OverlapCircle((Vector2)transform.position + _bottomOffset, _collisionRadius, _platformLayer);
         OnRightWall = Physics2D.OverlapCircle((Vector2)transform.position + _rightOffset, _collisionRadius, _groundLayer);
         OnLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + _leftOffset, _collisionRadius, _groundLayer);
 

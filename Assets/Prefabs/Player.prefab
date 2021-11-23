@@ -325,6 +325,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _platformLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   _collisionRadius: 0.15
   _bottomOffset: {x: -0.03, y: -0.89}
   _rightOffset: {x: 0.57, y: 0}

@@ -66,15 +66,7 @@ public class Player : Humanoid
 
         _playerInputs.GetInputs();
         _movementX = _playerInputs.MovementX;
-        if (_currentState.StateType == PlayerState.GHOSTDASH)
-        {
-            _movementY = _playerInputs.MovementY;
-        }
-        else
-        {
-            _movementY = 0;
-        }
-
+        _movementY = _playerInputs.MovementY;
         if (_currentState.CanDash && _playerInputs.SlideButtonPressed)
         {
             Dash();
@@ -96,6 +88,13 @@ public class Player : Humanoid
             Jump(Vector2.up);
             OnJump?.Invoke(this, null);
             _postWiseEvent.Player_Jump_Event.Post(this.gameObject);
+        }
+        if (_playerInputs.MovementY < -.5f)
+        {
+            //go through platform.
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"),true);
+        } else {
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"),false);
         }
         if (_currentState.StateType == PlayerState.INAIR)
         {
