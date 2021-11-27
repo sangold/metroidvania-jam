@@ -12,7 +12,8 @@ public class HealthComponent : MonoBehaviour
     private float _flashDuration = .08f;
     private bool _isStunned;
 
-    public event Action<int> OnDamageTaken;
+    public delegate void OnDamageTakenEvent(int hp);
+    public event OnDamageTakenEvent OnDamageTaken;
     public float StunDuration;
 
     public int Health { get => _currentHealth; set => _currentHealth = Mathf.Clamp(value, 0, _maxHealth); }
@@ -32,7 +33,6 @@ public class HealthComponent : MonoBehaviour
         if(_currentHealth <= 0)
         {
             Kill();
-            return;
         }
         OnDamageTaken?.Invoke(_currentHealth);
     }
