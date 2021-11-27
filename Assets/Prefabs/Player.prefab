@@ -303,7 +303,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: 09711d1d12168444ba2707e39fb31afd, type: 2}
   _spriteGameObject: {fileID: 8336131431407130333}
-  maxHealth: 100
   _touchingARoom: 
 --- !u!114 &5399301505037127093
 MonoBehaviour:
@@ -421,8 +420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746c400bc5e956443b7fc9e8d52285c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 8
+  _currentHealth: 0
+  _maxHealth: 10
   _sr: {fileID: 131847291373639071}
+  StunDuration: 0.5
 --- !u!114 &7798453881471294695
 MonoBehaviour:
   m_ObjectHideFlags: 0

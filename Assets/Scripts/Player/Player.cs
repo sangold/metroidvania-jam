@@ -23,11 +23,21 @@ public class Player : Humanoid
     
     [SerializeField]
     private GameObject _spriteGameObject;
+    private HealthComponent _healthComponent;
 
     private PlayerPostWiseEvent _postWiseEvent;
     private MeleeAttackComponent _meleeAttackComponent;
-    private float _stunDuration = 0;
-    [HideInInspector]
+    public int Health {
+        get {
+            return _healthComponent.Health;
+        }
+        set
+        {
+            _healthComponent.Health = value;
+        }
+    }
+    private float _stunDurationTimer = 0;
+
     public string _touchingARoom = null;
     public float VerticalSpeed { get => _rb.velocity.y; }
     public float HorizontalSpeed { get => _rb.velocity.x; }
@@ -43,9 +53,15 @@ public class Player : Humanoid
     {
         base.Awake();
         _playerInputs = new PlayerInputs();
-        SetState(PlayerState.STANDARD);
         _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
         _meleeAttackComponent = GetComponent<MeleeAttackComponent>();
+        _healthComponent = GetComponent<HealthComponent>();
+        SetState(PlayerState.STANDARD);
+    }
+
+    private void Start()
+    {
+        _healthComponent.OnDamageTaken += OnDamageTaken;
     }
     public override void FixedUpdate(){
         base.FixedUpdate();
@@ -183,10 +199,10 @@ public class Player : Humanoid
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"), false);
         }
         if (_currentState.StateType == PlayerState.HURT){
-            _stunDuration -= Time.deltaTime;
-            if (_stunDuration <= 0){
+            _stunDurationTimer -= Time.deltaTime;
+            if (_stunDurationTimer <= 0){
                 SetState(PlayerState.STANDARD);
-                _stunDuration = 0;
+                _stunDurationTimer = 0;
             }
         }
     }
@@ -274,6 +290,17 @@ public class Player : Humanoid
     {
         yield return new WaitForSeconds(time);
         SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
+    }
+
+    public void OnDamageTaken(int newHealth)
+    { 
+        SetState(PlayerState.HURT);
+        print("Damage Taken");
+        _rb.velocity = Vector2.zero;
+        Vector2 knocbackVelocity = (GetFaceDirection() > 0f ? Vector2.left : Vector2.right) * _horizontalSpeed;
+        knocbackVelocity += new Vector2(0, _verticalSpeed);
+        _rb.velocity = knocbackVelocity;
+        _stunDurationTimer = _healthComponent.StunDuration;
     }
     // Update is called once per frame
     public override void Update()
