@@ -23,23 +23,20 @@ public class Player : Humanoid
     
     [SerializeField]
     private GameObject _spriteGameObject;
-
-    [SerializeField]
-    private float maxHealth = 100;
-    private float health = 0;
+    private HealthComponent _healthComponent;
 
     private PlayerPostWiseEvent _postWiseEvent;
     private MeleeAttackComponent _meleeAttackComponent;
-    public float Health {
+    public int Health {
         get {
-            return health;
+            return _healthComponent.Health;
         }
         set
         {
-            health = Mathf.Clamp(value, 0, maxHealth);
+            _healthComponent.Health = value;
         }
     }
-    private float _stunDuration = 0;
+    private float _stunDurationTimer = 0;
 
     public string _touchingARoom = null;
     public float VerticalSpeed { get => _rb.velocity.y; }
@@ -51,10 +48,15 @@ public class Player : Humanoid
     {
         base.Awake();
         _playerInputs = new PlayerInputs();
-        SetState(PlayerState.STANDARD);
-        health = maxHealth;
         _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
         _meleeAttackComponent = GetComponent<MeleeAttackComponent>();
+        _healthComponent = GetComponent<HealthComponent>();
+        SetState(PlayerState.STANDARD);
+    }
+
+    private void Start()
+    {
+        _healthComponent.OnDamageTaken += OnDamageTaken;
     }
     public override void FixedUpdate(){
         base.FixedUpdate();
@@ -190,10 +192,10 @@ public class Player : Humanoid
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"), false);
         }
         if (_currentState.StateType == PlayerState.HURT){
-            _stunDuration -= Time.deltaTime;
-            if (_stunDuration <= 0){
+            _stunDurationTimer -= Time.deltaTime;
+            if (_stunDurationTimer <= 0){
                 SetState(PlayerState.STANDARD);
-                _stunDuration = 0;
+                _stunDurationTimer = 0;
             }
         }
     }
@@ -264,20 +266,15 @@ public class Player : Humanoid
         SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
     }
 
-    public void TakeDamage(float damage, float stunDuration, Vector2 knockBack, float friction){
-        if (health <= 0)
-        {
-            //already dead. Do not take any more damage.
-            return;
-        }
+    public void OnDamageTaken(int newHealth)
+    { 
         SetState(PlayerState.HURT);
-        _stunDuration = stunDuration;
-        _rb.velocity = knockBack;
-        health -= damage;
-        health = Mathf.Clamp(health, 0, maxHealth);
-        if (health == 0){
-            Debug.Log("dead");
-        }
+        print("Damage Taken");
+        _rb.velocity = Vector2.zero;
+        Vector2 knocbackVelocity = (GetFaceDirection() > 0f ? Vector2.left : Vector2.right) * _horizontalSpeed;
+        knocbackVelocity += new Vector2(0, _verticalSpeed);
+        _rb.velocity = knocbackVelocity;
+        _stunDurationTimer = _healthComponent.StunDuration;
     }
     // Update is called once per frame
     public override void Update()

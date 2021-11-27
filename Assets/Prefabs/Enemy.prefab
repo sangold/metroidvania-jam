@@ -184,8 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746c400bc5e956443b7fc9e8d52285c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
+  _currentHealth: 0
+  _maxHealth: 3
   _sr: {fileID: 347964579065457877}
+  StunDuration: 0.3
 --- !u!1 &6968725762490429392
 GameObject:
   m_ObjectHideFlags: 0
