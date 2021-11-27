@@ -6,6 +6,7 @@ public class CameraScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject _target;
+    private HealthComponent _healthCompont;
     [SerializeField]
     private Vector3 _offset = new Vector3(0, 0, -10);
 
@@ -32,7 +33,9 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _healthCompont = _target.GetComponent<HealthComponent>();
         FollowTarget();
+        UpdateHealth();
         GetCameraSize();
     }
 
@@ -40,12 +43,15 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
         FollowTarget();
+        UpdateHealth();
     }
     private void FollowTarget(){
         if (_target != null)
         {
             transform.position = _target.transform.position + _offset;
         }
+    }
+    private void UpdateHealth(){
     }
     private void LateUpdate()
     {

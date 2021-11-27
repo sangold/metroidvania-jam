@@ -301,6 +301,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5dfefadf2c1fe54db33166fe2900b35, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
+  - {fileID: 11400000, guid: 09711d1d12168444ba2707e39fb31afd, type: 2}
   _spriteGameObject: {fileID: 8336131431407130333}
   _touchingARoom: 
 --- !u!114 &5399301505037127093
@@ -323,6 +324,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _platformLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   _collisionRadius: 0.15
   _bottomOffset: {x: -0.03, y: -0.89}
   _rightOffset: {x: 0.57, y: 0}

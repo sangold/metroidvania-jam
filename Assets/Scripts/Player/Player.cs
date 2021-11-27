@@ -15,7 +15,7 @@ public class Player : Humanoid
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
     private List<PlayerStateSO> _states;
-    
+
     private PlayerInputs _playerInputs;
     
     private Vector2 _lastNoneGhostPosition;
@@ -43,6 +43,11 @@ public class Player : Humanoid
     public float HorizontalSpeed { get => _rb.velocity.x; }
     public event EventHandler OnJump;
     public event EventHandler OnAttack;
+    public event EventHandler OnChargeSpinAttack;
+
+    private bool _canChargeAttack;
+    private bool _canDoChargeAttack;
+    private float _chargeAttackTimer = 0;
 
     protected override void Awake()
     {
@@ -63,15 +68,7 @@ public class Player : Humanoid
 
         _playerInputs.GetInputs();
         _movementX = _playerInputs.MovementX;
-        if (_currentState.StateType == PlayerState.GHOSTDASH)
-        {
-            _movementY = _playerInputs.MovementY;
-        }
-        else
-        {
-            _movementY = 0;
-        }
-
+        _movementY = _playerInputs.MovementY;
         if (_currentState.CanDash && _playerInputs.SlideButtonPressed)
         {
             Dash();
@@ -84,12 +81,22 @@ public class Player : Humanoid
         {
             GhostDash();
         }
+        if (_currentState.CanChargeAttack){
+            ChargeSpinAttack();
+        }
         if (_currentState.CanJump && _playerInputs.JumpButtonPressed)
         {
             SetState(PlayerState.INAIR);
             Jump(Vector2.up);
             OnJump?.Invoke(this, null);
             _postWiseEvent.Player_Jump_Event.Post(this.gameObject);
+        }
+        if (_playerInputs.MovementY < -.5f)
+        {
+            //go through platform.
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"),true);
+        } else {
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"),false);
         }
         if (_currentState.StateType == PlayerState.INAIR)
         {
@@ -211,6 +218,7 @@ public class Player : Humanoid
         _horizontalSpeed = _currentState.HorizontalSpeed;
         _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
+        _canChargeAttack = _currentState.CanChargeAttack;
     }
     private void TurnRight(){
         _spriteGameObject.transform.localScale = new Vector2(1,1);
@@ -237,6 +245,24 @@ public class Player : Humanoid
         _rb.velocity += new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
         WaitStateDuration(.2f);
         _postWiseEvent.Player_Slide_Event.Post(this.gameObject);
+    }
+    private void ChargeSpinAttack(){
+        if (_playerInputs.AttackButton){
+            _chargeAttackTimer += Time.fixedDeltaTime;
+            if (_chargeAttackTimer >= 1){
+              _canDoChargeAttack = true;
+            }  
+        } else {
+            if (_canDoChargeAttack){
+                DoChargeAttack();
+                _canDoChargeAttack = false;
+            }
+            _chargeAttackTimer = 0;
+        }
+    }
+    private void DoChargeAttack(){
+        OnChargeSpinAttack?.Invoke(this, null);
+        SetState(PlayerState.SPIN_ATTACK);
     }
     private void Attack(){
         OnAttack?.Invoke(this, null);
