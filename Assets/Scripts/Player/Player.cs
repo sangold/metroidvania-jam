@@ -24,21 +24,8 @@ public class Player : Humanoid
     [SerializeField]
     private GameObject _spriteGameObject;
 
-    [SerializeField]
-    private float maxHealth = 100;
-    private float health = 0;
-
     private PlayerPostWiseEvent _postWiseEvent;
     private MeleeAttackComponent _meleeAttackComponent;
-    public float Health {
-        get {
-            return health;
-        }
-        set
-        {
-            health = Mathf.Clamp(value, 0, maxHealth);
-        }
-    }
     private float _stunDuration = 0;
     [HideInInspector]
     public string _touchingARoom = null;
@@ -57,7 +44,6 @@ public class Player : Humanoid
         base.Awake();
         _playerInputs = new PlayerInputs();
         SetState(PlayerState.STANDARD);
-        health = maxHealth;
         _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
         _meleeAttackComponent = GetComponent<MeleeAttackComponent>();
     }
@@ -288,22 +274,6 @@ public class Player : Humanoid
     {
         yield return new WaitForSeconds(time);
         SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
-    }
-
-    public void TakeDamage(float damage, float stunDuration, Vector2 knockBack, float friction){
-        if (health <= 0)
-        {
-            //already dead. Do not take any more damage.
-            return;
-        }
-        SetState(PlayerState.HURT);
-        _stunDuration = stunDuration;
-        _rb.velocity = knockBack;
-        health -= damage;
-        health = Mathf.Clamp(health, 0, maxHealth);
-        if (health == 0){
-            Debug.Log("dead");
-        }
     }
     // Update is called once per frame
     public override void Update()

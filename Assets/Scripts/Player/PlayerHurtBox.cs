@@ -17,7 +17,7 @@ public class PlayerHurtBox : MonoBehaviour
     {
         if (other.gameObject.layer == _fireTileLayer && _self.CurrentState.StateType != PlayerState.GHOSTDASH)
         {
-            _self.TakeDamage(10,1,new Vector2(other.gameObject.transform.position.x - _self.transform.position.x,0).normalized * -10, 1);
+            //_self.TakeDamage(10,1,new Vector2(other.gameObject.transform.position.x - _self.transform.position.x,0).normalized * -10, 1);
         }
     }
 }
