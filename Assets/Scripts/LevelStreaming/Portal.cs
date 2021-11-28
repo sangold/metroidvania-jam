@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
+
+    public static Action OnLoadingScene;
+    public static Action OnSceneLoaded;
     public enum Destination { A, B, C, D, E, F }
-    [SerializeField][Tooltip("Scene Number in build menu")]
-    private int _sceneToLoad = -1;
+    [SerializeField][Tooltip("Scene Name (don't forget to add it to the build Menu)")]
+    private string _sceneToLoad;
     public Destination DestinationIdentification;
     public Transform ExitPoint;
 
@@ -21,10 +23,16 @@ public class Portal : MonoBehaviour
     private IEnumerator LoadLevel()
     {
         DontDestroyOnLoad(gameObject);
-        yield return SceneManager.LoadSceneAsync(_sceneToLoad);
+        OnLoadingScene?.Invoke();
+        yield return new WaitForSeconds(.35f);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        yield return SceneManager.LoadSceneAsync(_sceneToLoad, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_sceneToLoad));
         Portal destPortal = GetDestinationPortal();
         UpdatePlayer(destPortal);
+        yield return new WaitForSeconds(.25f);
         Destroy(gameObject);
+        OnSceneLoaded?.Invoke();
     }
 
     private void UpdatePlayer(Portal destPortal)
