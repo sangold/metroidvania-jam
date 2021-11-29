@@ -49,6 +49,15 @@ public class Player : Humanoid
     private bool _canDoChargeAttack;
     private float _chargeAttackTimer = 0;
 
+    //abilities
+    [SerializeField] private bool _hasScythe = true;
+    public bool HasScythe{
+        get {
+            return _hasScythe;
+        }
+    }
+    [SerializeField] private bool _hasGhostDash = true;
+
     protected override void Awake()
     {
         base.Awake();
@@ -73,15 +82,15 @@ public class Player : Humanoid
         {
             Dash();
         }
-        if (_currentState.CanAttack && _playerInputs.AttackButtonPressed)
+        if (_currentState.CanAttack && _playerInputs.AttackButtonPressed && _hasScythe)
         {
             Attack();
         }
-        if (_currentState.CanGhost && _playerInputs.GhostDashButtonPressed)
+        if (_currentState.CanGhost && _playerInputs.GhostDashButtonPressed &&_hasGhostDash)
         {
             GhostDash();
         }
-        if (_currentState.CanChargeAttack){
+        if (_currentState.CanChargeAttack && _hasScythe){
             ChargeSpinAttack();
         }
         if (_currentState.CanJump && _playerInputs.JumpButtonPressed)

@@ -151,6 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100b84d07034dd44f96c523499e2f1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _standNoScythe: {fileID: 7400000, guid: d4d6f66df05bebb4a98fc06c2003e740, type: 2}
+  _standScythe: {fileID: 7400000, guid: 204d3e70f2f0267489e57ce09276feeb, type: 2}
+  _runNoScythe: {fileID: 7400000, guid: 9ee24e7b33944f64688d8f787ef87c43, type: 2}
+  _runScythe: {fileID: 7400000, guid: 4cbb7006e2732914f86497a6a7a3d85d, type: 2}
+  _jumpNoScythe: {fileID: 7400000, guid: ea2ccd834e3899f4fbdeecc8e61d4629, type: 2}
+  _jumpScythe: {fileID: 7400000, guid: 06de3737f80d60043984f5bbb292396a, type: 2}
+  _fallingNoScythe: {fileID: 7400000, guid: 690bf4083ca34fc44823f120b9599599, type: 2}
+  _fallingScythe: {fileID: 7400000, guid: 62106ce56c8d16f45b865fb8b414f856, type: 2}
+  _landingNoScythe: {fileID: 7400000, guid: 28efd048e4838ef4ba19ff4c99ae1a1d, type: 2}
+  _landingScythe: {fileID: 7400000, guid: 8d2b77fb6014cbd488702746c4427ce6, type: 2}
   _animator: {fileID: 7336888154783809966}
   _main: {fileID: 7795952289003816024}
 --- !u!212 &131847291373639071
@@ -304,6 +314,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 09711d1d12168444ba2707e39fb31afd, type: 2}
   _spriteGameObject: {fileID: 8336131431407130333}
   _touchingARoom: 
+  _hasScythe: 1
+  _hasGhostDash: 1
 --- !u!114 &5399301505037127093
 MonoBehaviour:
   m_ObjectHideFlags: 0

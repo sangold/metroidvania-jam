@@ -5,6 +5,22 @@ using UnityEngine;
 
 public class PlayerAnimationEvents : MonoBehaviour
 {
+    [SerializeField] private AnimationClip _standNoScythe;
+    [SerializeField] private AnimationClip _standScythe;
+
+    [SerializeField] private AnimationClip _runNoScythe;
+    [SerializeField] private AnimationClip _runScythe;
+
+    [SerializeField] private AnimationClip _jumpNoScythe;
+    [SerializeField] private AnimationClip _jumpScythe;
+
+    [SerializeField] private AnimationClip _fallingNoScythe;
+    [SerializeField] private AnimationClip _fallingScythe;
+
+    [SerializeField] private AnimationClip _landingNoScythe;
+    [SerializeField] private AnimationClip _landingScythe;
+
+    protected AnimatorOverrideController _animatorOverrideController;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private Player _main;
@@ -14,6 +30,8 @@ public class PlayerAnimationEvents : MonoBehaviour
         _main.OnJump += OnJump;
         _main.OnAttack += OnAttack;
         _main.OnChargeSpinAttack += OnChargeSpinAttack;
+        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+        _animator.runtimeAnimatorController = _animatorOverrideController;
     }
     
     private void OnJump(object sender, EventArgs e)
@@ -31,6 +49,8 @@ public class PlayerAnimationEvents : MonoBehaviour
     private void ReturnToIdle(){
         //this method is call in the ScytheSpinAttack animation.
         _main.SetState(PlayerState.STANDARD);
+        _animator.SetBool("isAttacking", false);
+        _animator.SetBool("isGhostDashing", false);
     }
 
     private void FixedUpdate()
@@ -44,8 +64,10 @@ public class PlayerAnimationEvents : MonoBehaviour
         }
         if (_main.CurrentState.StateType == PlayerState.ATTACK){
         _animator.SetBool("isAttacking", true);
+        _animator.SetBool("Walking", false);
         } else if (_main.CurrentState.StateType == PlayerState.SPIN_ATTACK){
         _animator.SetBool("isAttacking", true);
+        _animator.SetBool("Walking", false);
         } else {
         _animator.SetBool("isAttacking", false);
         }
@@ -59,6 +81,19 @@ public class PlayerAnimationEvents : MonoBehaviour
         _animator.SetBool("Walking", false);
         } else {
         _animator.SetBool("isDashing", false);
+        }
+        if (_main.HasScythe){
+            _animatorOverrideController["StandNoScythe"] = _standScythe;
+            _animatorOverrideController["RunNoScythe"] = _runScythe;
+            _animatorOverrideController["JumpNoScythe"] = _jumpScythe;
+            _animatorOverrideController["FallingNoScythe"] = _fallingScythe;
+            _animatorOverrideController["LandingNoScythe"] = _landingScythe;
+        } else {
+            _animatorOverrideController["StandNoScythe"] = _standNoScythe;
+            _animatorOverrideController["RunNoScythe"] = _runNoScythe;
+            _animatorOverrideController["JumpNoScythe"] = _jumpNoScythe;
+            _animatorOverrideController["FallingNoScythe"] = _fallingNoScythe;
+            _animatorOverrideController["LandingNoScythe"] = _landingNoScythe;
         }
     }
 
