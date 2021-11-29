@@ -42,12 +42,6 @@ public class RoomLoadTrigger : MonoBehaviour
                     isLoadedScene = true;
             }
              player._touchingARoom = sceneNameToLoad;
-                CameraScript cs = Camera.main.GetComponent<CameraScript>();
-                cs.SetBounds(
-                _spriteRenderer.bounds.min.x,
-                _spriteRenderer.bounds.max.x,
-                _spriteRenderer.bounds.min.y,
-                _spriteRenderer.bounds.max.y);
         }
         }
     }
