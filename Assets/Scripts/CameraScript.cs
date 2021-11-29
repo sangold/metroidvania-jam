@@ -6,36 +6,19 @@ public class CameraScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject _target;
-    private HealthComponent _healthCompont;
     [SerializeField]
-    private Vector3 _offset = new Vector3(0, 0, -10);
+    private BoxCollider2D _boundBox;
+    private float _halfHeight;
+    private float _halfWidth;
 
-
-    /*
-    Boundaries of the camera.
-    */
-    private float _maxLeft = -9999999;
-    private float _maxRight = 9999999;
-    private float _maxUp = -9999999;
-    private float _maxDown = 9999999;
-
-    private float height;
-
-    private float width;
-
-    [SerializeField]
-    private float _transitionSpeed = 10;
     private void GetCameraSize()
     {
-        height = 2f * Camera.main.orthographicSize;
-        width = height * Camera.main.aspect;
+        _halfHeight = Camera.main.orthographicSize;
+        _halfWidth = _halfHeight * Camera.main.aspect;
     }
     // Start is called before the first frame update
     void Start()
     {
-        _healthCompont = _target.GetComponent<HealthComponent>();
-        FollowTarget();
-        UpdateHealth();
         GetCameraSize();
     }
 
@@ -43,37 +26,17 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
         FollowTarget();
-        UpdateHealth();
     }
     private void FollowTarget(){
         if (_target != null)
         {
-            transform.position = _target.transform.position + _offset;
+            transform.position = new Vector3(
+            Mathf.Clamp(_target.transform.position.x, _boundBox.bounds.min.x + _halfWidth, _boundBox.bounds.max.x - _halfWidth),
+            Mathf.Clamp(_target.transform.position.y, _boundBox.bounds.min.y + _halfHeight, _boundBox.bounds.max.y - _halfHeight),
+            -10);
+        } else
+        {
+            _target = FindObjectOfType<Player>().gameObject;
         }
-    }
-    private void UpdateHealth(){
-    }
-    private void LateUpdate()
-    {
-        GetCameraSize();
-        BoundLimit();
-    }
-    private void BoundLimit(){
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, _maxLeft + width/2, _maxRight - width / 2),
-            Mathf.Clamp(transform.position.y, _maxUp + height / 2, _maxDown - height / 2),
-            transform.position.z
-        );
-    }
-    public void SetBounds(float left, float right, float up, float down){
-        _maxLeft = Mathf.Lerp(_maxLeft, left, Time.fixedDeltaTime * _transitionSpeed);
-        _maxRight = Mathf.Lerp(_maxRight, right, Time.fixedDeltaTime * _transitionSpeed);
-        _maxUp = Mathf.Lerp(_maxUp, up, Time.fixedDeltaTime * _transitionSpeed);
-        _maxDown = Mathf.Lerp(_maxDown, down, Time.fixedDeltaTime * _transitionSpeed);
-
-        if (Mathf.Abs(left - _maxLeft) < .5f && _maxLeft != left) _maxLeft = left;
-        if (Mathf.Abs(right - _maxRight) < .5f && _maxRight != right) _maxRight = right;
-        if (Mathf.Abs(up - _maxUp) < .5f && _maxUp != up) _maxUp = up;
-        if (Mathf.Abs(down - _maxDown) < .5f && _maxDown != down) _maxDown = down;
     }
 }
