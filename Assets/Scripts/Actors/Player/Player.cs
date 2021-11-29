@@ -102,7 +102,11 @@ public class Player : Humanoid
         {
 
             // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !PlayerCollision.OnGround)
+            if(_playerInputs.JumpButtonPressed && _lastWallTime > 0 && hasWallJump)
+            {
+                WallJump();
+            }
+            else if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !PlayerCollision.OnGround)
             {
                 Jump(Vector2.up);
                 canDoubleJump = false;
@@ -111,7 +115,6 @@ public class Player : Humanoid
             }
             //sound
             if (PlayerCollision.OnGround && _rb.velocity.y <= 0){
-                Debug.Log("landed on ground");
                 _postWiseEvent.Player_Landed_Event.Post(this.gameObject);
             }
         }
@@ -160,8 +163,8 @@ public class Player : Humanoid
         }
         if (_currentState.StateType == PlayerState.WALL_SLIDE)
         {
+            _lastWallTime = _jumpCoyoteTime;
             WallSlide();
-
             // Specific movement
             if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && hasWallJump)
             {

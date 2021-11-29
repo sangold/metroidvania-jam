@@ -30,7 +30,10 @@ public class CollisionDetector : MonoBehaviour
 
         OnWall = OnRightWall || OnLeftWall;
 
-        WallSide = OnRightWall ? -1 : 1;
+        if (OnRightWall)
+            WallSide = -1;
+        else if (OnLeftWall)
+            WallSide = 1;
     }
 
     private void OnDrawGizmos()
