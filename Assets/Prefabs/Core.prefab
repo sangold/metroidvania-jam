@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6671582601850868373}
+  - component: {fileID: 6302947}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6302947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419136010506128094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eae56f42bf4cd42b3523e360c36cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4795428958898325203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,7 +159,7 @@ PrefabInstance:
     - target: {fileID: 7822383620713903086, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
       propertyPath: volumeTrigger
       value: 
-      objectReference: {fileID: 2599458065303620475}
+      objectReference: {fileID: 0}
     - target: {fileID: 7822383620713903086, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
       propertyPath: m_ShowCustomSorter
       value: 1
@@ -164,11 +177,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2530950554959013268, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
   m_PrefabInstance: {fileID: 4795428958898325203}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2599458065303620475 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7394884669729394088, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
-  m_PrefabInstance: {fileID: 4795428958898325203}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7031094446631260287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -176,6 +184,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6671582601850868373}
     m_Modifications:
+    - target: {fileID: 4348974883745488795, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
+      propertyPath: _currentHealth
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7468836473888323115, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_Name
       value: Player
@@ -190,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8472733911598202967, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.8
       objectReference: {fileID: 0}
     - target: {fileID: 8472733911598202967, guid: bb1dbf520be9fdf4a9a743cbe399dc22, type: 3}
       propertyPath: m_LocalPosition.z
