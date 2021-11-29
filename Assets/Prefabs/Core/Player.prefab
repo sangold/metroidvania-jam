@@ -433,7 +433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 0
-  _maxHealth: 6
+  _maxHealth: 3
+  _healthPiecesCollected: 0
   _sr: {fileID: 131847291373639071}
   StunDuration: 0.5
 --- !u!114 &7798453881471294695
