@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestBedScene/[Master]TestBed.unity
+    path: Assets/Scenes/Tests/[Master]TestBed.unity
     guid: 23d2c885fd94065449d262a68c62faa1
   - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: 06a88d8e7e656ea4d8f8347b9d0e8f1a
   - enabled: 1
-    path: Assets/Scenes/TestBedScene/Rooms/[Room]01.unity
+    path: Assets/Scenes/Tests/Rooms/[Room]01.unity
     guid: f545d40a0fad855439d4fddd2f2cd81a
   - enabled: 1
-    path: Assets/Scenes/TestBedScene/Rooms/[Room]02.unity
+    path: Assets/Scenes/Tests/Rooms/[Room]02.unity
     guid: 2f457fe36dc413844a0c697a8e23a40c
   - enabled: 1
-    path: Assets/Scenes/EnemyTestScene.unity
+    path: Assets/Scenes/Tests/EnemyTestScene.unity
     guid: b582e6b064eaf1b459ed93da1c6524a2
   - enabled: 1
     path: Assets/Scenes/Level/Level_1_0.unity
