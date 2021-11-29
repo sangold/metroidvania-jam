@@ -12,8 +12,9 @@ public class Humanoid : MonoBehaviour
     public CollisionDetector PlayerCollision { get; private set; }
 
     protected float _lastGroundTime;
+    protected float _lastWallTime;
     [SerializeField]
-    private float _jumpCoyoteTime = .16f;
+    protected float _jumpCoyoteTime = .16f;
     [SerializeField]
     protected float _wallJumpAcceleration = 5f;
 
@@ -34,6 +35,8 @@ public class Humanoid : MonoBehaviour
     public bool hasDoubleJump = true;// Do you have the ability?
     public bool hasWallJump = true;
 
+    private IEnumerator _wallJumpCoroutine;
+
     // Start is called before the first frame update
     protected virtual void Awake()
     {
@@ -53,6 +56,7 @@ public class Humanoid : MonoBehaviour
 
         #region Timers
         _lastGroundTime -= Time.fixedDeltaTime;
+        _lastWallTime -= Time.fixedDeltaTime;
         #endregion
     }
 
@@ -62,7 +66,7 @@ public class Humanoid : MonoBehaviour
             return;
         if(_isWallJumping)
         {
-            _rb.velocity = Vector2.Lerp(_rb.velocity, new Vector2( _horizontalSpeed, _rb.velocity.y), _wallJumpAcceleration * Time.fixedDeltaTime);
+            _rb.velocity = Vector2.Lerp(_rb.velocity, new Vector2(PlayerCollision.WallSide * _horizontalSpeed, _rb.velocity.y), _wallJumpAcceleration * Time.fixedDeltaTime);
             return;
         }
         if(PlayerCollision.OnGround)
@@ -76,7 +80,8 @@ public class Humanoid : MonoBehaviour
 
     protected void WallSlide()
     {
-        StopCoroutine(DisableMovementForWallJump(0));
+        if(_wallJumpCoroutine != null)
+            StopCoroutine(_wallJumpCoroutine);
         _isWallJumping = false;
         bool towardWall = (_rb.velocity.x > 0 && PlayerCollision.OnRightWall) || (_rb.velocity.x < 0 && PlayerCollision.OnLeftWall);
         _rb.velocity = new Vector2(towardWall ? 0 : _rb.velocity.x, -_verticalSpeed);
@@ -84,18 +89,20 @@ public class Humanoid : MonoBehaviour
 
     protected void WallJump()
     {
-        StopCoroutine(DisableMovementForWallJump(0));
-        StartCoroutine(DisableMovementForWallJump(.2f));
-
-        Jump((Vector2.up + new Vector2(PlayerCollision.WallSide, 0)).normalized);
+        if(_wallJumpCoroutine != null)
+            StopCoroutine(_wallJumpCoroutine);
+        _wallJumpCoroutine = DisableMovementForWallJump(.2f);
+        _isWallJumping = true;
+        StartCoroutine(_wallJumpCoroutine);
+        _rb.velocity = Vector2.zero;
+        Jump((Vector2.up + new Vector2(PlayerCollision.WallSide/2f, 0)).normalized / 1.3f);
     }
 
     private IEnumerator DisableMovementForWallJump(float time)
-    {
-        _isWallJumping = true;
-        
+    {   
         yield return new WaitForSeconds(time);
         _isWallJumping = false;
+        _wallJumpCoroutine = null;
     }
 
     protected void Jump(Vector2 dir){
