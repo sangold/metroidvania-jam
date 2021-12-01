@@ -10,24 +10,26 @@ public class HealthHUD : MonoBehaviour
     [SerializeField] private Sprite _fullContainer;
 
     [SerializeField] private List<GameObject> _healthContainers;
-    [SerializeField] private int _maxHealthContainers = 3;
-    [SerializeField] private int _health = 5;
+    [SerializeField] private int _maxHealthContainers{get => _playerHealthComponent.MaxHealth;}
+    [SerializeField] private int _health{get => _playerHealthComponent.Health;}
     // Start is called before the first frame update
     void Start()
     {
         GetTargetHealth();
-        SetMaxHealthContainers();
         UpdateHealthContainers();
     }
     void OnDamageTaken(int currentHealth){
-        _health = currentHealth;
+        UpdateHealthContainers();
+    }
+    void OnHealthIncreassed(int currentMaxHealth){
+        SetMaxHealthContainers();
         UpdateHealthContainers();
     }
     void GetTargetHealth(){
         _playerHealthComponent = GameObject.Find("Player").GetComponent<HealthComponent>();
         if (_playerHealthComponent != null){
             _playerHealthComponent.OnDamageTaken += OnDamageTaken;
-            _health = _playerHealthComponent.Health;
+            _playerHealthComponent.OnHealthIncreassed += OnHealthIncreassed;
         }
     }
     void SetMaxHealthContainers(){
