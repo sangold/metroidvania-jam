@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: InAirState
   m_EditorClassIdentifier: 
   StateType: 1
-  GravityScale: 3
-  HorizontalSpeed: 10
-  JumpForce: 15
+  GravityScale: 5
+  HorizontalSpeed: 7.5
+  JumpForce: 18
   VerticalSpeed: 0
   CanMove: 1
   CanDash: 1

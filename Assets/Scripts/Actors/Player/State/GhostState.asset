@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GhostState
   m_EditorClassIdentifier: 
   StateType: 3
-  GravityScale: 3
+  GravityScale: 5
   HorizontalSpeed: 6
   JumpForce: 0
   VerticalSpeed: 0
