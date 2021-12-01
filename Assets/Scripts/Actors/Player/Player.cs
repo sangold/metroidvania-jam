@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class Player : Humanoid
 {
-
+    [SerializeField]
+    private PlayerStatsSO _playerStats;
     [SerializeField]
     private float _fallMultiplier = 3f;
     [SerializeField]
@@ -34,8 +35,43 @@ public class Player : Humanoid
         set
         {
             _healthComponent.Health = value;
+            _playerStats.CurrentHealth = value;
         }
     }
+    public int MaxHealth
+    {
+        get
+        {
+            return _healthComponent.MaxHealth;
+        }
+        set
+        {
+            _healthComponent.MaxHealth = value;
+            _playerStats.MaxHealth = value;
+        }
+    }
+    public bool HasScythe => _playerStats.HasScythe;
+
+    public void LoadData(float x, float y, int currentHealth, int maxHealth, bool hasScythe, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
+    {
+        transform.position = new Vector2(x, y);
+        Health = currentHealth;
+        MaxHealth = maxHealth;
+
+        _playerStats.HasScythe = hasScythe;
+        _playerStats.HasDoubleJump = hasDoubleJump;
+        _playerStats.HasWallJump = hasWallJump;
+        _playerStats.HasGhostDash = hasGhostDash;
+        _playerStats.HasDash = hasDash;
+        _playerStats.HasChargeAttack = hasChargeAttack;
+    }
+
+    public bool HasDoubleJump => _playerStats.HasDoubleJump;
+    public bool HasWallJump => _playerStats.HasWallJump;
+    public bool HasGhostDash => _playerStats.HasGhostDash;
+    public bool HasDash => _playerStats.HasDash;
+    public bool HasChargeAttack => _playerStats.HasChargeAttack;
+
     private float _stunDurationTimer = 0;
 
     public string _touchingARoom = null;
@@ -45,18 +81,9 @@ public class Player : Humanoid
     public event EventHandler OnAttack;
     public event EventHandler OnChargeSpinAttack;
 
-    private bool _canChargeAttack;
     private bool _canDoChargeAttack;
     private float _chargeAttackTimer = 0;
 
-    //abilities
-    [SerializeField] private bool _hasScythe = true;
-    public bool HasScythe{
-        get {
-            return _hasScythe;
-        }
-    }
-    [SerializeField] private bool _hasGhostDash = true;
 
     protected override void Awake()
     {
@@ -71,7 +98,12 @@ public class Player : Humanoid
     private void Start()
     {
         _healthComponent.OnDamageTaken += OnDamageTaken;
+        _healthComponent.OnHealthIncreased += OnHealthIncreased;
+        _healthComponent.OnHealthPieceCollected += OnHealthPieceCollected;
+        _healthComponent.MaxHealth = _playerStats.MaxHealth;
+        _healthComponent.Health = _playerStats.CurrentHealth;
     }
+
     public override void FixedUpdate(){
         base.FixedUpdate();
 
@@ -82,15 +114,16 @@ public class Player : Humanoid
         {
             Dash();
         }
-        if (_currentState.CanAttack && _playerInputs.AttackButtonPressed && _hasScythe)
+        if (_currentState.CanAttack && _playerInputs.AttackButtonPressed && _playerStats.HasScythe)
         {
             Attack();
         }
-        if (_currentState.CanGhost && _playerInputs.GhostDashButtonPressed &&_hasGhostDash)
+        if (_currentState.CanGhost && _playerInputs.GhostDashButtonPressed && _playerStats.HasGhostDash)
         {
             GhostDash();
         }
-        if (_currentState.CanChargeAttack && _hasScythe){
+        if (_currentState.CanChargeAttack && _playerStats.HasScythe && _playerStats.HasChargeAttack)
+        {
             ChargeSpinAttack();
         }
         if (_currentState.CanJump && _playerInputs.JumpButtonPressed)
@@ -111,11 +144,11 @@ public class Player : Humanoid
         {
 
             // Specific movement
-            if(_playerInputs.JumpButtonPressed && _lastWallTime > 0 && hasWallJump)
+            if(_playerInputs.JumpButtonPressed && _lastWallTime > 0 && _playerStats.HasWallJump)
             {
                 WallJump();
             }
-            else if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && hasDoubleJump && !PlayerCollision.OnGround)
+            else if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && canDoubleJump && _playerStats.HasDoubleJump && !PlayerCollision.OnGround)
             {
                 Jump(Vector2.up);
                 canDoubleJump = false;
@@ -175,7 +208,7 @@ public class Player : Humanoid
             _lastWallTime = _jumpCoyoteTime;
             WallSlide();
             // Specific movement
-            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && hasWallJump)
+            if (_playerInputs.JumpButtonPressed && _lastGroundTime <= 0 && _playerStats.HasWallJump)
             {
                 SetState(PlayerState.INAIR);
                 WallJump();
@@ -230,7 +263,6 @@ public class Player : Humanoid
         _horizontalSpeed = _currentState.HorizontalSpeed;
         _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
-        _canChargeAttack = _currentState.CanChargeAttack;
     }
     private void TurnRight(){
         _spriteGameObject.transform.localScale = new Vector2(1,1);
@@ -313,6 +345,17 @@ public class Player : Humanoid
         knocbackVelocity += new Vector2(0, _verticalSpeed);
         _rb.velocity = knocbackVelocity;
         _stunDurationTimer = _healthComponent.StunDuration;
+        _playerStats.CurrentHealth = newHealth;
+    }
+
+    private void OnHealthIncreased(int maxHP)
+    {
+        _playerStats.MaxHealth = maxHP;
+    }
+
+    private void OnHealthPieceCollected(int newCount)
+    {
+        _playerStats.HealthCollectible = newCount;
     }
     // Update is called once per frame
     public override void Update()

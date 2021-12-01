@@ -29,7 +29,7 @@ public class HealthHUD : MonoBehaviour
         _playerHealthComponent = GameObject.Find("Player").GetComponent<HealthComponent>();
         if (_playerHealthComponent != null){
             _playerHealthComponent.OnDamageTaken += OnDamageTaken;
-            _playerHealthComponent.OnHealthIncreassed += OnHealthIncreassed;
+            _playerHealthComponent.OnHealthIncreased += OnHealthIncreassed;
         }
     }
     void SetMaxHealthContainers(){

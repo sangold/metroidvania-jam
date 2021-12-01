@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: HurtState
   m_EditorClassIdentifier: 
   StateType: 4
-  GravityScale: 3
+  GravityScale: 5
   HorizontalSpeed: 6
-  JumpForce: 12
+  JumpForce: 15
   VerticalSpeed: 3
   CanMove: 0
   CanDash: 0
   CanGhost: 0
   CanAttack: 0
   CanJump: 0
+  CanChargeAttack: 0
   HasStandardTransition: 0
