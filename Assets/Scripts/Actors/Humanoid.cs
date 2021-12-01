@@ -31,9 +31,6 @@ public class Humanoid : MonoBehaviour
     protected bool _isWallJumping;
 
     protected bool canDoubleJump = false;// Can I doubleJump?
-    
-    public bool hasDoubleJump = true;// Do you have the ability?
-    public bool hasWallJump = true;
 
     private IEnumerator _wallJumpCoroutine;
 
