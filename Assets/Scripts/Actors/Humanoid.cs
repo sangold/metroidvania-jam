@@ -44,6 +44,9 @@ public class Humanoid : MonoBehaviour
     {
         Walk(new Vector2(_movementX, _movementY));
 
+        _rb.velocity = new Vector2(_rb.velocity.x,
+            Mathf.Clamp(_rb.velocity.y, -30f, 100f));
+
         #region CollisionDetection
         if (PlayerCollision.OnGround){
             _lastGroundTime = _jumpCoyoteTime;
