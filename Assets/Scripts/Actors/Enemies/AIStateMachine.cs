@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class AIStateMachine
+public class AIStateMachine : StateMachine
 {
     public class Transition
     {
@@ -14,35 +13,28 @@ public class AIStateMachine
             Condition = condition;
         }
     }
-    private IState _currentState;
 
     private Dictionary<Type, List<Transition>> _transitions = new Dictionary<Type, List<Transition>>();
     private List<Transition> _currentTransitions = new List<Transition>();
     private List<Transition> _anyTransitions = new List<Transition>();
     private static List<Transition> EmptyTransitions = new List<Transition>(0);
 
-    public void Tick()
+    public override void Tick()
     {
         Transition transition = GetTransition();
         if (transition != null)
             SetState(transition.To);
 
-        _currentState?.Tick();
+        base.Tick();
     }
 
-    public void SetState(IState toState)
+    public override void SetState(IState toState)
     {
-        if (toState == _currentState)
-            return;
 
-        _currentState?.OnExit();
-        _currentState = toState;
-
+        base.SetState(toState);
         _transitions.TryGetValue(_currentState.GetType(), out _currentTransitions);
         if (_currentTransitions == null)
             _currentTransitions = EmptyTransitions;
-
-        _currentState?.OnEnter();
     }
 
     private Transition GetTransition()
