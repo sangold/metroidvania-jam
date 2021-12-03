@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     }
     private List<string> _bossesDone;
     private List<Level> _levels;
+    private Level _currentLevel;
+    public Level CurrentLevel => _currentLevel;
+    public List<Level> Levels => _levels;
     private List<string> _mirrorVisibles;
 
     private StateMachine _stateMachine;
@@ -39,5 +42,26 @@ public class GameManager : MonoBehaviour
     public void SetState(IState targetState)
     {
         _stateMachine.SetState(targetState);
+    }
+
+    private void Update()
+    {
+        _stateMachine.Tick();
+    }
+
+    public void SetActiveLevel(Level level)
+    {
+        if(!_levels.Contains(level))
+        {
+            _levels.Add(level);
+            Debug.Log(_levels.Count);
+        }
+
+        if (_currentLevel != null)
+            _currentLevel.IsActive = false;
+
+        level.IsVisible = true;
+        level.IsExplored = true;
+        _currentLevel = level;
     }
 }
