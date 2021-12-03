@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
             _currentLevel.IsActive = false;
 
         level.IsVisible = true;
+        level.IsActive = true;
         level.IsExplored = true;
         _currentLevel = level;
     }
