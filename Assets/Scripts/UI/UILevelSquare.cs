@@ -6,7 +6,7 @@ public class UILevelSquare : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private Outline _outline;
     [SerializeField] private RectTransform _rt;
-    private float _squareSize = 30f;
+    private float _squareSize = 32f;
     private Color _darkColor;
     private Color _mainColor;
     private Color _lightColor;
