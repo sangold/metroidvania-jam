@@ -6,8 +6,20 @@ namespace MJ.GameState
 {
     public class GameLoopState : IState
     {
+        private Level _level;
+        public GameLoopState(Level level = null)
+        {
+            if(level == null)
+            {
+                _level = GameManager.Instance.CurrentLevel;
+                return;
+            }
+
+            _level = level;
+        }
         public void OnEnter()
         {
+            GameManager.Instance.SetActiveLevel(_level);
             GameManager.Instance.PlayerCanMove = true;
             if (SceneManager.GetSceneByName("UI").isLoaded == false)
             {
@@ -31,6 +43,10 @@ namespace MJ.GameState
 
         public void Tick()
         {
+            if(Input.GetButtonUp("Cancel"))
+            {
+                GameManager.Instance.SetState(new PauseMenuState());
+            }
         }
     }
 }

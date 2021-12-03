@@ -142,6 +142,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 5382703986085502605, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
+      propertyPath: _level.PosX
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382703986085502605, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
+      propertyPath: _level.PosY
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382703986085502605, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
+      propertyPath: _level.UUID
+      value: P_09
+      objectReference: {fileID: 0}
     - target: {fileID: 6671582601850868373, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_RootOrder
       value: 0
