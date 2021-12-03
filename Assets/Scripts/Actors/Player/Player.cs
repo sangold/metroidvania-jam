@@ -105,6 +105,9 @@ public class Player : Humanoid
     }
 
     public override void FixedUpdate(){
+        if (!GameManager.Instance.PlayerCanMove)
+            return;
+
         base.FixedUpdate();
 
         _playerInputs.GetInputs();
@@ -264,13 +267,13 @@ public class Player : Humanoid
         _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
     }
-    private void TurnRight(){
+    public void TurnRight(){
         _spriteGameObject.transform.localScale = new Vector2(1,1);
     }
-    private void TurnLeft(){
+    public void TurnLeft(){
         _spriteGameObject.transform.localScale = new Vector2(-1,1);
     }
-    private float GetFaceDirection(){
+    public float GetFaceDirection(){
         return _spriteGameObject.transform.localScale.x;
     }
     private void SnappyJump(){

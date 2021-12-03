@@ -11,7 +11,7 @@
 
     public virtual void SetState(IState toState)
     {
-        if (toState == _currentState)
+        if (_currentState != null && toState.GetType() == _currentState.GetType())
             return;
 
         _currentState?.OnExit();

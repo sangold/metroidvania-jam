@@ -1,3 +1,4 @@
+using MJ.GameState;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,14 +19,14 @@ public class Fader : MonoBehaviour
     }
     private void Start()
     {
-        Portal.OnLoadingScene += StartFadeToBlack;
-        Portal.OnSceneLoaded += StartFadeToTransparent;
+        LoadingState.OnLoadingScene += StartFadeToBlack;
+        LoadingState.OnSceneLoaded += StartFadeToTransparent;
     }
 
     private void OnDestroy()
     {
-        Portal.OnLoadingScene -= StartFadeToBlack;
-        Portal.OnSceneLoaded -= StartFadeToTransparent;
+        LoadingState.OnLoadingScene -= StartFadeToBlack;
+        LoadingState.OnSceneLoaded -= StartFadeToTransparent;
     }
 
     public Coroutine Fade(float target, float time)
