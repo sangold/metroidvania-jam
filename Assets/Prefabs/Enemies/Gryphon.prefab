@@ -71,10 +71,10 @@ GameObject:
   - component: {fileID: 732778256803000685}
   - component: {fileID: 732778256803000691}
   - component: {fileID: 732778256803000684}
-  - component: {fileID: 732778256803000688}
   - component: {fileID: 732778256803000689}
+  - component: {fileID: 5021597712206486190}
   m_Layer: 10
-  m_Name: Angel
+  m_Name: Gryphon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,25 +134,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.05, y: -0.18}
   m_Size: {x: 1.39, y: 1.47}
   m_Direction: 0
---- !u!114 &732778256803000688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732778256803000686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e959618b38ddb429617939f09369c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Animator: {fileID: 732778256917904413}
-  Rb: {fileID: 732778256803000691}
-  _patrolGizmos:
-  - {fileID: 732778256526353904}
-  - {fileID: 732778256048989527}
-  _spriteTransform: {fileID: 732778256917904867}
-  _actorDetector: {fileID: 732778257510464166}
 --- !u!114 &732778256803000689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,11 +146,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746c400bc5e956443b7fc9e8d52285c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 1
-  _maxHealth: 1
+  _currentHealth: 2
+  _maxHealth: 2
   _healthPiecesCollected: 0
   _sr: {fileID: 732778256917904412}
   StunDuration: 0
+--- !u!114 &5021597712206486190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732778256803000686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64646264fe75c243b4f40d62fe5b0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 732778256917904413}
+  Rb: {fileID: 732778256803000691}
+  _patrolGizmos:
+  - {fileID: 732778256526353904}
+  - {fileID: 732778256048989527}
+  _spriteTransform: {fileID: 732778256917904867}
+  _actorDetector: {fileID: 732778257510464166}
+  _bulletGO: {fileID: 6677129319429244444, guid: 003fedc51b95b5347a03d9aab3ec7a69, type: 3}
 --- !u!1 &732778256917904414
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,9 +243,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4d241970f12067c4ea0994f3254ddcd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 443a1bb9422413c4c8019b1b7df77f80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
@@ -263,7 +264,7 @@ Animator:
   m_GameObject: {fileID: 732778256917904414}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 923a0ce13c0a6df4b85fcc29930a9d43, type: 2}
+  m_Controller: {fileID: 9100000, guid: c03f04f9cf9256e41ae9506db28e1e65, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

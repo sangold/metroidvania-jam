@@ -12,8 +12,8 @@ public class EnemyAngel : Enemy
         _moveSpeed = 2f;
         _jumpForce = 0f;
 
-        PatrolAIState patrol = new PatrolAIState(_rb, _animator, _patrolPoints, _moveSpeed, _jumpForce, false, null);
-        ChaseAIState chase = new ChaseAIState(_rb, _animator, _actorDetector, true, 5f);
+        PatrolAIState patrol = new PatrolAIState(Rb, Animator, _patrolPoints, _moveSpeed, _jumpForce, false, null);
+        ChaseAIState chase = new ChaseAIState(Rb, Animator, _actorDetector, true, 5f);
 
         _stateMachine.AddAnyTransition(chase, () => _actorDetector.CanSee);
         _stateMachine.AddTransition(chase, patrol, () => chase.HasReachedPosition());

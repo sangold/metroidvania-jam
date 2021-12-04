@@ -19,19 +19,17 @@ public class ChaseAIState : IState
     }
     public void OnEnter()
     {
-        Debug.Log("Start Chasing");
-        //_animator.SetBool("Chase", true);
-        //_animator.SetBool("Diving", _isDiving);
+        _animator.SetBool("Chase", true);
+        _animator.SetBool("Dive", _isDiving);
         _target = _actorDetector.Target;
         _lastScenePoint = _target.position;
     }
 
     public void OnExit()
     {
-        //_animator.SetBool("Chase", false);
-        //_animator.SetBool("Diving", false);
+        _animator.SetBool("Chase", false);
+        _animator.SetBool("Dive", false);
         _target = null;
-        Debug.Log("Stop Chasing");
 
     }
 

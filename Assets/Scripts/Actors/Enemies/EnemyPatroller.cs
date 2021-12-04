@@ -12,7 +12,7 @@ public class EnemyPatroller : Enemy
         _moveSpeed = 2f;
         _jumpForce = 3.5f;
         _lineOfSight = GetComponent<CollisionDetector>();
-        PatrolAIState patrol = new PatrolAIState(_rb, _animator, _patrolPoints, _moveSpeed, _jumpForce, true, _lineOfSight);
+        PatrolAIState patrol = new PatrolAIState(Rb, Animator, _patrolPoints, _moveSpeed, _jumpForce, true, _lineOfSight);
         _stateMachine.SetState(patrol);
 
     }
