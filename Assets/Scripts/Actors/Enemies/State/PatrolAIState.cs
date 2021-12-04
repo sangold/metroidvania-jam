@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PatrolAIState : IState
 {
+    private Enemy _owner;
     private Rigidbody2D _rb;
     private Animator _animator;
     private Vector3[] _patrolPoints;
@@ -12,10 +13,11 @@ public class PatrolAIState : IState
     private bool _horizontalOnly;
     private CollisionDetector _lineOfSight;
 
-    public PatrolAIState(Rigidbody2D rb, Animator animator, Vector3[] patrolPoints, float moveSpeed, float jumpForce, bool horizontalOnly, CollisionDetector lineOfSight)
+    public PatrolAIState(Enemy owner, Vector3[] patrolPoints, float moveSpeed, float jumpForce, bool horizontalOnly, CollisionDetector lineOfSight)
     {
-        _rb = rb;
-        _animator = animator;
+        _owner = owner;
+        _rb = owner.Rb;
+        _animator = owner.Animator;
         _patrolPoints = patrolPoints;
         _moveSpeed = moveSpeed;
         _jumpForce = jumpForce;
@@ -24,12 +26,23 @@ public class PatrolAIState : IState
     }
     public void OnEnter()
     {
-        //_animator.SetBool("Patrol", true);
+        float closestDistance = Mathf.Infinity;
+        for (int i = 0; i < _patrolPoints.Length; i++)
+        {
+            if (i == _currentPoint) continue;
+            float distance = _patrolPoints[i].x - _owner.transform.position.x;
+            if (distance > 0 && _owner.IsTurnToTheLeft()) continue;
+            if (distance < 0 && !_owner.IsTurnToTheLeft()) continue;
+            if(distance < closestDistance)
+            {
+                closestDistance = distance;
+                _currentPoint = i;
+            }
+        }
     }
 
     public void OnExit()
     {
-        //_animator.SetBool("Patrol", false);
     }
 
     public void Tick()

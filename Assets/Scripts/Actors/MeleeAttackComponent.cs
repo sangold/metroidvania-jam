@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeAttackComponent : MonoBehaviour
@@ -16,7 +14,18 @@ public class MeleeAttackComponent : MonoBehaviour
 
         foreach(Collider2D enemy in enemies)
         {
-            enemy.GetComponent<HealthComponent>()?.TakeDamage(1);
+            Actor actor = enemy.GetComponent<Actor>();
+            HealthComponent hc = enemy.GetComponent<HealthComponent>();
+            if (hc == null) continue;
+            if (hc.IsShielded)
+            {
+                Vector3 dir = actor.transform.position - transform.position;
+                if(dir.x > 0 && actor.IsTurnToTheLeft())
+                    continue;
+                if (dir.x < 0 && !actor.IsTurnToTheLeft())
+                    continue;
+            }
+            enemy.GetComponent<HealthComponent>()?.TakeDamage(1, transform.position);
         }
     }
 

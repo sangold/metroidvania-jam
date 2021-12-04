@@ -18,7 +18,7 @@ public class HealthHUD : MonoBehaviour
         GetTargetHealth();
         UpdateHealthContainers();
     }
-    void OnDamageTaken(int currentHealth){
+    void OnDamageTaken(int currentHealth, Vector3 attackOrigin){
         UpdateHealthContainers();
     }
     void OnHealthIncreassed(int currentMaxHealth){

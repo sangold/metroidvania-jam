@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2a85ff4b098564abd3cc799b7ba8ab, type: 3}
   m_Name: PlayerStatsSO
   m_EditorClassIdentifier: 
-  HasScythe: 0
+  HasScythe: 1
   HasDoubleJump: 0
   HasWallJump: 0
   HasGhostDash: 0

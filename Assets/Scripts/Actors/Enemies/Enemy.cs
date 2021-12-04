@@ -1,35 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+[RequireComponent(typeof(HealthComponent))]
+public abstract class Enemy : Actor
 {
     public Animator Animator;
     public Rigidbody2D Rb;
+    [HideInInspector]
+    public float lastAttackTimer;
+    [HideInInspector]
+    public Coroutine AttackCoroutine;
+    [HideInInspector]
+    public bool CanMove = true;
+
+    protected HealthComponent _healthComponent;
+
     [SerializeField] protected Transform[] _patrolGizmos;
-    [SerializeField] protected Transform _spriteTransform;
     protected Vector3[] _patrolPoints;
+    
 
     protected float _moveSpeed, _jumpForce;
     protected AIStateMachine _stateMachine;
+    protected IState _previousState;
 
-    public void TurnRight()
+    public void ReturnToPreviousState()
     {
-        if(GetFaceDirection() < 0f)
-            _spriteTransform.transform.localScale = new Vector2(1, 1);
-    }
-    public void TurnLeft()
-    {
-        if (GetFaceDirection() > 0f)
-            _spriteTransform.transform.localScale = new Vector2(-1, 1);
-    }
-    public float GetFaceDirection()
-    {
-        return _spriteTransform.transform.localScale.x;
+        if(_previousState != null)
+        {
+            _stateMachine.SetState(_previousState);
+            _previousState = null;
+        }
     }
 
     protected virtual void Awake()
     {
+        _healthComponent = GetComponent<HealthComponent>();
         Rb = GetComponent<Rigidbody2D>();
         _patrolPoints = new Vector3[_patrolGizmos.Length];
         for (int i = 0; i < _patrolGizmos.Length; i++)
@@ -41,13 +48,30 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine = new AIStateMachine();
     }
 
+    protected virtual void Start()
+    {
+        _healthComponent.OnDamageTaken += OnDamageTaken;
+        CanMove = true;
+    }
+
+    private void OnDestroy()
+    {
+        _healthComponent.OnDamageTaken -= OnDamageTaken;
+        if (AttackCoroutine != null)
+            StopCoroutine(AttackCoroutine);
+    }
+
+    protected virtual void OnDamageTaken(int hp, Vector3 attackOrigin)
+    {
+    }
+
     protected virtual void FixedUpdate()
     {
-        if (Rb.velocity.x < 0)
+        if (Rb.velocity.x < 0 && CanMove)
         {
             TurnLeft();
         }
-        else if (Rb.velocity.x > 0)
+        else if (Rb.velocity.x > 0 && CanMove)
         {
             TurnRight();
         }
@@ -59,7 +83,7 @@ public abstract class Enemy : MonoBehaviour
         HealthComponent targetHealth = target.gameObject.GetComponent<HealthComponent>();
         if (target.gameObject.tag == "Player")
         {
-            targetHealth.TakeDamage(1);
+            targetHealth.TakeDamage(1, transform.position);
         }
     }
 }

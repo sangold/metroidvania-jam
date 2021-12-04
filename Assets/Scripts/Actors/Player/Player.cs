@@ -22,8 +22,6 @@ public class Player : Humanoid
     private Vector2 _lastNoneGhostPosition;
     private bool _snapTolastNoneGhostPosition = false;
     
-    [SerializeField]
-    private GameObject _spriteGameObject;
     private HealthComponent _healthComponent;
 
     private PlayerPostWiseEvent _postWiseEvent;
@@ -267,15 +265,7 @@ public class Player : Humanoid
         _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
     }
-    public void TurnRight(){
-        _spriteGameObject.transform.localScale = new Vector2(1,1);
-    }
-    public void TurnLeft(){
-        _spriteGameObject.transform.localScale = new Vector2(-1,1);
-    }
-    public float GetFaceDirection(){
-        return _spriteGameObject.transform.localScale.x;
-    }
+    
     private void SnappyJump(){
         if(_rb.velocity.y < 0)
         {
@@ -289,7 +279,7 @@ public class Player : Humanoid
     private void Dash(){
         SetState(PlayerState.DASH);
         _rb.velocity = Vector2.zero;
-        _rb.velocity += new Vector2(_horizontalSpeed * GetFaceDirection(), 0);
+        _rb.velocity += new Vector2(_horizontalSpeed * (IsTurnToTheLeft() ? -1 : 1), 0);
         WaitStateDuration(.2f);
         _postWiseEvent.Player_Slide_Event.Post(this.gameObject);
     }
@@ -339,12 +329,14 @@ public class Player : Humanoid
         SetState(PlayerCollision.OnGround ? PlayerState.STANDARD : PlayerState.INAIR);
     }
 
-    public void OnDamageTaken(int newHealth)
+    public void OnDamageTaken(int newHealth, Vector3 attackOrigin)
     { 
         SetState(PlayerState.HURT);
         print("Damage Taken");
         _rb.velocity = Vector2.zero;
-        Vector2 knocbackVelocity = (GetFaceDirection() > 0f ? Vector2.left : Vector2.right) * _horizontalSpeed;
+        Vector2 knockbackDirection = transform.position - attackOrigin;
+        knockbackDirection.y = 0;
+        Vector2 knocbackVelocity = knockbackDirection.normalized * _horizontalSpeed;
         knocbackVelocity += new Vector2(0, _verticalSpeed);
         _rb.velocity = knocbackVelocity;
         _stunDurationTimer = _healthComponent.StunDuration;

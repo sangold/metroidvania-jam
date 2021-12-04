@@ -3,7 +3,7 @@ using UnityEngine;
 /*
 for any human like figure will inherit this script.
 */
-public class Humanoid : MonoBehaviour
+public class Humanoid : Actor
 {
     protected Rigidbody2D _rb;
     protected float _horizontalSpeed;
