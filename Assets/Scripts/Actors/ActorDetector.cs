@@ -12,6 +12,16 @@ public class ActorDetector : MonoBehaviour
 
     public Transform Target;
 
+    public bool IsInMeleeRange(float range)
+    {
+        if (Target == null)
+            return false;
+        Vector3 dist = transform.position - Target.position;
+        dist.z = 0;
+        Debug.Log(Mathf.Abs(dist.x));
+        return Target != null && dist.magnitude < range;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")

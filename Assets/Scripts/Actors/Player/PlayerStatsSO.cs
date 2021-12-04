@@ -28,10 +28,10 @@ public class PlayerStatsSO: ScriptableObject
         //HasDash = false;
         //HasChargeAttack = false;
 
-        //CurrentHealth = 8;
-        //MaxHealth = 8;
+        CurrentHealth = 8;
+        MaxHealth = 4;
 
-        //HealthCollectible = 0;
-        //ManaCollectible = 0;
+        HealthCollectible = 0;
+        ManaCollectible = 0;
     }
 }

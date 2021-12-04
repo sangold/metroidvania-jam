@@ -33,7 +33,8 @@ public class ShootingAIState: IState
         {
             _owner.TurnLeft();
         }
-        _shootTimer = _fireDelay;
+        if (Time.time - _owner.lastAttackTimer >= _fireDelay)
+            _shootTimer = _fireDelay;
         _rb.velocity = Vector2.zero;
     }
 
@@ -51,6 +52,7 @@ public class ShootingAIState: IState
     { 
         if(_shootTimer >= _fireDelay)
         {
+            _owner.lastAttackTimer = Time.time;
             _animator.SetTrigger("Shoot");
             ShootBullet();
             _shootTimer -= _fireDelay;

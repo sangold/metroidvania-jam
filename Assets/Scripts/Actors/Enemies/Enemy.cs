@@ -6,6 +6,8 @@ public abstract class Enemy : MonoBehaviour
 {
     public Animator Animator;
     public Rigidbody2D Rb;
+    [HideInInspector]
+    public float lastAttackTimer;
     [SerializeField] protected Transform[] _patrolGizmos;
     [SerializeField] protected Transform _spriteTransform;
     protected Vector3[] _patrolPoints;
