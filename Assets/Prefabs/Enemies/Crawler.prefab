@@ -147,9 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab72954548d292546b62b9543e8124d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 4418079104099801670}
+  Rb: {fileID: 4041428142296669551}
   _patrolGizmos: []
-  _animator: {fileID: 4418079104099801670}
-  _lineOfSight: {fileID: 8203111300491092142}
+  _spriteTransform: {fileID: 127087557417050397}
 --- !u!114 &8203111300491092142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentHealth: 0
   _maxHealth: 3
+  _healthPiecesCollected: 0
   _sr: {fileID: 347964579065457877}
   StunDuration: 0.3
 --- !u!1 &6968725762490429392

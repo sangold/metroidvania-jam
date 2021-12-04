@@ -4,17 +4,33 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public Animator Animator;
+    public Rigidbody2D Rb;
     [SerializeField] protected Transform[] _patrolGizmos;
-    [SerializeField] protected Animator _animator;
+    [SerializeField] protected Transform _spriteTransform;
     protected Vector3[] _patrolPoints;
-    protected Rigidbody2D _rb;
 
     protected float _moveSpeed, _jumpForce;
     protected AIStateMachine _stateMachine;
 
+    public void TurnRight()
+    {
+        if(GetFaceDirection() < 0f)
+            _spriteTransform.transform.localScale = new Vector2(1, 1);
+    }
+    public void TurnLeft()
+    {
+        if (GetFaceDirection() > 0f)
+            _spriteTransform.transform.localScale = new Vector2(-1, 1);
+    }
+    public float GetFaceDirection()
+    {
+        return _spriteTransform.transform.localScale.x;
+    }
+
     protected virtual void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        Rb = GetComponent<Rigidbody2D>();
         _patrolPoints = new Vector3[_patrolGizmos.Length];
         for (int i = 0; i < _patrolGizmos.Length; i++)
         {
@@ -27,6 +43,14 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (Rb.velocity.x < 0)
+        {
+            TurnLeft();
+        }
+        else if (Rb.velocity.x > 0)
+        {
+            TurnRight();
+        }
         _stateMachine.Tick();
     }
 
