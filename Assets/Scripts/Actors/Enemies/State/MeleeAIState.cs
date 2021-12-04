@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeleeAIState: IState
 {
-    public bool IsAttacking;
     private Enemy _owner;
     private Animator _animator;
     private ActorDetector _actorDetector;
@@ -15,6 +14,7 @@ public class MeleeAIState: IState
     private float _shootTimer;
     private float _attackFrame = 11f;
     private float _sampleRate = 30f;
+    private float _animationTotalFrame = 28f;
     public MeleeAIState(Enemy enemy, float fireDelay)
     {
         _owner = enemy;
@@ -29,16 +29,9 @@ public class MeleeAIState: IState
     public void OnEnter()
     {
         _target = _actorDetector.Target;
-        if(_target.transform.position.x > _owner.transform.position.x)
-        {
-            _owner.TurnRight();
-        }
-        else
-        {
-            _owner.TurnLeft();
-        }
+        Turn();
 
-        if(Time.time - _owner.lastAttackTimer >= _fireDelay)
+        if (Time.time - _owner.lastAttackTimer >= _fireDelay)
             _shootTimer = _fireDelay;
         _rb.velocity = Vector2.zero;
     }
@@ -46,18 +39,32 @@ public class MeleeAIState: IState
     public void OnExit()
     {
         _target = null;
+        Debug.Log("Sortie");
     }
 
     public void Tick() 
     { 
         if(_shootTimer >= _fireDelay)
         {
+            _owner.IsAttacking = true;
+            Turn();
             _owner.lastAttackTimer = Time.time;
-            IsAttacking = true;
-            GameManager.Instance.StartCoroutine(Attack());
+            _owner.AttackCoroutine = _owner.StartCoroutine(Attack());
             _shootTimer -= _fireDelay;
         }
         _shootTimer += Time.fixedDeltaTime;
+    }
+
+    private void Turn()
+    {
+        if (_target.transform.position.x > _owner.transform.position.x)
+        {
+            _owner.TurnRight();
+        }
+        else
+        {
+            _owner.TurnLeft();
+        }
     }
 
     private IEnumerator Attack()
@@ -65,7 +72,8 @@ public class MeleeAIState: IState
         _animator.SetTrigger("Attack");
         yield return new WaitForSeconds(_attackFrame / _sampleRate);
         _meleeAttackComponent.Attack();
-        IsAttacking = false;
+        yield return new WaitForSeconds((_animationTotalFrame - _attackFrame) / _sampleRate);
+        _owner.IsAttacking = false;
     }
 }
 

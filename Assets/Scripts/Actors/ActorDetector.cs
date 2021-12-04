@@ -18,7 +18,6 @@ public class ActorDetector : MonoBehaviour
             return false;
         Vector3 dist = transform.position - Target.position;
         dist.z = 0;
-        Debug.Log(Mathf.Abs(dist.x));
         return Target != null && dist.magnitude < range;
     }
 

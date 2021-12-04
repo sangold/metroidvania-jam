@@ -16,8 +16,8 @@ public class EnemyKnight: Enemy
         MeleeAIState attack = new MeleeAIState(this, 2f);
 
         _stateMachine.AddAnyTransition(attack, () => ActorDetector.IsInMeleeRange(1.35f));
-        _stateMachine.AddAnyTransition(chase, () => ActorDetector.CanSee && !attack.IsAttacking);
-        _stateMachine.AddAnyTransition(patrol, () => !ActorDetector.CanSee && !attack.IsAttacking);
+        _stateMachine.AddAnyTransition(chase, () => ActorDetector.CanSee && !IsAttacking);
+        _stateMachine.AddAnyTransition(patrol, () => !ActorDetector.CanSee && !IsAttacking);
         _stateMachine.AddTransition(attack, chase, () => !ActorDetector.IsInMeleeRange(1.35f));
         _stateMachine.SetState(patrol);
     }

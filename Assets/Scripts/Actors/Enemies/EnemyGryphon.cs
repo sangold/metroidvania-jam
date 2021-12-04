@@ -4,6 +4,7 @@ public class EnemyGryphon: Enemy
 {
     [SerializeField] private ActorDetector _actorDetector;
     [SerializeField] private GameObject _bulletGO;
+    public Transform ShootingPoint;
 
     protected override void Awake()
     {
@@ -15,7 +16,7 @@ public class EnemyGryphon: Enemy
         ShootingAIState shoot = new ShootingAIState(this, 2f, _bulletGO);
 
         _stateMachine.AddAnyTransition(shoot, () => _actorDetector.CanSee);
-        _stateMachine.AddTransition(shoot, patrol, () => !_actorDetector.CanSee);
+        _stateMachine.AddAnyTransition(patrol, () => !_actorDetector.CanSee && !IsAttacking);
         _stateMachine.SetState(patrol);
     }
 }

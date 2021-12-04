@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ShootingAIState: IState
@@ -11,6 +12,10 @@ public class ShootingAIState: IState
     private float _fireDelay;
     private float _shootTimer;
     private GameObject _bulletGO;
+    private float _attackFrame = 5f;
+    private float _sampleRate = 12f;
+    private float _animationTotalFrame = 10f;
+
     public ShootingAIState(Enemy enemy, float fireDelay, GameObject go)
     {
         _owner = enemy;
@@ -25,14 +30,7 @@ public class ShootingAIState: IState
     public void OnEnter()
     {
         _target = _actorDetector.Target;
-        if(_target.transform.position.x > _owner.transform.position.x)
-        {
-            _owner.TurnRight();
-        }
-        else
-        {
-            _owner.TurnLeft();
-        }
+        Turn();
         if (Time.time - _owner.lastAttackTimer >= _fireDelay)
             _shootTimer = _fireDelay;
         _rb.velocity = Vector2.zero;
@@ -52,12 +50,34 @@ public class ShootingAIState: IState
     { 
         if(_shootTimer >= _fireDelay)
         {
+            _owner.IsAttacking = true;
+            Turn();
             _owner.lastAttackTimer = Time.time;
-            _animator.SetTrigger("Shoot");
-            ShootBullet();
+            _owner.AttackCoroutine = _owner.StartCoroutine(Attack());
             _shootTimer -= _fireDelay;
         }
         _shootTimer += Time.fixedDeltaTime;
+    }
+
+    private void Turn()
+    {
+        if (_target.transform.position.x > _owner.transform.position.x)
+        {
+            _owner.TurnRight();
+        }
+        else
+        {
+            _owner.TurnLeft();
+        }
+    }
+
+    private IEnumerator Attack()
+    {
+        _animator.SetTrigger("Shoot");
+        yield return new WaitForSeconds(_attackFrame / _sampleRate);
+        ShootBullet();
+        yield return new WaitForSeconds((_animationTotalFrame - _attackFrame) / _sampleRate);
+        _owner.IsAttacking = false;
     }
 
     private void ShootBullet()

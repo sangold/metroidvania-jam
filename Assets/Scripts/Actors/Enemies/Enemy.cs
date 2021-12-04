@@ -8,12 +8,24 @@ public abstract class Enemy : MonoBehaviour
     public Rigidbody2D Rb;
     [HideInInspector]
     public float lastAttackTimer;
+    [HideInInspector]
+    public Coroutine AttackCoroutine;
+    [HideInInspector]
+    public bool IsAttacking;
+
     [SerializeField] protected Transform[] _patrolGizmos;
     [SerializeField] protected Transform _spriteTransform;
     protected Vector3[] _patrolPoints;
+    
 
     protected float _moveSpeed, _jumpForce;
     protected AIStateMachine _stateMachine;
+
+    private void OnDestroy()
+    {
+        if (AttackCoroutine != null)
+            StopCoroutine(AttackCoroutine);
+    }
 
     public void TurnRight()
     {
@@ -45,11 +57,11 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (Rb.velocity.x < 0)
+        if (Rb.velocity.x < 0 && !IsAttacking)
         {
             TurnLeft();
         }
-        else if (Rb.velocity.x > 0)
+        else if (Rb.velocity.x > 0 && !IsAttacking)
         {
             TurnRight();
         }
