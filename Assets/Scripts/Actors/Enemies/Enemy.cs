@@ -14,7 +14,6 @@ public abstract class Enemy : MonoBehaviour
     public bool IsAttacking;
 
     [SerializeField] protected Transform[] _patrolGizmos;
-    [SerializeField] protected Transform _spriteTransform;
     protected Vector3[] _patrolPoints;
     
 
@@ -29,17 +28,15 @@ public abstract class Enemy : MonoBehaviour
 
     public void TurnRight()
     {
-        if(GetFaceDirection() < 0f)
-            _spriteTransform.transform.localScale = new Vector2(1, 1);
+        transform.eulerAngles = new Vector3(0, 0, 0);
     }
     public void TurnLeft()
     {
-        if (GetFaceDirection() > 0f)
-            _spriteTransform.transform.localScale = new Vector2(-1, 1);
+        transform.eulerAngles = new Vector3(180, 0, 180);
     }
-    public float GetFaceDirection()
+    public bool IsTurnToTheLeft()
     {
-        return _spriteTransform.transform.localScale.x;
+        return transform.eulerAngles.x == 180;
     }
 
     protected virtual void Awake()
@@ -73,7 +70,7 @@ public abstract class Enemy : MonoBehaviour
         HealthComponent targetHealth = target.gameObject.GetComponent<HealthComponent>();
         if (target.gameObject.tag == "Player")
         {
-            targetHealth.TakeDamage(1);
+            targetHealth.TakeDamage(1, transform.position);
         }
     }
 }

@@ -29,7 +29,7 @@ public class Bullet: MonoBehaviour
         
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<HealthComponent>()?.TakeDamage(_damage);
+            other.gameObject.GetComponent<HealthComponent>()?.TakeDamage(_damage, transform.position);
         }
         Destroy(gameObject);
 

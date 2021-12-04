@@ -1,5 +1,4 @@
 using MJ.GameState;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,25 +23,25 @@ public class Portal : MonoBehaviour
         GameManager.Instance.SetState(new LoadingState());
         DontDestroyOnLoad(gameObject);
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        float playerDirection = player.GetFaceDirection();
+        bool PlayerIsTurnToTheLeft = player.IsTurnToTheLeft();
         yield return new WaitForSeconds(.35f);
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         yield return SceneManager.LoadSceneAsync(_sceneToLoad, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(_sceneToLoad));
         Portal destPortal = GetDestinationPortal();
-        UpdatePlayer(destPortal, playerDirection);
+        UpdatePlayer(destPortal, PlayerIsTurnToTheLeft);
         yield return new WaitForSeconds(.25f);
         Destroy(gameObject);
         GameManager.Instance.SetState(new GameLoopState());
     }
 
-    private void UpdatePlayer(Portal destPortal, float playerDirection)
+    private void UpdatePlayer(Portal destPortal, bool playerIsTurnToTheLeft)
     {
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
         Vector3 destination = destPortal.ExitPoint.position;
         destination.z = 0;
         player.transform.position = destination;
-        if(playerDirection < 0)
+        if(playerIsTurnToTheLeft)
         {
             player.TurnLeft();
         }

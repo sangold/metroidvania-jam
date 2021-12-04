@@ -13,7 +13,7 @@ public class HealthComponent : MonoBehaviour
     private float _flashDuration = .08f;
     private bool _isStunned;
 
-    public delegate void OnDamageTakenEvent(int hp);
+    public delegate void OnDamageTakenEvent(int hp, Vector3 attackOrigin);
     public event OnDamageTakenEvent OnDamageTaken;
 
     public delegate void HealthIncreasedEvent(int maxHP);
@@ -51,7 +51,7 @@ public class HealthComponent : MonoBehaviour
         Health = _maxHealth * 2;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, Vector3 attackOrigin)
     {
         if (_isStunned) return;
         _currentHealth -= amount;
@@ -61,7 +61,7 @@ public class HealthComponent : MonoBehaviour
         {
             Kill();
         }
-        OnDamageTaken?.Invoke(_currentHealth);
+        OnDamageTaken?.Invoke(_currentHealth, attackOrigin);
     }
 
     private IEnumerator Blink(float duration)
