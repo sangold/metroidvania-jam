@@ -23,6 +23,7 @@ public class HealthComponent : MonoBehaviour
     public event HealthPieceCollectedEvent OnHealthPieceCollected;
 
     public float StunDuration;
+    public bool IsShielded;
 
     public int Health { get => _currentHealth; set => _currentHealth = Mathf.Clamp(value, 0, _maxHealth * 2); }
     public int MaxHealth { get => _maxHealth; set => _maxHealth = value;}

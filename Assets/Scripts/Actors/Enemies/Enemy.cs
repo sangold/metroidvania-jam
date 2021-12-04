@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+[RequireComponent(typeof(HealthComponent))]
+public abstract class Enemy : Actor
 {
     public Animator Animator;
     public Rigidbody2D Rb;
@@ -11,7 +13,9 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector]
     public Coroutine AttackCoroutine;
     [HideInInspector]
-    public bool IsAttacking;
+    public bool CanMove = true;
+
+    protected HealthComponent _healthComponent;
 
     [SerializeField] protected Transform[] _patrolGizmos;
     protected Vector3[] _patrolPoints;
@@ -19,28 +23,20 @@ public abstract class Enemy : MonoBehaviour
 
     protected float _moveSpeed, _jumpForce;
     protected AIStateMachine _stateMachine;
+    protected IState _previousState;
 
-    private void OnDestroy()
+    public void ReturnToPreviousState()
     {
-        if (AttackCoroutine != null)
-            StopCoroutine(AttackCoroutine);
-    }
-
-    public void TurnRight()
-    {
-        transform.eulerAngles = new Vector3(0, 0, 0);
-    }
-    public void TurnLeft()
-    {
-        transform.eulerAngles = new Vector3(180, 0, 180);
-    }
-    public bool IsTurnToTheLeft()
-    {
-        return transform.eulerAngles.x == 180;
+        if(_previousState != null)
+        {
+            _stateMachine.SetState(_previousState);
+            _previousState = null;
+        }
     }
 
     protected virtual void Awake()
     {
+        _healthComponent = GetComponent<HealthComponent>();
         Rb = GetComponent<Rigidbody2D>();
         _patrolPoints = new Vector3[_patrolGizmos.Length];
         for (int i = 0; i < _patrolGizmos.Length; i++)
@@ -52,13 +48,30 @@ public abstract class Enemy : MonoBehaviour
         _stateMachine = new AIStateMachine();
     }
 
+    protected virtual void Start()
+    {
+        _healthComponent.OnDamageTaken += OnDamageTaken;
+        CanMove = true;
+    }
+
+    private void OnDestroy()
+    {
+        _healthComponent.OnDamageTaken -= OnDamageTaken;
+        if (AttackCoroutine != null)
+            StopCoroutine(AttackCoroutine);
+    }
+
+    protected virtual void OnDamageTaken(int hp, Vector3 attackOrigin)
+    {
+    }
+
     protected virtual void FixedUpdate()
     {
-        if (Rb.velocity.x < 0 && !IsAttacking)
+        if (Rb.velocity.x < 0 && CanMove)
         {
             TurnLeft();
         }
-        else if (Rb.velocity.x > 0 && !IsAttacking)
+        else if (Rb.velocity.x > 0 && CanMove)
         {
             TurnRight();
         }

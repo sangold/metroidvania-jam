@@ -265,15 +265,7 @@ public class Player : Humanoid
         _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
     }
-    public void TurnRight(){
-        transform.eulerAngles = new Vector3(0, 0, 0);
-    }
-    public void TurnLeft(){
-        transform.eulerAngles = new Vector3(180, 0, 180);
-    }
-    public bool IsTurnToTheLeft(){
-        return transform.eulerAngles.x == 180;
-    }
+    
     private void SnappyJump(){
         if(_rb.velocity.y < 0)
         {

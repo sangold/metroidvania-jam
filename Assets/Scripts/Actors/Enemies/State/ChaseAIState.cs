@@ -25,7 +25,8 @@ public class ChaseAIState : IState
         if(_isDiving)
             _animator.SetBool("Dive", true);
         _target = _actorDetector.Target;
-        _lastScenePoint = _target.position;
+        if(_target != null)
+            _lastScenePoint = _target.position;
     }
 
     public void OnExit()
@@ -55,7 +56,7 @@ public class ChaseAIState : IState
         {
             _rb.velocity = dir.normalized * _moveSpeed;
         }
-        if (!_isDiving)
+        if (!_isDiving && _target != null)
             _lastScenePoint = _target.position;
     }
 }

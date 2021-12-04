@@ -3,7 +3,10 @@
    
     protected IState _currentState;
 
-
+    public IState GetCurrentState()
+    {
+        return _currentState;
+    }
     public virtual void Tick()
     {
         _currentState?.Tick();

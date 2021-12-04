@@ -30,7 +30,7 @@ public class ShootingAIState: IState
     public void OnEnter()
     {
         _target = _actorDetector.Target;
-        Turn();
+        _owner.TurnTo(_target.position);
         if (Time.time - _owner.lastAttackTimer >= _fireDelay)
             _shootTimer = _fireDelay;
         _rb.velocity = Vector2.zero;
@@ -50,25 +50,13 @@ public class ShootingAIState: IState
     { 
         if(_shootTimer >= _fireDelay)
         {
-            _owner.IsAttacking = true;
-            Turn();
+            _owner.CanMove = false;
+            _owner.TurnTo(_target.position);
             _owner.lastAttackTimer = Time.time;
             _owner.AttackCoroutine = _owner.StartCoroutine(Attack());
             _shootTimer -= _fireDelay;
         }
         _shootTimer += Time.fixedDeltaTime;
-    }
-
-    private void Turn()
-    {
-        if (_target.transform.position.x > _owner.transform.position.x)
-        {
-            _owner.TurnRight();
-        }
-        else
-        {
-            _owner.TurnLeft();
-        }
     }
 
     private IEnumerator Attack()
@@ -77,7 +65,7 @@ public class ShootingAIState: IState
         yield return new WaitForSeconds(_attackFrame / _sampleRate);
         ShootBullet();
         yield return new WaitForSeconds((_animationTotalFrame - _attackFrame) / _sampleRate);
-        _owner.IsAttacking = false;
+        _owner.CanMove = true;
     }
 
     private void ShootBullet()

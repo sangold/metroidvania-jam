@@ -12,11 +12,11 @@ public class EnemyGryphon: Enemy
         _moveSpeed = 2f;
         _jumpForce = 0f;
 
-        PatrolAIState patrol = new PatrolAIState(Rb, Animator, _patrolPoints, _moveSpeed, _jumpForce, false, null);
+        PatrolAIState patrol = new PatrolAIState(this, _patrolPoints, _moveSpeed, _jumpForce, false, null);
         ShootingAIState shoot = new ShootingAIState(this, 2f, _bulletGO);
 
         _stateMachine.AddAnyTransition(shoot, () => _actorDetector.CanSee);
-        _stateMachine.AddAnyTransition(patrol, () => !_actorDetector.CanSee && !IsAttacking);
+        _stateMachine.AddAnyTransition(patrol, () => !_actorDetector.CanSee && CanMove);
         _stateMachine.SetState(patrol);
     }
 }

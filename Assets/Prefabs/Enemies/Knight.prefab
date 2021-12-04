@@ -92,9 +92,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.55, y: -0.31}
   serializedVersion: 2
-  m_Radius: 2.71
+  m_Radius: 1.74
 --- !u!1 &172880031818244427
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,10 +380,10 @@ MonoBehaviour:
   Animator: {fileID: 172880031818244428}
   Rb: {fileID: 172880033416979551}
   lastAttackTimer: 0
+  IsAttacking: 0
   _patrolGizmos:
   - {fileID: 172880032216150930}
   - {fileID: 172880031633137692}
-  _spriteTransform: {fileID: 172880033538964316}
   ActorDetector: {fileID: 172880031683347152}
   MeleeAttackComponent: {fileID: 172880033416979550}
 --- !u!114 &172880033416979550
@@ -420,6 +420,7 @@ MonoBehaviour:
   _healthPiecesCollected: 0
   _sr: {fileID: 172880031818244429}
   StunDuration: 0.3
+  IsShielded: 1
 --- !u!114 &172880033416979538
 MonoBehaviour:
   m_ObjectHideFlags: 0

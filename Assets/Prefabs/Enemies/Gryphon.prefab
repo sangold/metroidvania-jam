@@ -152,6 +152,7 @@ MonoBehaviour:
   _healthPiecesCollected: 0
   _sr: {fileID: 732778256917904412}
   StunDuration: 0.3
+  IsShielded: 0
 --- !u!114 &5021597712206486190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,10 +168,10 @@ MonoBehaviour:
   Animator: {fileID: 732778256917904413}
   Rb: {fileID: 732778256803000691}
   lastAttackTimer: 0
+  IsAttacking: 0
   _patrolGizmos:
   - {fileID: 732778256526353904}
   - {fileID: 732778256048989527}
-  _spriteTransform: {fileID: 732778256917904867}
   _actorDetector: {fileID: 732778257510464166}
   _bulletGO: {fileID: 6677129319429244444, guid: 003fedc51b95b5347a03d9aab3ec7a69, type: 3}
   ShootingPoint: {fileID: 3987769696833073976}
@@ -370,9 +371,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2.07, y: 0}
   serializedVersion: 2
-  m_Radius: 4.75
+  m_Radius: 2.09
 --- !u!1 &8648672529913763201
 GameObject:
   m_ObjectHideFlags: 0
