@@ -48,7 +48,7 @@ public class PatrolAIState : IState
     public void Tick()
     {
         Vector3 dir = (_patrolPoints[_currentPoint] - _rb.transform.position);
-        if (Mathf.Abs(dir.magnitude) > .25f)
+        if (Mathf.Abs(dir.magnitude) > .5f)
         {
             if (!_horizontalOnly)
             {
