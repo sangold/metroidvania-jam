@@ -15,8 +15,28 @@
 					</ChildrenList>
 				</Event>
 				<Event Name="Player_Landed" ID="{03E6E639-6F71-48A8-BCFF-51DC964CA559}"/>
-				<Event Name="Player_Jump" ID="{B608A05C-40FF-43A7-B45A-A5B0F34EE3A0}"/>
-				<Event Name="Player_DoubleJump" ID="{46C3201F-2F4B-4AC2-AF93-15E917D11C5D}"/>
+				<Event Name="Player_Jump" ID="{B608A05C-40FF-43A7-B45A-A5B0F34EE3A0}">
+					<ChildrenList>
+						<Action Name="" ID="{61E603A2-A4C1-486D-A906-AB6C7E387FEA}" ShortID="541369890">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SD Jump" ID="{BB879268-5BD7-42CD-B843-3D0A593D92A2}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_DoubleJump" ID="{46C3201F-2F4B-4AC2-AF93-15E917D11C5D}">
+					<ChildrenList>
+						<Action Name="" ID="{40D5D6BF-908B-41BF-8A2B-D8251DDED361}" ShortID="550107864">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SD Double Jump" ID="{5E415AA5-0417-4B8D-A111-FEB85F3B6867}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Player_Slide" ID="{C1336DAB-745B-4CF5-B1FC-43B9AC2752C9}"/>
 				<Event Name="Player_GhostDash" ID="{3E26525F-FB49-48F4-9EC5-81F3A104DF69}"/>
 				<Event Name="FireTile_On" ID="{6CA31623-589D-4C7C-AF16-F8581401AE0D}"/>

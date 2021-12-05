@@ -170,6 +170,267 @@
 							</ChildrenList>
 							<ObjectLists/>
 						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="SD Double Jump" ID="{5E415AA5-0417-4B8D-A111-FEB85F3B6867}" ShortID="736074445">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{CB07CD83-3F82-4AEE-8156-2AA9A2B96011}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{C90622C2-BAA1-4ACF-A76E-214172C225E9}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SD Double Jump_V1" ID="{0163C71D-9438-446B-A954-9C52863EC288}" ShortID="713290576">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Double Jump_V1" ID="{7C62BFF8-E3B5-4A79-9F79-590652BCC504}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0697953216374269"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.299122807017544"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.229327485380117"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.24634502923977"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Double Jump_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="979312668"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Double Jump_V1" ID="{7C62BFF8-E3B5-4A79-9F79-590652BCC504}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Double Jump_V1_01" ID="{2E173364-0530-454D-952A-F9A9715553F3}" ShortID="481406468">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Double Jump_V1" ID="{7232A2FE-858B-45FE-BFE3-BFEF9BFA33D9}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.079766081871345"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.299122807017544"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.22640350877193"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.15368421052632"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Double Jump_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="485389426"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Double Jump_V1" ID="{7232A2FE-858B-45FE-BFE3-BFEF9BFA33D9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Double Jump_V1_02" ID="{8FE5E5A3-9582-4C51-A14A-B79DD06F98F4}" ShortID="312718558">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Double Jump_V1" ID="{A81C0791-C332-42B8-A09B-B5F6AE451E32}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0897368421052631"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.299122807017544"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.13374269005848"/>
+												<Property Name="TrimEnd" Type="Real64" Value="3.18067251461988"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Double Jump_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="767607172"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Double Jump_V1" ID="{A81C0791-C332-42B8-A09B-B5F6AE451E32}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="SD Jump" ID="{BB879268-5BD7-42CD-B843-3D0A593D92A2}" ShortID="814247101">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{3135B188-EA18-4364-AF99-6575A3275F68}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+													<Property Name="Min" Type="Real64" Value="-20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SD Jump_V1" ID="{C383C3B3-B7A3-4C20-BF14-42086EB782BC}" ShortID="70935096">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Jump_V1" ID="{8CA63462-9914-4D8A-9F1B-FCF4F4372C0B}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.041849902534113"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.149463937621832"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.538070175438597"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.836998050682261"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Jump_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="138888369"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Jump_V1" ID="{8CA63462-9914-4D8A-9F1B-FCF4F4372C0B}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Jump_V1_01" ID="{12DCAA46-16EB-4284-9F27-6C4CEA866F22}" ShortID="141837872">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Jump_V1" ID="{065F1194-C7B0-4E8A-A6C0-C726BE307A99}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.041849902534113"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.167399610136452"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.52453216374269"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.84737426900585"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Jump_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="862016300"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Jump_V1" ID="{065F1194-C7B0-4E8A-A6C0-C726BE307A99}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Jump_V1_02" ID="{9AE4685A-BCF8-47BA-A07B-06982AC2CE11}" ShortID="310277114">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Jump_V1" ID="{019E901D-04D6-443D-BC05-49A2C0EE1979}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0418499025341128"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.131528265107212"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.43327290448343"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.76209356725146"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Jump_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="164384842"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Jump_V1" ID="{019E901D-04D6-443D-BC05-49A2C0EE1979}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
