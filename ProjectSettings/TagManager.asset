@@ -19,7 +19,7 @@ TagManager:
   - Enemies
   - Platform
   - Fader
-  - 
+  - Effects
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effects
+    uniqueID: 3594524837
     locked: 0
   - name: HUD
     uniqueID: 2493818179
