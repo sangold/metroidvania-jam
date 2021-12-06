@@ -10,6 +10,9 @@ public class Mirror : MonoBehaviour
     public enum MirrorType { FRONT, SIDE, WORLD }
     [SerializeField]
     private MirrorType _mirrorType;
+    [HideInInspector]
+    public bool IsDisabled;
+
 
     private void Start()
     {
