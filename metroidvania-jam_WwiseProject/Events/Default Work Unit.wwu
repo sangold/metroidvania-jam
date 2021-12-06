@@ -8,19 +8,29 @@
 						<Action Name="" ID="{0ECDC219-A4E9-465E-A4B2-67FDD9C6516B}" ShortID="484115816">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SD Scythe Slash" ID="{E82184E8-64DC-4174-8C3E-7C6919B35DB8}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+									<ObjectRef Name="Player_Slash" ID="{E82184E8-64DC-4174-8C3E-7C6919B35DB8}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Player_Landed" ID="{03E6E639-6F71-48A8-BCFF-51DC964CA559}"/>
+				<Event Name="Player_Landed" ID="{03E6E639-6F71-48A8-BCFF-51DC964CA559}">
+					<ChildrenList>
+						<Action Name="" ID="{19C82628-BE16-4523-8931-C166988D25E9}" ShortID="1050866860">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Landed" ID="{A509CEF3-ED42-4640-AF7C-564C62A8DD0E}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Player_Jump" ID="{B608A05C-40FF-43A7-B45A-A5B0F34EE3A0}">
 					<ChildrenList>
 						<Action Name="" ID="{61E603A2-A4C1-486D-A906-AB6C7E387FEA}" ShortID="541369890">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SD Jump" ID="{BB879268-5BD7-42CD-B843-3D0A593D92A2}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+									<ObjectRef Name="Player_Jump" ID="{BB879268-5BD7-42CD-B843-3D0A593D92A2}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -31,7 +41,7 @@
 						<Action Name="" ID="{40D5D6BF-908B-41BF-8A2B-D8251DDED361}" ShortID="550107864">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SD Double Jump" ID="{5E415AA5-0417-4B8D-A111-FEB85F3B6867}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+									<ObjectRef Name="Player_DoubleJump" ID="{5E415AA5-0417-4B8D-A111-FEB85F3B6867}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -40,6 +50,83 @@
 				<Event Name="Player_Slide" ID="{C1336DAB-745B-4CF5-B1FC-43B9AC2752C9}"/>
 				<Event Name="Player_GhostDash" ID="{3E26525F-FB49-48F4-9EC5-81F3A104DF69}"/>
 				<Event Name="FireTile_On" ID="{6CA31623-589D-4C7C-AF16-F8581401AE0D}"/>
+				<Event Name="Player_Punch" ID="{0327FF9D-A34D-4649-97A2-A33C254AE026}">
+					<ChildrenList>
+						<Action Name="" ID="{6C472148-9E59-4E23-8DF9-602C5AC668DD}" ShortID="43159793">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Punch" ID="{F0C03AAE-DE08-49B0-9CC0-32ED427D4C73}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_SlashEnemy" ID="{CD098430-D240-4474-8C33-53D4558572A3}">
+					<ChildrenList>
+						<Action Name="" ID="{E9A76275-2557-4ED1-BA66-937EC7A5DE78}" ShortID="437298544">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_SlashEnemy" ID="{7115DB12-158E-482A-B460-FA28CD20EC1C}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_GetHit" ID="{1D91508D-C8A8-44AD-BA77-8E97E1B34D04}">
+					<ChildrenList>
+						<Action Name="" ID="{02931A1C-37C7-4C1E-A1A1-8D7DDD128C1B}" ShortID="611058158">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_GetHit" ID="{321511C9-B3FC-4C63-94BE-C853AF8E4803}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_Footsteps" ID="{08D78E23-719E-4157-B8E6-B900BE6156FB}">
+					<ChildrenList>
+						<Action Name="" ID="{D1BCFDCD-CE0E-40AE-AD92-8A4C01BEDA0F}" ShortID="252951652">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Footsteps" ID="{B8F94755-125D-4EDD-B783-3DF0D12D149C}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Spider_Crawl" ID="{450F4B3C-7475-41BE-B8AF-547C6133CB22}">
+					<ChildrenList>
+						<Action Name="" ID="{B19A3948-4F9E-49B5-8AF8-FE07CEBD8D17}" ShortID="703866826">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spider_Crawl" ID="{07D90F17-F1D0-43D1-905A-382A65649A71}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Angel_Dive" ID="{DABD3593-D370-45A0-8DE4-999D27CCF80C}">
+					<ChildrenList>
+						<Action Name="" ID="{61667F95-0C5E-4B02-83A4-ADDDBF44FE79}" ShortID="129763586">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Angel_Dive" ID="{9A5141E0-9133-45BA-AABD-A6EEEA5D5DD2}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_PunchEnemy" ID="{187204FC-D943-4164-8F6A-348F26653311}">
+					<ChildrenList>
+						<Action Name="" ID="{B25DAD79-2F59-42B7-8367-62AA4799E85C}" ShortID="268560712">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_PunchEnemy" ID="{63E0409C-A2B2-4772-B2BC-FD7D903FF9EA}" WorkUnitID="{DD56A303-605B-40AF-A48E-291CA30ED4F4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -35,7 +35,7 @@
 								<ActiveSource Name="SD Scythe Slash With Hit Enemy" ID="{98C482B2-3410-4A2B-AC30-D81BB6E02C30}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<RandomSequenceContainer Name="SD Scythe Slash" ID="{E82184E8-64DC-4174-8C3E-7C6919B35DB8}" ShortID="249834945">
+						<RandomSequenceContainer Name="Player_Slash" ID="{E82184E8-64DC-4174-8C3E-7C6919B35DB8}" ShortID="249834945">
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ValueList>
@@ -59,6 +59,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -170,7 +175,7 @@
 							</ChildrenList>
 							<ObjectLists/>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="SD Double Jump" ID="{5E415AA5-0417-4B8D-A111-FEB85F3B6867}" ShortID="736074445">
+						<RandomSequenceContainer Name="Player_DoubleJump" ID="{5E415AA5-0417-4B8D-A111-FEB85F3B6867}" ShortID="736074445">
 							<PropertyList>
 								<Property Name="Highpass" Type="int16">
 									<ModifierList>
@@ -197,6 +202,11 @@
 									</ModifierList>
 								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -306,8 +316,35 @@
 							</ChildrenList>
 							<ObjectLists/>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="SD Jump" ID="{BB879268-5BD7-42CD-B843-3D0A593D92A2}" ShortID="814247101">
+						<RandomSequenceContainer Name="Player_Jump" ID="{BB879268-5BD7-42CD-B843-3D0A593D92A2}" ShortID="814247101">
 							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{D02DD84C-EEE8-4030-B58C-5E3E97FC1200}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>25</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{D09EFD17-324C-4D2C-A8F5-963C7AFE1F0F}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="15"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
 									<ModifierList>
@@ -315,8 +352,8 @@
 											<Modifier Name="" ID="{3135B188-EA18-4364-AF99-6575A3275F68}">
 												<PropertyList>
 													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="20"/>
-													<Property Name="Min" Type="Real64" Value="-20"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-300"/>
 												</PropertyList>
 											</Modifier>
 										</ModifierInfo>
@@ -426,6 +463,871 @@
 									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="SD Jump_V1" ID="{019E901D-04D6-443D-BC05-49A2C0EE1979}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Player_Punch" ID="{F0C03AAE-DE08-49B0-9CC0-32ED427D4C73}" ShortID="348911153">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{6C3C5ADF-D290-4246-BC2A-78E549C74276}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{C49AB8D4-ABE9-45F8-9F2D-47F65A25B07A}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SD Punch_V2" ID="{7B66C0CF-4B25-4276-8319-1ACE216EE5A8}" ShortID="844749708">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Punch_V2" ID="{C0CE4F88-7108-4B7F-A79C-F723C6825043}">
+											<PropertyList>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.443369463813135"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.209701773425131"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.709415108017979"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Punch_V2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="891176297"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Punch_V2" ID="{C0CE4F88-7108-4B7F-A79C-F723C6825043}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Punch_V2_01" ID="{26668F5B-F089-4151-86D6-D3B84BA58A6D}" ShortID="1011307125">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Punch_V2" ID="{795967EA-7896-4A43-A145-42143474FAF8}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0478479532163743"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.207341130604288"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.49923586744639"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.00961403508772"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Punch_V2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="31089515"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Punch_V2" ID="{795967EA-7896-4A43-A145-42143474FAF8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Punch_V2_02" ID="{AE734591-FB85-4703-8FD8-DDB66B73D07C}" ShortID="816061086">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Punch_V2" ID="{E3C9D23E-C2F1-44F3-B34A-5E73193FEEA4}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0398732943469784"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.27911306042885"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.92669980506823"/>
+												<Property Name="TrimEnd" Type="Real64" Value="3.43707797270955"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Punch_V2.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="990458219"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Punch_V2" ID="{E3C9D23E-C2F1-44F3-B34A-5E73193FEEA4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Player_Footsteps" ID="{B8F94755-125D-4EDD-B783-3DF0D12D149C}" ShortID="806325573">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{175CD3E3-F0DD-4DF2-8D80-676F7BE5C6C6}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{82E412BB-F3FF-4591-BFB6-F67A730D2418}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{35040E69-AB55-403F-8955-68754BF3D34C}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SD Footsteps V1" ID="{AD5DD9D3-5DF7-4A64-9F84-FF282BE2FAF0}" ShortID="833314120">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Footsteps V1" ID="{3859814E-B813-4A7F-98D6-B6B860B3ED53}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0199122807017544"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0398245614035088"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.537085042473742"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.621939639584584"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Footsteps V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="58866923"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Footsteps V1" ID="{3859814E-B813-4A7F-98D6-B6B860B3ED53}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Footsteps V1_01" ID="{BD14DDAF-22B2-41CE-A531-77A29F13CCAB}" ShortID="25285839">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Footsteps V1" ID="{7CC7B365-CDD4-4E18-8C3E-AF36D9A34139}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0159298245614035"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0238947368421052"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.91936820327826"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.97651475132871"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Footsteps V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="708428644"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Footsteps V1" ID="{7CC7B365-CDD4-4E18-8C3E-AF36D9A34139}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<Sound Name="Player_GetHit" ID="{321511C9-B3FC-4C63-94BE-C853AF8E4803}" ShortID="43345999">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{BA542DAD-23B3-416F-8F2E-48B398D3D58A}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{8BABF4FC-EF5A-4BC3-9486-E4773BE77E56}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{24FC2053-5B94-48CA-8E73-DF611EB69069}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Get Hit Low_V1" ID="{9B8FF605-9F46-47A6-9D62-D3B6601E88BB}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0414578460038986"/>
+										<Property Name="FadeInShape" Type="int16" Value="0"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.476765229044834"/>
+										<Property Name="FadeOutShape" Type="int16" Value="9"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.52340530579922"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.37847337962963"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>SD Get Hit Low_V1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="225734775"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Get Hit Low_V1" ID="{9B8FF605-9F46-47A6-9D62-D3B6601E88BB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Player_SlashEnemy" ID="{7115DB12-158E-482A-B460-FA28CD20EC1C}" ShortID="132019824">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{6896EEF4-485A-41EE-BE3B-518C32E963B3}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="30"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{861132E0-00FE-40C4-9060-66A614524EA3}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4E9C3F0E-DB32-41C6-895F-2CCEB71337ED}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="200"/>
+													<Property Name="Min" Type="Real64" Value="-200"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>6</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Hit Enemy" ID="{6A153622-6A0D-44D5-84AA-13155B55F2B3}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0756666666666667"/>
+										<Property Name="FadeInShape" Type="int16" Value="0"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.111508771929825"/>
+										<Property Name="FadeOutShape" Type="int16" Value="9"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.732771929824561"/>
+										<Property Name="TrimEnd" Type="Real64" Value="1.10712280701754"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>SD Hit Enemy.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="654328402"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Hit Enemy" ID="{6A153622-6A0D-44D5-84AA-13155B55F2B3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Angel_Dive" ID="{9A5141E0-9133-45BA-AABD-A6EEEA5D5DD2}" ShortID="442662045">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{500B5A3F-FCD1-4B52-BA02-000EB2FB1D33}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{6EA258DD-97E9-4194-94C6-32A162BB2492}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{F63B92FA-0105-4CCF-90B6-B53A77CA8AC6}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Angel Dive_V1" ID="{761305DE-5598-4B45-97BF-6F352BDA05F6}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0358421052631579"/>
+										<Property Name="FadeInShape" Type="int16" Value="0"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.529666666666667"/>
+										<Property Name="FadeOutShape" Type="int16" Value="9"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.095578947368421"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.828350877192983"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>SD Angel Dive_V1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="82904041"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Angel Dive_V1" ID="{761305DE-5598-4B45-97BF-6F352BDA05F6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="Spider_Crawl" ID="{07D90F17-F1D0-43D1-905A-382A65649A71}" ShortID="578768875">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{6B0DE52F-6603-46DE-9927-958085C65FD2}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="50"/>
+													<Property Name="Min" Type="Real64" Value="-50"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SD Spider Crawl V1" ID="{2A0807D2-9C43-427B-BF1B-600C0458CB0A}" ShortID="434088396">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Spider Crawl V1" ID="{93B2394B-D491-4111-998B-68AB2A04BDAB}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0418499025341131"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0418499025341131"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.59785575048733"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.00439766081872"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Spider Crawl V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="60584037"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Spider Crawl V1" ID="{93B2394B-D491-4111-998B-68AB2A04BDAB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Spider Crawl V1_01" ID="{AD30BCEB-3820-4041-9AEC-B9F7E40F1160}" ShortID="131799053">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Spider Crawl V1" ID="{43C61B21-FB5D-438E-A2D2-D280D2ABBEF8}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.041849902534113"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.041849902534113"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.00439766081871"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.39898245614035"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Spider Crawl V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="32757698"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Spider Crawl V1" ID="{43C61B21-FB5D-438E-A2D2-D280D2ABBEF8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Spider Crawl V1_02" ID="{D23FE063-3F51-4508-9471-B24861FCFAAE}" ShortID="625583189">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Spider Crawl V1" ID="{D33ABDF5-1606-4181-B27D-5C1C66BE94FB}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0358713450292398"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0298927875243666"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.39898245614035"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.79954580896686"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Spider Crawl V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="711512395"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Spider Crawl V1" ID="{D33ABDF5-1606-4181-B27D-5C1C66BE94FB}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Spider Crawl V1_03" ID="{279E535E-E983-4DD4-920B-7B79BCB45B09}" ShortID="934879202">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Spider Crawl V1" ID="{C0B2B61A-4BCF-4492-A0B6-1F290513F1E8}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0597855750487331"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0478284600389862"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="1.79954580896686"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.20608771929825"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Spider Crawl V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="110989935"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Spider Crawl V1" ID="{C0B2B61A-4BCF-4492-A0B6-1F290513F1E8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Spider Crawl V1_04" ID="{D3161B7C-93C3-43A9-944F-0E6521891089}" ShortID="585148363">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Spider Crawl V1" ID="{B6CF673D-E665-47E5-AA5E-B2D280740C27}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0657641325536062"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0597855750487328"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.20608771929824"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.60665107212476"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Spider Crawl V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="130705251"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Spider Crawl V1" ID="{B6CF673D-E665-47E5-AA5E-B2D280740C27}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<Sound Name="Player_PunchEnemy" ID="{63E0409C-A2B2-4772-B2BC-FD7D903FF9EA}" ShortID="591757216">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{067D6542-23E6-43E8-B76D-202E21670DF2}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{1AD3DE16-5CA3-46A5-93FE-42EB1635B3A4}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4922E143-47FF-4F05-BD95-C1BDCA08168E}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SD Punch Enemy_V1" ID="{3947B5A7-527C-42E4-86C3-9C67FE9432C5}">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.0358421052631579"/>
+										<Property Name="FadeInShape" Type="int16" Value="0"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.0716842105263159"/>
+										<Property Name="FadeOutShape" Type="int16" Value="9"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.386298245614035"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.796491228070175"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>SD Punch Enemy_V1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="194737210"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="SD Punch Enemy_V1" ID="{3947B5A7-527C-42E4-86C3-9C67FE9432C5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="Player_Landed" ID="{A509CEF3-ED42-4640-AF7C-564C62A8DD0E}" ShortID="1047322631">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>40</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{C6F42835-0291-4FB8-9A73-D1FFA8D5900D}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="100"/>
+													<Property Name="Min" Type="Real64" Value="-100"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SD Landed_V1" ID="{E5C440DD-ADCD-41F9-AC6E-A788D4BBA09E}" ShortID="18110980">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Landed_V1" ID="{98876AD1-5C80-43D9-B564-C4EC995AEBD0}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0478479532163743"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.127594541910331"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.781516569200779"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.20417348927875"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Landed_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="522860074"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Landed_V1" ID="{98876AD1-5C80-43D9-B564-C4EC995AEBD0}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SD Landed_V1_01" ID="{4895365D-FD62-4382-9374-D9E0AA175109}" ShortID="469686394">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{59983302-1223-404E-875A-51D52D605046}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FFA9CE2-B98D-43E0-92B2-20D1C86BD156}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SD Landed_V1" ID="{317E90BD-C6E9-44EB-A463-949127B0936D}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="0.0398732943469784"/>
+												<Property Name="FadeInShape" Type="int16" Value="0"/>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.0398732943469788"/>
+												<Property Name="FadeOutShape" Type="int16" Value="9"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="2.53594152046784"/>
+												<Property Name="TrimEnd" Type="Real64" Value="2.92669980506823"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>SD Landed_V1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1029014616"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="SD Landed_V1" ID="{317E90BD-C6E9-44EB-A463-949127B0936D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
