@@ -29,6 +29,12 @@ public class MeleeAttackComponent : MonoBehaviour
         }
     }
 
+    public void SetAttackPos(Vector2 pos, float range)
+    {
+        _attackPoint.position = pos;
+        _attackRange = range;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
