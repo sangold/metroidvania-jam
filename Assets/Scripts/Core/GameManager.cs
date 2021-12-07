@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
         if(!_levels.Contains(level))
         {
             _levels.Add(level);
-            Debug.Log(_levels.Count);
         }
 
         if (_currentLevel != null)

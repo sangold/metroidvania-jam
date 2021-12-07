@@ -14,7 +14,7 @@ public class AttackPrideState : IState
         _owner = owner;
         _bossGo = bossGo;
         _triggerName = triggerName;
-        _animator = _bossGo.GetComponentInChildren<Animator>();
+        _animator = _bossGo.GetComponentsInChildren<Animator>()[1];
     }
 
     public bool IsDone()
