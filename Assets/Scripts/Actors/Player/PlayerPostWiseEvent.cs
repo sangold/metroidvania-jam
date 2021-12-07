@@ -1,25 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Event = AK.Wwise.Event;
 
-public class PlayerPostWiseEvent : MonoBehaviour
+[CreateAssetMenu(menuName = "SO/Audio/Player", fileName = "New PlayerAudioChannelSO")]
+public class PlayerPostWiseEvent : ScriptableObject
 {
-    public AK.Wwise.Event Player_Slash_Event;
-    public AK.Wwise.Event Player_Slide_Event;
-    public AK.Wwise.Event Player_Landed_Event;
-    public AK.Wwise.Event Player_Jump_Event;
-    public AK.Wwise.Event Player_Double_Jump_Event;
-    public AK.Wwise.Event Player_Ghost_Dash_Event;
-    public AK.Wwise.Event Player_Wall_Sliding;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Player_Slash_Event.Post(gameObject);
-    }
+    [Header("Movement")]
+    public Event Player_Footstep_Event;
+    public Event Player_Jump_Event;
+    public Event Player_Double_Jump_Event;
+    public Event Player_Landed_Event;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Attack")]
+    public Event Player_Slash_Event;
+    public Event Player_Slide_Event;
+
+    [Header("Capacity")]
+    public Event Player_Ghost_Dash_Event;
+    public Event Player_Wall_Sliding;
 }

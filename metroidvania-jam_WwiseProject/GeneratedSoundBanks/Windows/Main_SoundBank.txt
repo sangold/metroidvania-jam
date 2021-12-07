@@ -1,8 +1,40 @@
 Event	ID	Name			Wwise Object Path	Notes
+	694629429	Player_Landed			\Default Work Unit\Player_Landed	
+	979951458	Player_DoubleJump			\Default Work Unit\Player_DoubleJump	
+	1298022421	Angel_Dive			\Default Work Unit\Angel_Dive	
+	1305133589	Player_Jump			\Default Work Unit\Player_Jump	
+	1565542225	Player_PunchEnemy			\Default Work Unit\Player_PunchEnemy	
+	1730208058	Player_Footsteps			\Default Work Unit\Player_Footsteps	
 	2625026092	Player_Slash			\Default Work Unit\Player_Slash	
+	3622567080	Player_SlashEnemy			\Default Work Unit\Player_SlashEnemy	
+	3850318246	Spider_Crawl			\Default Work Unit\Spider_Crawl	
+	3882007279	Player_Punch			\Default Work Unit\Player_Punch	
+	3945457670	Player_GetHit			\Default Work Unit\Player_GetHit	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	569327657	SD Scythe Slash_1_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Scythe Slash_1_V2_5E5E87B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_1_V2		80876
-	690740967	SD Scythe Slash_3_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Scythe Slash_3_V2_508B2E4E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_3_V2		90028
-	895970190	SD Scythe Slash_2_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Scythe Slash_2_V2_0F189DD8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_2_V2		80880
+	31089515	SD Punch_V2_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Punch_V2_61985FC1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2_01		98056
+	32757698	SD Spider Crawl V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Spider Crawl V1_F8FA76D7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_01		75824
+	58866923	SD Footsteps V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Footsteps V1_C4CA8B4F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Footsteps\SD Footsteps V1		16356
+	60584037	SD Spider Crawl V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Spider Crawl V1_AAAF27B1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1		78120
+	82904041	Angel_Dive	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Angel Dive_V1_183558EF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Angel_Dive		140756
+	110989935	SD Spider Crawl V1_03	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Spider Crawl V1_1665482B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_03		78120
+	130705251	SD Spider Crawl V1_04	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Spider Crawl V1_1CD73877.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_04		76972
+	138888369	SD Jump_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Jump_V1_9DD97C4D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1		57460
+	164384842	SD Jump_V1_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Jump_V1_3050F42A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1_02		63196
+	194737210	Player_PunchEnemy	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Punch Enemy_V1_1A72E8B3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_PunchEnemy		78824
+	225734775	Player_GetHit	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Get Hit Low_V1_D6F1FA2B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_GetHit		164240
+	485389426	SD Double Jump_V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Double Jump_V1_12F4749D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1_01		178104
+	522860074	SD Landed_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Landed_V1_FF2E8475.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Landed\SD Landed_V1		81212
+	569327657	SD Scythe Slash_1_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Scythe Slash_1_V2_5E5E87B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_1_V2		80876
+	654328402	Player_SlashEnemy	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Hit Enemy_CDDCB881.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_SlashEnemy		71940
+	690740967	SD Scythe Slash_3_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Scythe Slash_3_V2_508B2E4E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_3_V2		90028
+	708428644	SD Footsteps V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Footsteps V1_15CB76FA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Footsteps\SD Footsteps V1_01		11036
+	711512395	SD Spider Crawl V1_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Spider Crawl V1_44E65782.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_02		76972
+	767607172	SD Double Jump_V1_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Double Jump_V1_1695382A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1_02		201072
+	862016300	SD Jump_V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Jump_V1_D0874156.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1_01		62048
+	891176297	SD Punch_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Punch_V2_0298B5CA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2		96008
+	895970190	SD Scythe Slash_2_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Scythe Slash_2_V2_0F189DD8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_2_V2		80880
+	979312668	SD Double Jump_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Double Jump_V1_48D65CDC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1		195332
+	990458219	SD Punch_V2_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Punch_V2_E701C117.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2_02		98056
+	1029014616	SD Landed_V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Windows\SFX\SD Landed_V1_3C7C6022.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Landed\SD Landed_V1_01		75092
 

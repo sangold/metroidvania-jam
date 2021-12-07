@@ -5,7 +5,17 @@
 			<ChildrenList>
 				<SoundBank Name="Main_SoundBank" ID="{956207B9-31E3-499C-83D4-D4551B7A465A}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Player_Footsteps" ID="{08D78E23-719E-4157-B8E6-B900BE6156FB}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_PunchEnemy" ID="{187204FC-D943-4164-8F6A-348F26653311}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Spider_Crawl" ID="{450F4B3C-7475-41BE-B8AF-547C6133CB22}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Jump" ID="{B608A05C-40FF-43A7-B45A-A5B0F34EE3A0}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_SlashEnemy" ID="{CD098430-D240-4474-8C33-53D4558572A3}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_GetHit" ID="{1D91508D-C8A8-44AD-BA77-8E97E1B34D04}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Angel_Dive" ID="{DABD3593-D370-45A0-8DE4-999D27CCF80C}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Punch" ID="{0327FF9D-A34D-4649-97A2-A33C254AE026}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Landed" ID="{03E6E639-6F71-48A8-BCFF-51DC964CA559}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Player_Slash" ID="{999104DD-0E52-4958-9CCC-4A54EF14C4C3}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_DoubleJump" ID="{46C3201F-2F4B-4AC2-AF93-15E917D11C5D}" WorkUnitID="{86E52286-4665-4C1F-9FEF-88C5FC91F0D1}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

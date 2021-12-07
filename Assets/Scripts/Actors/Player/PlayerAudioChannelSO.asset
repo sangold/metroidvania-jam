@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120f7a68797252f4a8eb4d88cf606ab0, type: 3}
+  m_Name: PlayerAudioChannelSO
+  m_EditorClassIdentifier: 
+  Player_Footstep_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4cc0318f1ba978a4daa7bef70e3d741b, type: 2}
+  Player_Jump_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e7fbd81572f80cf46b4ce80735341c5c, type: 2}
+  Player_Double_Jump_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d32e52131c92376498742a5013eff889, type: 2}
+  Player_Landed_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: b79d37871ff03164d854e6d2bba4673f, type: 2}
+  Player_Slash_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 7f8b6edcaa79d8947be54b48869f986c, type: 2}
+  Player_Slide_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ca95888a7bfe55d49bd118faaad2330d, type: 2}
+  Player_Ghost_Dash_Event:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c5b7987f79813c14896bda291ac6bda4, type: 2}
+  Player_Wall_Sliding:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ca95888a7bfe55d49bd118faaad2330d, type: 2}

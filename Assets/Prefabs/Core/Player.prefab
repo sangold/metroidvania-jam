@@ -258,7 +258,6 @@ GameObject:
   - component: {fileID: 5399301505037127093}
   - component: {fileID: 4515952590322010346}
   - component: {fileID: 8901867945249327929}
-  - component: {fileID: 653808411827110023}
   - component: {fileID: 4348974883745488795}
   - component: {fileID: 7798453881471294695}
   m_Layer: 9
@@ -297,7 +296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpCoyoteTime: 0.16
   _wallJumpAcceleration: 5
-  MaxVertical: -30
   _playerStats: {fileID: 11400000, guid: 1a668eef8fa958f4385db6e8685beea3, type: 2}
   _fallMultiplier: 6.5
   _fastFallMultiplier: 20
@@ -312,7 +310,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: 09711d1d12168444ba2707e39fb31afd, type: 2}
-  _spriteGameObject: {fileID: 8336131431407130333}
+  _postWiseEvent: {fileID: 11400000, guid: 40c68534ae7ca7342ac59409fa95319d, type: 2}
   _touchingARoom: 
 --- !u!114 &5399301505037127093
 MonoBehaviour:
@@ -378,46 +376,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03, y: -0.2}
   m_Size: {x: 1.12, y: 1.5}
   m_Direction: 0
---- !u!114 &653808411827110023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468836473888323115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120f7a68797252f4a8eb4d88cf606ab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player_Slash_Event:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 7f8b6edcaa79d8947be54b48869f986c, type: 2}
-  Player_Slide_Event:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: daf1c735081feff40a8e4c42d4085657, type: 2}
-  Player_Landed_Event:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 7d6911f180d72bd43a39ca25dfd92397, type: 2}
-  Player_Jump_Event:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 2417c57173ea3da45978170f7fd6d85c, type: 2}
-  Player_Double_Jump_Event:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: a8e6e693ccc2a4847b5ee4c4b994562a, type: 2}
-  Player_Ghost_Dash_Event:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 6972d5780aa847b468b36bf6d322e071, type: 2}
-  Player_Wall_Sliding:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 800300403094f8d49b010058dee4b310, type: 2}
 --- !u!114 &4348974883745488795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +393,7 @@ MonoBehaviour:
   _healthPiecesCollected: 0
   _sr: {fileID: 131847291373639071}
   StunDuration: 0.5
+  IsShielded: 0
 --- !u!114 &7798453881471294695
 MonoBehaviour:
   m_ObjectHideFlags: 0

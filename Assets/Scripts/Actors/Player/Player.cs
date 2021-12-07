@@ -24,6 +24,7 @@ public class Player : Humanoid
     
     private HealthComponent _healthComponent;
 
+    [SerializeField]
     private PlayerPostWiseEvent _postWiseEvent;
     private MeleeAttackComponent _meleeAttackComponent;
     public int Health {
@@ -87,7 +88,6 @@ public class Player : Humanoid
     {
         base.Awake();
         _playerInputs = new PlayerInputs();
-        _postWiseEvent = GetComponent<PlayerPostWiseEvent>();
         _meleeAttackComponent = GetComponent<MeleeAttackComponent>();
         _healthComponent = GetComponent<HealthComponent>();
         SetState(PlayerState.STANDARD);
