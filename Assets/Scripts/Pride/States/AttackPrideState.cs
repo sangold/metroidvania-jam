@@ -29,12 +29,18 @@ public class AttackPrideState : IState
         _triggerName = _owner.SelectedPoint.MirrorType == Mirror.MirrorType.SIDE ? "SideAttack" : "SmashAttack";
         _animator.SetTrigger(_triggerName);
         _bossGo.AnimatorEventHandler.OnAttack += OnAttack;
+        _bossGo.AnimatorEventHandler.OnAnimTrigger += OnAnimTrigger;
         _bossGo.AnimatorEventHandler.OnEnd += OnEnd;
     }
 
     private void OnEnd()
     {
         _isEnded = true;
+    }
+
+    private void OnAnimTrigger()
+    {
+        _owner.CloseCurrentMirror();
     }
 
     private void OnAttack()
@@ -44,9 +50,9 @@ public class AttackPrideState : IState
 
     public void OnExit()
     {
+        _bossGo.AnimatorEventHandler.OnAnimTrigger -= OnAnimTrigger;
         _bossGo.AnimatorEventHandler.OnAttack -= OnAttack;
         _bossGo.AnimatorEventHandler.OnEnd -= OnEnd;
-        _isEnded = false;
     }
 
     public void Tick()

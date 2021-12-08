@@ -6,6 +6,12 @@ public class AnimatorEventHandler: MonoBehaviour
 {
     public Action OnAttack;
     public Action OnEnd;
+    public Action OnAnimTrigger;
+
+    public void AnimTrigger()
+    {
+        OnAnimTrigger?.Invoke();
+    }
 
     public void Attack()
     {
