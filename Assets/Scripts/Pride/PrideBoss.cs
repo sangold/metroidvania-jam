@@ -10,12 +10,15 @@ public class PrideBoss: MonoBehaviour
     [SerializeField]
     private Transform _attackPoint;
     public AnimatorEventHandler AnimatorEventHandler;
+    public ParticleSystem _particleSystem;
+    private Mirror.MirrorType _mt;
 
     private void Awake()
     {
         HealthComponent = GetComponent<HealthComponent>();
         _meleeAttackComponent = GetComponent<MeleeAttackComponent>();
         AnimatorEventHandler = GetComponentInChildren<AnimatorEventHandler>();
+        _mt = Mirror.MirrorType.FRONT;
     }
 
     public void SetColliderActive(bool isActive)
@@ -26,15 +29,18 @@ public class PrideBoss: MonoBehaviour
     public void Attack()
     {
         _meleeAttackComponent.Attack();
+        if(_mt == Mirror.MirrorType.FRONT)
+            _particleSystem.Play();
     }
 
     private void OnDamageTaken(int hp, Vector3 attackOrigin)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void SetToType(Mirror.MirrorType type)
     {
+        _mt = type;
         if (type == Mirror.MirrorType.SIDE)
         {
             _collider.offset = new Vector2(-.45f, -.81f);
