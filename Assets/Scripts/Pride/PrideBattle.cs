@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrideBattle: MonoBehaviour
 {
@@ -48,7 +49,8 @@ public class PrideBattle: MonoBehaviour
 
     private void OnDamageTaken(int hp, Vector3 attackOrigin)
     {
-        
+        if (hp <= 0)
+            Debug.Log("Battlehasended");
     }
 
     private void Update()

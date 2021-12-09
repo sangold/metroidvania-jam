@@ -33,7 +33,7 @@ namespace MJ.GameState
 
         private void SetCameraForUI()
         {
-            GameObject.FindObjectOfType<ScreenSpaceCamera>().Init();
+            //GameObject.FindObjectOfType<ScreenSpaceCamera>().Init();
         }
 
         public void OnExit()

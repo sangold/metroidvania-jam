@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthHUD : MonoBehaviour
 {
@@ -9,10 +10,19 @@ public class HealthHUD : MonoBehaviour
     [SerializeField] private Sprite _halfContainer;
     [SerializeField] private Sprite _fullContainer;
 
-    [SerializeField] private List<GameObject> _healthContainers;
+    private List<GameObject> _healthContainers;
     [SerializeField] private int _maxHealthContainers{get => _playerHealthComponent.MaxHealth;}
     [SerializeField] private int _health{get => _playerHealthComponent.Health;}
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        _healthContainers = new List<GameObject>();
+        foreach(Image i in GetComponentsInChildren<Image>())
+        {
+            _healthContainers.Add(i.gameObject);
+        }
+    }
     void Start()
     {
         GetTargetHealth();
@@ -67,26 +77,26 @@ public class HealthHUD : MonoBehaviour
         }
     }
     void SetHealthContainer(GameObject healthContainer, int amount){
-        SpriteRenderer spriteRenderer = healthContainer.GetComponent<SpriteRenderer>();
+        Image image = healthContainer.GetComponent<Image>();
         if (amount >= 2){
-            spriteRenderer.sprite = _fullContainer;
+            image.sprite = _fullContainer;
         }
         if (amount == 1){
-            spriteRenderer.sprite = _halfContainer;
+            image.sprite = _halfContainer;
         }
         if (amount == 0){
-            spriteRenderer.sprite = _emptyContainer;
+            image.sprite = _emptyContainer;
         }
     }
     int GetHealthContainer(GameObject healthContainer){
-        SpriteRenderer spriteRenderer = healthContainer.GetComponent<SpriteRenderer>();
-        if (spriteRenderer.sprite == _fullContainer){
+        Image image = healthContainer.GetComponent<Image>();
+        if (image.sprite == _fullContainer){
             return 2;
         }
-        if (spriteRenderer.sprite == _halfContainer){
+        if (image.sprite == _halfContainer){
             return 1;
         }
-        if (spriteRenderer.sprite == _emptyContainer){
+        if (image.sprite == _emptyContainer){
             return 0;
         }
         return -1;
