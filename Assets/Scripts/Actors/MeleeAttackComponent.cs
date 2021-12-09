@@ -31,7 +31,7 @@ public class MeleeAttackComponent : MonoBehaviour
 
     public void SetAttackPos(Vector2 pos, float range)
     {
-        _attackPoint.position = pos;
+        _attackPoint.localPosition = pos;
         _attackRange = range;
     }
 

@@ -25,6 +25,7 @@ public class AttackPrideState : IState
     public void OnEnter()
     {
         _bossGo.SetColliderActive(true);
+        _bossGo.SetToType(_owner.SelectedPoint.MirrorType);
         _isEnded = false;
         _triggerName = _owner.SelectedPoint.MirrorType == Mirror.MirrorType.SIDE ? "SideAttack" : "SmashAttack";
         _animator.SetTrigger(_triggerName);
