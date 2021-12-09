@@ -10,7 +10,6 @@ public class PrideBoss: MonoBehaviour
     [SerializeField]
     private Transform _attackPoint;
     public AnimatorEventHandler AnimatorEventHandler;
-    public ParticleSystem _particleSystem;
     private Mirror.MirrorType _mt;
 
     private void Awake()
@@ -29,8 +28,6 @@ public class PrideBoss: MonoBehaviour
     public void Attack()
     {
         _meleeAttackComponent.Attack();
-        if(_mt == Mirror.MirrorType.FRONT)
-            _particleSystem.Play();
     }
 
     private void OnDamageTaken(int hp, Vector3 attackOrigin)
