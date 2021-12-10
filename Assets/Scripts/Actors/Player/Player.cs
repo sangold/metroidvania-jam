@@ -265,6 +265,20 @@ public class Player : Humanoid
         _verticalSpeed = _currentState.VerticalSpeed;
         _jumpForce = _currentState.JumpForce;
     }
+
+    public void GetItem(CollectableSO collectedItem)
+    {
+        if (collectedItem.CollectableType == CollectableEnum.HEALTH_UP)
+        {
+            _healthComponent.HealthPiecesCollected += 1;
+        } else if (collectedItem.CollectableType == CollectableEnum.MANA_UP)
+        {
+
+        } else if (collectedItem.CollectableType == CollectableEnum.ABILITY)
+        {
+            _playerStats.UnlockAbility(collectedItem.AbilityName);
+        }
+    }
     
     private void SnappyJump(){
         if(_rb.velocity.y < 0)
