@@ -59,10 +59,6 @@ public class HealthComponent : MonoBehaviour
         StopCoroutine(Blink(0f));
         StartCoroutine(Blink(StunDuration));
         OnDamageTaken?.Invoke(_currentHealth, attackOrigin);
-        if(_currentHealth <= 0)
-        {
-            Kill();
-        }
     }
 
     private IEnumerator Blink(float duration)

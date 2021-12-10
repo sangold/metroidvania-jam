@@ -34,4 +34,9 @@ public class Mirror : MonoBehaviour
     {
         _animator.SetTrigger("Close");
     }
+
+    public void ForceClose()
+    {
+        _animator.SetTrigger("ForceClose");
+    }
 }

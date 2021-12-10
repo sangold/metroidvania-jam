@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class PrideBattle: MonoBehaviour
@@ -16,9 +17,12 @@ public class PrideBattle: MonoBehaviour
     private float _delayBetweenAttacks;
     [SerializeField]
     private float _portalOpeningTimer;
+    [SerializeField]
+    private PlayableDirector _outroDirector;
     //private float _timer = 0f;
     private AttackPrideState _attackState;
     private TPPrideState _tpState;
+    private bool _fightHasEnded;
 
     [HideInInspector]
     public PrideTPPoint SelectedPoint;
@@ -31,13 +35,13 @@ public class PrideBattle: MonoBehaviour
 
     private void Start()
     {
-        var introState = new IntroPrideState(this, _boss);
+        var outroState = new OutroPrideState(this, _boss, _tpPoints[2].transform);
         _tpState = new TPPrideState(this, _tpPoints, _boss, _delayBetweenAttacks, _portalOpeningTimer);
         _attackState = new AttackPrideState(this, _boss, "SideAttack");
 
-        _stateMachine.AddTransition(introState, _tpState, () => introState.IsDone());
         _stateMachine.AddTransition(_tpState, _attackState, () => _tpState.IsDone());
         _stateMachine.AddTransition(_attackState, _tpState, () => _attackState.IsDone());
+        _stateMachine.AddAnyTransition(outroState, () => _fightHasEnded);
 
         _boss.HealthComponent.OnDamageTaken += OnDamageTaken;
     }
@@ -50,7 +54,10 @@ public class PrideBattle: MonoBehaviour
     private void OnDamageTaken(int hp, Vector3 attackOrigin)
     {
         if (hp <= 0)
-            Debug.Log("Battlehasended");
+        {
+            _fightHasEnded = true;
+            _outroDirector.Play();
+        }
     }
 
     private void Update()
@@ -61,6 +68,12 @@ public class PrideBattle: MonoBehaviour
     public void StartFight()
     {
         _stateMachine.SetState(_tpState);
+    }
+
+    public void CloseAllMirrors()
+    {
+        foreach (Mirror mirror in _mirrors)
+            mirror.ForceClose();
     }
 
     public void CloseCurrentMirror()

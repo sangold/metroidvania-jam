@@ -18,6 +18,10 @@ public class PlayerStatsSO: ScriptableObject
     public int HealthCollectible;
     public int ManaCollectible;
 
+    private void OnEnable()
+    {
+        HasScythe = true;
+    }
     private void OnDisable()
     {
         // Reset for later

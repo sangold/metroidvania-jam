@@ -63,6 +63,8 @@ public abstract class Enemy : Actor
 
     protected virtual void OnDamageTaken(int hp, Vector3 attackOrigin)
     {
+        if (hp <= 0)
+            Destroy(this.gameObject);
     }
 
     protected virtual void FixedUpdate()
