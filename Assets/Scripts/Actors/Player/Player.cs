@@ -16,8 +16,6 @@ public class Player : Humanoid
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
     private List<PlayerStateSO> _states;
-    [SerializeField]
-    private ModalEvent _onPowerUpPickup;
 
     private PlayerInputs _playerInputs;
     
@@ -52,39 +50,29 @@ public class Player : Humanoid
         }
     }
 
-    public void LoadData(float x, float y, int currentHealth, int maxHealth, bool hasScythe, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
-    {
-        transform.position = new Vector2(x, y);
-        Health = currentHealth;
-        MaxHealth = maxHealth;
-
-        _playerStats.HasScythe = hasScythe;
-        _playerStats.HasDoubleJump = hasDoubleJump;
-        _playerStats.HasWallJump = hasWallJump;
-        _playerStats.HasGhostDash = hasGhostDash;
-        _playerStats.HasDash = hasDash;
-        _playerStats.HasChargeAttack = hasChargeAttack;
-    }
-
-    public bool HasScythe => _playerStats.HasScythe;
-    public bool HasDoubleJump => _playerStats.HasDoubleJump;
-    public bool HasWallJump => _playerStats.HasWallJump;
-    public bool HasGhostDash => _playerStats.HasGhostDash;
-    public bool HasDash => _playerStats.HasDash;
-    public bool HasChargeAttack => _playerStats.HasChargeAttack;
 
     private float _stunDurationTimer = 0;
-
-    public string _touchingARoom = null;
     public float VerticalSpeed { get => _rb.velocity.y; }
     public float HorizontalSpeed { get => _rb.velocity.x; }
     public event EventHandler OnJump;
     public event EventHandler OnAttack;
     public event EventHandler OnChargeSpinAttack;
+    [SerializeField]
+    private ModalEvent _onPowerUpPickup;
+    [SerializeField]
+    private GameEvent _onPortalTaken;
+    public bool IsInInteractivePortalRange;
 
     private bool _canDoChargeAttack;
     private float _chargeAttackTimer = 0;
 
+    public void LoadData(float x, float y, int currentHealth, int maxHealth, bool hasScythe, bool hasMirror, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
+    {
+        transform.position = new Vector2(x, y);
+        Health = currentHealth;
+        MaxHealth = maxHealth;
+        _playerStats.LoadData(currentHealth, maxHealth, hasScythe, hasMirror, hasDoubleJump, hasWallJump, hasGhostDash, hasDash, hasChargeAttack);
+    }
 
     protected override void Awake()
     {
@@ -111,6 +99,10 @@ public class Player : Humanoid
         base.FixedUpdate();
 
         _playerInputs.GetInputs();
+        if(IsInInteractivePortalRange && _playerInputs.AttackButtonPressed)
+        {
+            _onPortalTaken.Raise();
+        }
         _movementX = _playerInputs.MovementX;
         _movementY = _playerInputs.MovementY;
         if (_currentState.CanDash && _playerInputs.SlideButtonPressed)
@@ -240,7 +232,7 @@ public class Player : Humanoid
         if (_currentState.StateType == PlayerState.GHOSTDASH){
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
         } else {
-            if (_snapTolastNoneGhostPosition && PlayerCollision.OnGround && PlayerCollision.OnLeftWall && PlayerCollision.OnRightWall || _snapTolastNoneGhostPosition && _touchingARoom == null){
+            if (_snapTolastNoneGhostPosition && PlayerCollision.OnGround && PlayerCollision.OnLeftWall && PlayerCollision.OnRightWall || _snapTolastNoneGhostPosition){
                 transform.position = _lastNoneGhostPosition;
             }
             _snapTolastNoneGhostPosition = false;

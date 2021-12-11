@@ -24,6 +24,9 @@ public class PrideBattle: MonoBehaviour
     private TPPrideState _tpState;
     private bool _fightHasEnded;
 
+    [SerializeField]
+    private GameEvent _prideBossEnd;
+
     [HideInInspector]
     public PrideTPPoint SelectedPoint;
 
@@ -57,6 +60,7 @@ public class PrideBattle: MonoBehaviour
         {
             _fightHasEnded = true;
             _outroDirector.Play();
+            _prideBossEnd.Raise();
         }
     }
 

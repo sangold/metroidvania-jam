@@ -11,12 +11,13 @@ public static class GameDataManager
         Vector2 position = player.transform.position;
         PlayerPrefs.SetFloat("Player.x", position.x);
         PlayerPrefs.SetFloat("Player.y", position.y);
-        PlayerPrefs.SetInt("Player.HasScythe", player.HasScythe ? 1 : 0);
-        PlayerPrefs.SetInt("Player.HasDoubleJump", player.HasDoubleJump ? 1 : 0);
-        PlayerPrefs.SetInt("Player.HasWallJump", player.HasWallJump ? 1 : 0);
-        PlayerPrefs.SetInt("Player.HasGhostDash", player.HasGhostDash ? 1 : 0);
-        PlayerPrefs.SetInt("Player.HasDash", player.HasDash ? 1 : 0);
-        PlayerPrefs.SetInt("Player.HasChargeAttack", player.HasChargeAttack ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasScythe", player.CheckAbility(PowerUpType.SCYTHE) ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasDoubleJump", player.CheckAbility(PowerUpType.DOUBLEJUMP) ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasWallJump", player.CheckAbility(PowerUpType.WALLJUMP) ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasGhostDash", player.CheckAbility(PowerUpType.GHOSTDASH) ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasDash", player.CheckAbility(PowerUpType.DASH) ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasMirror", player.CheckAbility(PowerUpType.MIRROR) ? 1 : 0);
+        PlayerPrefs.SetInt("Player.HasChargeAttack", player.CheckAbility(PowerUpType.CHARGEATTACK) ? 1 : 0);
         PlayerPrefs.SetInt("Player.health", player.Health);
         PlayerPrefs.SetInt("Player.Maxhealth", player.MaxHealth);
     }
@@ -28,6 +29,7 @@ public static class GameDataManager
             PlayerPrefs.GetInt("Player.health", 8),
             PlayerPrefs.GetInt("Player.Maxhealth", 4),
             Convert.ToBoolean(PlayerPrefs.GetInt("Player.HasScythe", 0)),
+            Convert.ToBoolean(PlayerPrefs.GetInt("Player.HasMirror", 0)),
             Convert.ToBoolean(PlayerPrefs.GetInt("Player.HasDoubleJump", 0)),
             Convert.ToBoolean(PlayerPrefs.GetInt("Player.HasWallJump", 0)),
             Convert.ToBoolean(PlayerPrefs.GetInt("Player.HasGhostDash", 0)),

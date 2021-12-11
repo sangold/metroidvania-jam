@@ -32,12 +32,27 @@ public class PlayerStatsSO: ScriptableObject
         HasGhostDash = false;
         HasDash = false;
         HasChargeAttack = false;
+        HasMirror = false;
 
         CurrentHealth = 8;
         MaxHealth = 4;
 
         HealthCollectible = 0;
         ManaCollectible = 0;
+    }
+
+    public void LoadData(int currentHealth, int maxHealth, bool hasScythe, bool hasMirror, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
+    {
+        CurrentHealth = currentHealth;
+        MaxHealth = maxHealth;
+
+        HasScythe = hasScythe;
+        HasMirror = hasMirror;
+        HasDoubleJump = hasDoubleJump;
+        HasWallJump = hasWallJump;
+        HasGhostDash = hasGhostDash;
+        HasDash = hasDash;
+        HasChargeAttack = hasChargeAttack;
     }
 
     public void UnlockAbility(PowerUpType type)

@@ -82,7 +82,7 @@ public class PlayerAnimationEvents : MonoBehaviour
         } else {
         _animator.SetBool("isDashing", false);
         }
-        if (_main.HasScythe){
+        if (_main.CheckAbility(PowerUpType.SCYTHE)){
             _animatorOverrideController["StandNoScythe"] = _standScythe;
             _animatorOverrideController["RunNoScythe"] = _runScythe;
             _animatorOverrideController["JumpNoScythe"] = _jumpScythe;

@@ -11,10 +11,29 @@ public class Portal : MonoBehaviour
     private string _sceneToLoad;
     public Destination DestinationIdentification;
     public Transform ExitPoint;
+    public bool isManual;
+    private bool _hasPlayerInRange;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Player player = collision.GetComponent<Player>();
+        if (player == null) return;
+        _hasPlayerInRange = true;
+        if (isManual) return;
         if (collision.tag == "Player")
+            StartCoroutine(LoadLevel());
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Player player = collision.GetComponent<Player>();
+        if (player == null) return;
+        _hasPlayerInRange = false;
+    }
+
+    public void ManualLoading()
+    {
+        if(_hasPlayerInRange)
             StartCoroutine(LoadLevel());
     }
 
