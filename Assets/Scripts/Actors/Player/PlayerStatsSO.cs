@@ -67,4 +67,27 @@ public class PlayerStatsSO: ScriptableObject
                 break;
         }
     }
+
+    public bool CheckAbility(PowerUpType type)
+    {
+        switch (type)
+        {
+            case PowerUpType.MIRROR:
+                return HasMirror;
+            case PowerUpType.SCYTHE:
+                return HasScythe;
+            case PowerUpType.DOUBLEJUMP:
+                return HasDoubleJump;
+            case PowerUpType.WALLJUMP:
+                return HasWallJump;
+            case PowerUpType.GHOSTDASH:
+                return HasGhostDash;
+            case PowerUpType.DASH:
+                return HasDash;
+            case PowerUpType.CHARGEATTACK:
+                return HasChargeAttack;
+            default:
+                return false;
+        }
+    }
 }

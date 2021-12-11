@@ -39,4 +39,21 @@ public class Mirror : MonoBehaviour
     {
         _animator.SetTrigger("ForceClose");
     }
+
+    private void ShowInteraction()
+    {
+
+    }
+
+    private void HideInteraction()
+    { }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player == null || !player.CheckAbility(PowerUpType.MIRROR))
+            return;
+
+        ShowInteraction();
+    }
 }

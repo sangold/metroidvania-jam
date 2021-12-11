@@ -51,7 +51,6 @@ public class Player : Humanoid
             _playerStats.MaxHealth = value;
         }
     }
-    public bool HasScythe => _playerStats.HasScythe;
 
     public void LoadData(float x, float y, int currentHealth, int maxHealth, bool hasScythe, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
     {
@@ -67,6 +66,7 @@ public class Player : Humanoid
         _playerStats.HasChargeAttack = hasChargeAttack;
     }
 
+    public bool HasScythe => _playerStats.HasScythe;
     public bool HasDoubleJump => _playerStats.HasDoubleJump;
     public bool HasWallJump => _playerStats.HasWallJump;
     public bool HasGhostDash => _playerStats.HasGhostDash;
@@ -385,5 +385,10 @@ public class Player : Humanoid
                 GameDataManager.loadData();
             }
         }
+    }
+
+    public bool CheckAbility(PowerUpType type)
+    {
+        return _playerStats.CheckAbility(type);
     }
 }
