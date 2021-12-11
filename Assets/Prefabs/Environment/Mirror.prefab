@@ -422,7 +422,7 @@ MonoBehaviour:
   MirrorSpriteRenderer: {fileID: 4075293811016095453}
   _buttonIndicator: {fileID: 6524237170562622822}
   _mirrorType: 0
-  IsDisabled: 1
+  IsDisabled: 0
 --- !u!95 &4318920065808268588
 Animator:
   serializedVersion: 3
