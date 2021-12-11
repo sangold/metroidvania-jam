@@ -93,18 +93,25 @@ public class Player : Humanoid
     }
 
     public override void FixedUpdate(){
-        if (!GameManager.Instance.PlayerCanMove)
-            return;
 
         base.FixedUpdate();
 
+        if (!GameManager.Instance.PlayerCanMove)
+        {
+            _movementX = 0;
+            _movementY = 0;
+            return;
+        }
+
         _playerInputs.GetInputs();
+        _movementX = _playerInputs.MovementX;
+        _movementY = _playerInputs.MovementY;
+
         if(IsInInteractivePortalRange && _playerInputs.AttackButtonPressed)
         {
             _onPortalTaken.Raise();
         }
-        _movementX = _playerInputs.MovementX;
-        _movementY = _playerInputs.MovementY;
+
         if (_currentState.CanDash && _playerInputs.SlideButtonPressed)
         {
             Dash();
@@ -343,7 +350,6 @@ public class Player : Humanoid
     public void OnDamageTaken(int newHealth, Vector3 attackOrigin)
     { 
         SetState(PlayerState.HURT);
-        print("Damage Taken");
         _rb.velocity = Vector2.zero;
         Vector2 knockbackDirection = transform.position - attackOrigin;
         knockbackDirection.y = 0;

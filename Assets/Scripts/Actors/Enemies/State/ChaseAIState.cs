@@ -40,7 +40,6 @@ public class ChaseAIState : IState
 
     public bool HasReachedPosition()
     {
-        Debug.Log(Vector3.Distance(_rb.transform.position, _lastScenePoint));
         return Vector3.Distance(_rb.transform.position, _lastScenePoint) < 1f;
     }
 

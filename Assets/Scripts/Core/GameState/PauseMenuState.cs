@@ -7,6 +7,7 @@ namespace MJ.GameState
     {
         public void OnEnter()
         {
+            GameManager.Instance.PlayerCanMove = false;
             Time.timeScale = 0f;
             SceneManager.LoadSceneAsync("PauseMenu", LoadSceneMode.Additive);
         }
@@ -21,7 +22,7 @@ namespace MJ.GameState
         {
             if(Input.GetButtonUp("Cancel"))
             {
-                GameManager.Instance.SetState(new GameLoopState());
+                GameManager.Instance.GoToGameLoopState();
             }
         }
     }

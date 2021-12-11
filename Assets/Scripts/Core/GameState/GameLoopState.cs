@@ -45,7 +45,7 @@ namespace MJ.GameState
         {
             if(Input.GetButtonUp("Cancel"))
             {
-                GameManager.Instance.SetState(new PauseMenuState());
+                GameManager.Instance.GoToPauseMenuState();
             }
         }
     }

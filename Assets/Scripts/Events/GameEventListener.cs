@@ -38,13 +38,11 @@ public class GameEventWithArgListener<T> : MonoBehaviour
 
     protected void OnDestroy()
     {
-        Debug.Log(this);
         _gameEvent.UnregisterListener(this);
     }
 
     public void OnEventRaised(T data)
     {
-        Debug.Log(data);
         _responseEvent?.Invoke(data);
     }
 }

@@ -30,8 +30,6 @@ public class UIMapView: MonoBehaviour
     {
         
         _levels = GameManager.Instance.Levels;
-
-        Debug.Log(_levels.Count);
         foreach(var level in _levels)
         {
             if (!level.IsVisible) continue;

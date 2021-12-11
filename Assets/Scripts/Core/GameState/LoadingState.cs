@@ -10,6 +10,7 @@ namespace MJ.GameState
 
         public void OnEnter()
         {
+            GameManager.Instance.PlayerCanMove = false;
             OnLoadingScene?.Invoke();
         }
 

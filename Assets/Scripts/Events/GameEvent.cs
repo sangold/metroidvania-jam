@@ -29,7 +29,6 @@ public class GameEventWithArg<T> : ScriptableObject
 
     public void Raise(T data)
     {
-        Debug.Log(_listeners.Count);
         foreach (GameEventWithArgListener<T> listener in _listeners)
             listener.OnEventRaised(data);
     }

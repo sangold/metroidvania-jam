@@ -18,7 +18,9 @@ public class PrideBattle: MonoBehaviour
     [SerializeField]
     private float _portalOpeningTimer;
     [SerializeField]
-    private PlayableDirector _outroDirector;
+    private CutScene _introDirector;
+    [SerializeField]
+    private CutScene _outroDirector;
     //private float _timer = 0f;
     private AttackPrideState _attackState;
     private TPPrideState _tpState;
@@ -30,9 +32,12 @@ public class PrideBattle: MonoBehaviour
     [HideInInspector]
     public PrideTPPoint SelectedPoint;
 
+    private BoxCollider2D _bossTrigger;
+
     private void Awake()
     {
         _stateMachine = new AIStateMachine();
+        _bossTrigger = GetComponent<BoxCollider2D>();
     }
 
 
@@ -49,6 +54,16 @@ public class PrideBattle: MonoBehaviour
         _boss.HealthComponent.OnDamageTaken += OnDamageTaken;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player == null) return;
+
+        _introDirector.StartCutscene();
+        GameManager.Instance.GoToCutSceneState();
+        _bossTrigger.enabled = false;
+    }
+
     private void OnDestroy()
     {
         _boss.HealthComponent.OnDamageTaken -= OnDamageTaken;
@@ -59,7 +74,8 @@ public class PrideBattle: MonoBehaviour
         if (hp <= 0)
         {
             _fightHasEnded = true;
-            _outroDirector.Play();
+            _outroDirector.StartCutscene();
+            GameManager.Instance.GoToCutSceneState();
             _prideBossEnd.Raise();
         }
     }
@@ -71,7 +87,13 @@ public class PrideBattle: MonoBehaviour
 
     public void StartFight()
     {
+        GameManager.Instance.GoToGameLoopState();
         _stateMachine.SetState(_tpState);
+    }
+
+    public void EndOutro()
+    {
+        GameManager.Instance.GoToGameLoopState();
     }
 
     public void CloseAllMirrors()

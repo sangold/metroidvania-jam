@@ -175,6 +175,7 @@ MonoBehaviour:
     IsExplored: 0
     IsVisible: 0
     IsActive: 0
+  _skipCutScene: {fileID: 11400000, guid: 8af615ec2bcef29439c71730ca72f201, type: 2}
 --- !u!1 &5353028884459786832
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCanMove: 0
+  SkipCutSceneEvent: {fileID: 0}
 --- !u!1 &9161283743890917830
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,11 +616,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2530950554959013268, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 2530950554959013268, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.694999
       objectReference: {fileID: 0}
     - target: {fileID: 2530950554959013268, guid: 9b1ddcbead21c6749b0c62c6a6c8344e, type: 3}
       propertyPath: m_LocalPosition.z

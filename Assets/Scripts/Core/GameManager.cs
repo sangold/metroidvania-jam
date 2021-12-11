@@ -1,3 +1,5 @@
+using MJ.GameState;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,31 +24,63 @@ public class GameManager : MonoBehaviour
     }
     private List<string> _bossesDone;
     private List<Level> _levels;
+
+    
+
     private Level _currentLevel;
     public Level CurrentLevel => _currentLevel;
     public List<Level> Levels => _levels;
+
+    public bool GameHasStarted;
+
     private List<string> _mirrorVisibles;
 
     private StateMachine _stateMachine;
     public bool PlayerCanMove;
+    public GameEvent SkipCutSceneEvent;
 
     private void Awake()
     {
-        
         _bossesDone = new List<string>();
         _levels = new List<Level>();
         _mirrorVisibles = new List<string>();
         _stateMachine = new StateMachine();
     }
 
-    public void SetState(IState targetState)
+    #region State changes function
+    public void GoToLoadingState()
     {
-        _stateMachine.SetState(targetState);
+        _stateMachine.SetState(new LoadingState());
     }
+
+    public void GoToCutSceneState()
+    {
+        _stateMachine.SetState(new CutSceneState());
+    }
+
+    public void GoToGameLoopState(Level level = null)
+    {
+        _stateMachine.SetState(new GameLoopState(level));
+    }
+    public void GoToPauseState()
+    {
+        _stateMachine.SetState(new PauseGameState());
+    }
+    public void GoToPauseMenuState()
+    {
+        _stateMachine.SetState(new PauseMenuState());
+    }
+    #endregion
 
     private void Update()
     {
         _stateMachine.Tick();
+    }
+
+    public void SetSkipCutScene(GameEvent skip)
+    {
+        if (SkipCutSceneEvent == null)
+            SkipCutSceneEvent = skip;
     }
 
     public void SetActiveLevel(Level level)

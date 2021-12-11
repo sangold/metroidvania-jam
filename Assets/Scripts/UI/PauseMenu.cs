@@ -25,6 +25,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void Unpause()
     {
-        GameManager.Instance.SetState(new GameLoopState());
+        GameManager.Instance.GoToGameLoopState();
     }
 }

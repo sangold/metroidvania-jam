@@ -39,19 +39,21 @@ public class Portal : MonoBehaviour
 
     private IEnumerator LoadLevel()
     {
-        GameManager.Instance.SetState(new LoadingState());
+        GameManager.Instance.GoToLoadingState();
         DontDestroyOnLoad(gameObject);
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
         bool PlayerIsTurnToTheLeft = player.IsTurnToTheLeft();
         yield return new WaitForSeconds(.35f);
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        Time.timeScale = 0f;
         yield return SceneManager.LoadSceneAsync(_sceneToLoad, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(_sceneToLoad));
         Portal destPortal = GetDestinationPortal();
         UpdatePlayer(destPortal, PlayerIsTurnToTheLeft);
+        Time.timeScale = 1f;
+        GameManager.Instance.GoToGameLoopState();
         yield return new WaitForSeconds(.25f);
         Destroy(gameObject);
-        GameManager.Instance.SetState(new GameLoopState());
     }
 
     private void UpdatePlayer(Portal destPortal, bool playerIsTurnToTheLeft)

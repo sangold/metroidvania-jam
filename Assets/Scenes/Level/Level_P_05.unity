@@ -349,6 +349,8 @@ GameObject:
   m_Component:
   - component: {fileID: 102940963}
   - component: {fileID: 102940962}
+  - component: {fileID: 102940964}
+  - component: {fileID: 102940965}
   m_Layer: 0
   m_Name: EndFightTimeline
   m_TagString: Untagged
@@ -383,6 +385,8 @@ PlayableDirector:
     value: {fileID: 1777157110}
   - key: {fileID: -3778752038221895469, guid: ed7cf89436cc575428c94ba66999c109, type: 2}
     value: {fileID: 1557679352}
+  - key: {fileID: -8220259501087380768, guid: ed7cf89436cc575428c94ba66999c109, type: 2}
+    value: {fileID: 1427236086}
   m_ExposedReferences:
     m_References:
     - 05e7c2b147e4ef84bab42c8e80a6f6bc: {fileID: 1592054092}
@@ -403,6 +407,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &102940964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102940961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9be27105892e644befdb71e5c7e3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _director: {fileID: 102940962}
+  _isSkippable: 1
+  _targetSkipTime: 6.3166666
+--- !u!114 &102940965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102940961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb205dcb0d8efb45b5d08bd871c5ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 8af615ec2bcef29439c71730ca72f201, type: 2}
+  _responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 102940964}
+        m_TargetAssemblyTypeName: CutScene, Assembly-CSharp
+        m_MethodName: SkipCutscene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &131184968
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,11 +908,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031094447755060039, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.1409297
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 7031094447755060039, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.695
+      value: 2.694999
       objectReference: {fileID: 0}
     - target: {fileID: 7031094447755060039, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6009,6 +6056,10 @@ PrefabInstance:
       propertyPath: _sceneToLoad
       value: Level_P_04
       objectReference: {fileID: 0}
+    - target: {fileID: 841167125266989282, guid: 2c75cfcfee61885428d36e672165996d, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 4.7858763
+      objectReference: {fileID: 0}
     - target: {fileID: 4075293812702543241, guid: 2c75cfcfee61885428d36e672165996d, type: 3}
       propertyPath: m_Name
       value: Mirror (1)
@@ -6056,6 +6107,10 @@ PrefabInstance:
     - target: {fileID: 4075293812702543242, guid: 2c75cfcfee61885428d36e672165996d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781460669722975089, guid: 2c75cfcfee61885428d36e672165996d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6395058421407495520, guid: 2c75cfcfee61885428d36e672165996d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -28221,6 +28276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1160638245}
   - component: {fileID: 1160638244}
+  - component: {fileID: 1160638246}
+  - component: {fileID: 1160638247}
   m_Layer: 0
   m_Name: TimeLineDirector
   m_TagString: Untagged
@@ -28238,7 +28295,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 05d374dd53b7285458e35f10ab560c86, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -28277,6 +28334,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160638246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160638243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9be27105892e644befdb71e5c7e3f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _director: {fileID: 1160638244}
+  _isSkippable: 1
+  _targetSkipTime: 12.05
+--- !u!114 &1160638247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160638243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb205dcb0d8efb45b5d08bd871c5ce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 8af615ec2bcef29439c71730ca72f201, type: 2}
+  _responseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1160638246}
+        m_TargetAssemblyTypeName: CutScene, Assembly-CSharp
+        m_MethodName: SkipCutscene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1204842476
 GameObject:
   m_ObjectHideFlags: 0
@@ -29028,6 +29128,7 @@ GameObject:
   - component: {fileID: 1427236084}
   - component: {fileID: 1427236085}
   - component: {fileID: 1427236086}
+  - component: {fileID: 1427236087}
   m_Layer: 0
   m_Name: PrideBattle
   m_TagString: Untagged
@@ -29079,7 +29180,8 @@ MonoBehaviour:
   _boss: {fileID: 2046009698}
   _delayBetweenAttacks: 2
   _portalOpeningTimer: 2.3333333
-  _outroDirector: {fileID: 102940962}
+  _introDirector: {fileID: 1160638246}
+  _outroDirector: {fileID: 102940964}
   _prideBossEnd: {fileID: 11400000, guid: 046981740ee62b84bb894739b527baab, type: 2}
   SelectedPoint: {fileID: 0}
 --- !u!114 &1427236086
@@ -29097,6 +29199,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 81ab0527e6b10184fa277f8602ca00e5, type: 2}
+    - {fileID: 11400000, guid: 21726d587dd72964fa11f8ac9fef6fe9, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -29112,6 +29215,46 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1427236085}
+          m_TargetAssemblyTypeName: PrideBattle, Assembly-CSharp
+          m_MethodName: EndOutro
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!61 &1427236087
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427236083}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.0175314, y: 7.7146893}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 28.170877, y: 10.080334}
+  m_EdgeRadius: 0
 --- !u!95 &1447725984 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 306996578202456529, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
@@ -29135,7 +29278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1557679353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29318,7 +29461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reapling
+  m_text: Reflection
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29579,7 +29722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What's going on ?!
+  m_text: AAARRHHHHHHHHH... !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29867,6 +30010,10 @@ PrefabInstance:
     - target: {fileID: 4054977533776519300, guid: 1e4a53eaa4e54a148acf0d07f3c7b361, type: 3}
       propertyPath: m_Name
       value: Collectable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054977533776519300, guid: 1e4a53eaa4e54a148acf0d07f3c7b361, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4a53eaa4e54a148acf0d07f3c7b361, type: 3}

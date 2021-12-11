@@ -23,12 +23,12 @@ public class ModalUI : MonoBehaviour
         _content.text = content.Content;
         _image.sprite = content.Image;
         gameObject.SetActive(true);
-        GameManager.Instance.SetState(new PauseGameState());
+        GameManager.Instance.GoToPauseState();
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.SetState(new GameLoopState());
+        GameManager.Instance.GoToGameLoopState();
     }
 }
