@@ -40,30 +40,29 @@ public class PlayerStatsSO: ScriptableObject
         ManaCollectible = 0;
     }
 
-    public void UnlockAbility(string abilityName)
+    public void UnlockAbility(PowerUpType type)
     {
-        switch(abilityName)
+        switch(type)
         {
-            case "Mirror":
+            case PowerUpType.MIRROR:
                 HasMirror = true;
-                Debug.Log("CAN TAKE MIRROR NOW");
                 break;
-            case "Scythe":
+            case PowerUpType.SCYTHE:
                 HasScythe = true;
                 break;
-            case "DoubleJump":
+            case PowerUpType.DOUBLEJUMP:
                 HasDoubleJump = true;
                 break;
-            case "WallJump":
+            case PowerUpType.WALLJUMP:
                 HasWallJump = true;
                 break;
-            case "GhostDash":
+            case PowerUpType.GHOSTDASH:
                 HasGhostDash = true;
                 break;
-            case "Dash":
+            case PowerUpType.DASH:
                 HasDash = true;
                 break;
-            case "ChargeAttack":
+            case PowerUpType.CHARGEATTACK:
                 HasChargeAttack = true;
                 break;
         }

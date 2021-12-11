@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f5ac63a2ad140ef8eb5891ea1404f3, type: 3}
-  m_Name: PowerUpModalEvent
+  m_Script: {fileID: 11500000, guid: d4b7b331aebd60447bc70f5b292ab17a, type: 3}
+  m_Name: ModalEvent
   m_EditorClassIdentifier: 

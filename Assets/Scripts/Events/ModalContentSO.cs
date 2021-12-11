@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(menuName = "Content/ModalContent")]
 public class ModalContentSO: ScriptableObject
 {
     public string Title;

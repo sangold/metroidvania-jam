@@ -16,6 +16,8 @@ public class Player : Humanoid
     public PlayerStateSO CurrentState => _currentState;
     [SerializeField]
     private List<PlayerStateSO> _states;
+    [SerializeField]
+    private ModalEvent _onPowerUpPickup;
 
     private PlayerInputs _playerInputs;
     
@@ -271,12 +273,15 @@ public class Player : Humanoid
         if (collectedItem.CollectableType == CollectableEnum.HEALTH_UP)
         {
             _healthComponent.HealthPiecesCollected += 1;
-        } else if (collectedItem.CollectableType == CollectableEnum.MANA_UP)
+        }
+        else if (collectedItem.CollectableType == CollectableEnum.MANA_UP)
         {
 
-        } else if (collectedItem.CollectableType == CollectableEnum.ABILITY)
+        }
+        else if (collectedItem is PowerUpCollectableSO puc)
         {
-            _playerStats.UnlockAbility(collectedItem.AbilityName);
+            _playerStats.UnlockAbility(puc.PowerUpType);
+            _onPowerUpPickup.Raise(puc.Description);
         }
     }
     

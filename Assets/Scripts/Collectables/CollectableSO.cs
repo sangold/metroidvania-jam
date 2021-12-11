@@ -8,5 +8,4 @@ public class CollectableSO : ScriptableObject
 {
     public CollectableEnum CollectableType;
     public Color Color;
-    public string AbilityName;
 }

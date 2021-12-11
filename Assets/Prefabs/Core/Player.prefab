@@ -310,6 +310,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: ac34ea8c2efeda749a256c8dfde6c83c, type: 2}
   - {fileID: 11400000, guid: 09711d1d12168444ba2707e39fb31afd, type: 2}
+  _onPowerUpPickup: {fileID: 11400000, guid: de3be1b7f80048046aad21bc8624a162, type: 2}
   _postWiseEvent: {fileID: 11400000, guid: 40c68534ae7ca7342ac59409fa95319d, type: 2}
   _touchingARoom: 
 --- !u!114 &5399301505037127093

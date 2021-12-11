@@ -862,7 +862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7031094447755060039, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.1390796
+      value: 6.1409297
       objectReference: {fileID: 0}
     - target: {fileID: 7031094447755060039, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -890,11 +890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7731621221522044946, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.57
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 7731621221522044946, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.3
+      value: -3.05
       objectReference: {fileID: 0}
     - target: {fileID: 7731621221522044946, guid: 6cc3a006ca26e9a41a0dc02ddc6753e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13259,7 +13259,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622610400}
-  m_LocalRotation: {x: 0.021360848, y: -0.0146513665, z: 0.00031307072, w: 0.9996644}
+  m_LocalRotation: {x: 0.021360846, y: -0.014651369, z: 0.00031307072, w: 0.9996644}
   m_LocalPosition: {x: 11.043751, y: 0.31275037, z: -35.599964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28215,7 +28215,7 @@ PlayableDirector:
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
-  m_InitialTime: 0
+  m_InitialTime: 12
   m_SceneBindings:
   - key: {fileID: 7923752488882130149, guid: 05d374dd53b7285458e35f10ab560c86, type: 2}
     value: {fileID: 952335893}
@@ -29799,6 +29799,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4054977533776519289, guid: 1e4a53eaa4e54a148acf0d07f3c7b361, type: 3}
+      propertyPath: _collectableInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: b71966989f360f240bdd5ef38e729411, type: 2}
     - target: {fileID: 4054977533776519291, guid: 1e4a53eaa4e54a148acf0d07f3c7b361, type: 3}
       propertyPath: m_RootOrder
       value: 7
