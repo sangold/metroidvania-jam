@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4054977533776519290}
   - component: {fileID: 4054977533776519289}
   - component: {fileID: 4054977533776519295}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Collectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4054977533939148365}
   - component: {fileID: 4054977533939148355}
   - component: {fileID: 4054977533939148364}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Circles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 4054977534352515223}
   - component: {fileID: 4054977534352515221}
   - component: {fileID: 4054977534352515222}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Glowing Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9703,7 +9703,7 @@ GameObject:
   - component: {fileID: 4054977534437883910}
   - component: {fileID: 4054977534437883908}
   - component: {fileID: 4054977534437883909}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Flying Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

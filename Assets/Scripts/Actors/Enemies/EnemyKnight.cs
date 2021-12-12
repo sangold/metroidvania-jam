@@ -29,6 +29,7 @@ public class EnemyKnight: Enemy
         _previousState = _stateMachine.GetCurrentState();
         TurnTo(attackOrigin);
         _stateMachine.SetState(_stunState);
+        base.OnDamageTaken(hp, attackOrigin);
     }
 }
 

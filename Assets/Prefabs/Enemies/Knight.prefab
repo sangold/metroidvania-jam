@@ -440,10 +440,10 @@ MonoBehaviour:
   WallSide: 0
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _platformLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   _collisionRadius: 0.13
   _bottomOffset: {x: -0.24, y: -0.87}
   _rightOffset: {x: 0.37, y: -0.21}

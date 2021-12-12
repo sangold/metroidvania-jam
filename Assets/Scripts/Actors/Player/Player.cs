@@ -237,13 +237,13 @@ public class Player : Humanoid
         }
 
         if (_currentState.StateType == PlayerState.GHOSTDASH){
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"),true);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GhostDashable"),true);
         } else {
             if (_snapTolastNoneGhostPosition && PlayerCollision.OnGround && PlayerCollision.OnLeftWall && PlayerCollision.OnRightWall || _snapTolastNoneGhostPosition){
                 transform.position = _lastNoneGhostPosition;
             }
             _snapTolastNoneGhostPosition = false;
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("FireTile"), false);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GhostDashable"), false);
         }
         if (_currentState.StateType == PlayerState.HURT){
             _stunDurationTimer -= Time.deltaTime;

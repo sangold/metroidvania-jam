@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1535232607049097247}
   - component: {fileID: 1933115619}
   - component: {fileID: 4424381354502227788}
-  m_Layer: 12
+  m_Layer: 5
   m_Name: Fader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 2900963886310935548}
   - component: {fileID: 4812109160226954714}
   - component: {fileID: 7879299063508658587}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: healthContainers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 7874616172579843084}
   - component: {fileID: 1235398550}
   - component: {fileID: 1235398551}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: MiniMapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 6129726299373031934}
   - component: {fileID: 8802024946752218859}
   - component: {fileID: 1426289800766415010}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 2073767805466542652}
   - component: {fileID: 1898115458656292278}
   - component: {fileID: 2888177403320301584}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

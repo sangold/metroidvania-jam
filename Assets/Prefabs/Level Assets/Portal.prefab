@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3073702738067724397}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Exit Position
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3073702738146626873}
   - component: {fileID: 3073702738146626872}
   - component: {fileID: 3073702738146626875}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
   _sceneToLoad: -1
   DestinationIdentification: 0
   ExitPoint: {fileID: 3073702738067724397}
+  isManual: 0
 --- !u!61 &3073702738146626875
 BoxCollider2D:
   m_ObjectHideFlags: 0

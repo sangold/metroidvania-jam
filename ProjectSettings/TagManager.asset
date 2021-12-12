@@ -14,13 +14,13 @@ TagManager:
   - UI
   - Ground
   - MiniMap
-  - FireTile
+  - GhostDashable
   - Player
   - Enemies
   - Platform
-  - Fader
+  - InteractiveItems
   - Effects
-  - 
+  - Collectables
   - 
   - 
   - 

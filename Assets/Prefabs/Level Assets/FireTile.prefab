@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9205943317077389576}
   - component: {fileID: 6895198482281784144}
   - component: {fileID: 285230610590091813}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: FireTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

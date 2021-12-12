@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9222495441245494722}
   - component: {fileID: 3876415108266152700}
   - component: {fileID: 1269603387498396600}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HealthGain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7352c18842c91d04fae5d22e189b99b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentCollectable: {fileID: 11400000, guid: c39145a0b72b7b04087138260695f80b, type: 2}
+  _collectableInfo: {fileID: 0}

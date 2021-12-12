@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075293811016095454}
   - component: {fileID: 4075293811016095453}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4075293811373053368}
   - component: {fileID: 4075293811373053375}
   - component: {fileID: 4075293811373053374}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MirrorCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075293811707536749}
   - component: {fileID: 4075293811707536750}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MirroredImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4075293812622993610}
   - component: {fileID: 4075293812622993611}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MirrorMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 6933448712601029070}
   - component: {fileID: 589331188884914112}
   - component: {fileID: 4338898161384860501}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 513047697187922688}
   - component: {fileID: 21152896505221320}
   - component: {fileID: 867529691219167850}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KeyboardIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7409949653773533258}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -651,6 +651,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4075293812702543242}
     m_Modifications:
+    - target: {fileID: 186356523162307154, guid: 6cb7ce41a48c0c34fb4d9d8510a130d5, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1786535364216689968, guid: 6cb7ce41a48c0c34fb4d9d8510a130d5, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.7
@@ -707,9 +711,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7648936870044742257, guid: 6cb7ce41a48c0c34fb4d9d8510a130d5, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7978051302980039374, guid: 6cb7ce41a48c0c34fb4d9d8510a130d5, type: 3}
       propertyPath: m_Name
       value: MirrorPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978051302980039374, guid: 6cb7ce41a48c0c34fb4d9d8510a130d5, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8625060601883366613, guid: 6cb7ce41a48c0c34fb4d9d8510a130d5, type: 3}
       propertyPath: m_LocalScale.x
