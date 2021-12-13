@@ -26,6 +26,26 @@ namespace AK
         static const AkUniqueID SPIDER_CRAWL = 3850318246U;
     } // namespace EVENTS
 
+    namespace STATES
+    {
+        namespace MUSIC_REGIONS
+        {
+            static const AkUniqueID GROUP = 2106907484U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PRIDE = 1370967373U;
+            } // namespace STATE
+        } // namespace MUSIC_REGIONS
+
+    } // namespace STATES
+
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID BOSS_PRIDE = 2336110745U;
+    } // namespace GAME_PARAMETERS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;

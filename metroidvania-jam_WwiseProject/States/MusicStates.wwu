@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{91EE71D9-EBFB-484C-878E-36A5F1F0CEC0}" SchemaVersion="103">
+	<States>
+		<WorkUnit Name="MusicStates" ID="{91EE71D9-EBFB-484C-878E-36A5F1F0CEC0}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Music_Regions" ID="{3C79549F-2264-4802-974E-BB592FE5C234}">
+					<ChildrenList>
+						<State Name="None" ID="{006654C6-486B-4FE4-B5E7-CED7BB7D7883}"/>
+						<State Name="Pride" ID="{477E1792-EE18-4646-AA21-B4D3D89C7EBC}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

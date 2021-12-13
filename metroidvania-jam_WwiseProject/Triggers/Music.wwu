@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}" SchemaVersion="103">
+	<Triggers>
+		<WorkUnit Name="Music" ID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}" PersistMode="Standalone"/>
+	</Triggers>
+</WwiseDocument>

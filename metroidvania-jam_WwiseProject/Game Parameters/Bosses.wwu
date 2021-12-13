@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0E3704A7-D261-48B6-9061-0AFAF5DFC2A2}" SchemaVersion="103">
+	<GameParameters>
+		<WorkUnit Name="Bosses" ID="{0E3704A7-D261-48B6-9061-0AFAF5DFC2A2}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="Boss_Pride" ID="{B5DBE470-B133-4DD6-B1FE-511CE3631BBC}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>
