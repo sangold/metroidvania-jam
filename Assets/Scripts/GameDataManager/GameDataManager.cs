@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameDataManager
-{
+{    
     public static bool hasDebugButtons = true;
     public static void saveData(){
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
