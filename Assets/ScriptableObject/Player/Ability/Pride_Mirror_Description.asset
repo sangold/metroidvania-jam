@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca70798989b345f0963d40cb26319df, type: 3}
   m_Name: Pride_Mirror_Description
   m_EditorClassIdentifier: 
-  Title: Pride's Mirror
-  Content: You can now take Pride's mirror to TP into the world. Just walk to one
-    of those and press [Q] to TP
+  Title: You gained the sin of Pride!
+  Content: "Press \u2191 in front of an active mirror portal to enter it. You never
+    know where you'll end up!"
   Image: {fileID: 21300000, guid: 26ab83e6ac1ccd048a06f2269ea7637e, type: 3}
