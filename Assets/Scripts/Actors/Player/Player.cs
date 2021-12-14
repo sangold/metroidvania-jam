@@ -158,7 +158,7 @@ public class Player : Humanoid
                 _postWiseEvent.Player_Double_Jump_Event.Post(this.gameObject);
             }
             //sound
-            if (PlayerCollision.OnGround && _rb.velocity.y <= 0){
+            if (PlayerCollision.OnGround && _rb.velocity.y <= -3f){
                 _postWiseEvent.Player_Landed_Event.Post(this.gameObject);
             }
         }
@@ -172,11 +172,11 @@ public class Player : Humanoid
             {
                 SetState(PlayerState.STANDARD);
             }
-            else if (PlayerCollision.IsPushingAgainstAWall(_movementX) && _lastGroundTime < 0)
-            {
-                if((PlayerCollision.OnLeftWall && _rb.velocity.x <= 0) || (PlayerCollision.OnRightWall && _rb.velocity.x >= 0))
-                SetState(PlayerState.WALL_SLIDE);
-            }
+            //else if (PlayerCollision.IsPushingAgainstAWall(_movementX) && _lastGroundTime < 0)
+            //{
+            //    if((PlayerCollision.OnLeftWall && _rb.velocity.x <= 0) || (PlayerCollision.OnRightWall && _rb.velocity.x >= 0))
+            //    SetState(PlayerState.WALL_SLIDE);
+            //}
             else if (!PlayerCollision.OnGround)
             {
                 SetState(PlayerState.INAIR);
@@ -231,10 +231,10 @@ public class Player : Humanoid
             }
         }
 
-        if (_currentState.StateType == PlayerState.ATTACK){
-            if (!PlayerCollision.OnGround)
-                Walk(new Vector2(_movementX * _horizontalSpeed, 0));
-        }
+        //if (_currentState.StateType == PlayerState.ATTACK){
+        //    if (!PlayerCollision.OnGround)
+        //        Walk(new Vector2(_movementX * _horizontalSpeed, 0));
+        //}
 
         if (_currentState.StateType == PlayerState.GHOSTDASH){
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GhostDashable"),true);

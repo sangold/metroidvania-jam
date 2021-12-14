@@ -9,6 +9,12 @@ public class MainMenu : MonoBehaviour
     {
         GameManager.Instance.GoToMainMenuState();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void StartGame()
     {
         StartCoroutine(LoadLevel());
