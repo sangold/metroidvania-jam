@@ -18,7 +18,7 @@ MonoBehaviour:
   HasGhostDash: 0
   HasDash: 0
   HasChargeAttack: 0
-  HasMirror: 1
+  HasMirror: 0
   CurrentHealth: 8
   MaxHealth: 4
   HealthCollectible: 0
