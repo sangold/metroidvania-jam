@@ -18,6 +18,11 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="SoundBank_Specific" ID="{BD1F03D5-5AA6-4A12-9DF3-DFCF97EA7FBE}" ShortID="808478105">
+					<ChildrenList>
+						<Event Name="Music_TitleScreen" ID="{A32A77AE-55D8-4619-AE3D-24992D84CF6A}"/>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}" SchemaVersion="103">
 	<Triggers>
-		<WorkUnit Name="Music" ID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}" PersistMode="Standalone"/>
+		<WorkUnit Name="Music" ID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="Stinger_Death" ID="{001BAAAA-8BF3-4D74-992E-B562D4F0F2C7}"/>
+				<Trigger Name="Stinger_DefeatBoss" ID="{526F3259-2968-4681-8D48-D9B0C8112B73}"/>
+				<Trigger Name="Stinger_GetAbility" ID="{5C0EB8AF-CC26-4212-A7D0-0D8E77CC71F4}"/>
+				<Trigger Name="Stinger_GetItem" ID="{E2FE4A53-15BC-4F35-BFC5-BD33FF764F1E}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Triggers>
 </WwiseDocument>
