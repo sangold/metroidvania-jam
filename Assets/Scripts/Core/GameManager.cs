@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
 
         private set { _instance = value; }
     }
+
+    public void GoToMainMenuState()
+    {
+        _stateMachine.SetState(new MainMenuState());
+    }
+
     private List<string> _bossesDone;
     private List<Level> _levels;
 

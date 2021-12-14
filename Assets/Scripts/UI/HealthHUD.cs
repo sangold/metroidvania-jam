@@ -42,6 +42,12 @@ public class HealthHUD : MonoBehaviour
             _playerHealthComponent.OnHealthIncreased += OnHealthIncreassed;
         }
     }
+
+    public void ReattachTarget()
+    {
+        GetTargetHealth();
+    }
+
     void SetMaxHealthContainers(){
         for (int i = 0; i < _healthContainers.Count; i++)
         {
