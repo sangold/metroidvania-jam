@@ -12,8 +12,12 @@ namespace MV.Player
         private bool _attackButtonSwitch;
         private bool _ghostDashButton;
         private bool _ghostDashButtonSwitch;
+        private bool _interactionButton;
+        private bool _interactionButtonSwitch;
 
 
+        public bool InteractionButton { get => _interactionButton; }
+        public bool InteractionButtonPressed { get => _interactionButton && _interactionButtonSwitch; }
         public bool JumpButton { get => _jumpButton; }
         public bool JumpButtonPressed { get =>_jumpButton && _jumpButtonSwitch; }
         public bool SlideButtonPressed { get => _slideButton && _slideButtonSwitch; }
@@ -37,6 +41,16 @@ namespace MV.Player
                 _jumpButtonSwitch = false;
             }
             _jumpButton = Input.GetButton("Jump");
+
+            if (_interactionButton != Input.GetButton("Interaction"))
+            {
+                _interactionButtonSwitch = true;
+            }
+            else
+            {
+                _interactionButtonSwitch = false;
+            }
+            _interactionButton = Input.GetButton("Interaction");
 
             if (_slideButton != Input.GetButton("Slide"))
             {

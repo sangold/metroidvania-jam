@@ -107,7 +107,7 @@ public class Player : Humanoid
         _movementX = _playerInputs.MovementX;
         _movementY = _playerInputs.MovementY;
 
-        if(IsInInteractivePortalRange && _playerInputs.AttackButtonPressed)
+        if(IsInInteractivePortalRange && _playerInputs.InteractionButtonPressed)
         {
             _onPortalTaken.Raise();
         }
