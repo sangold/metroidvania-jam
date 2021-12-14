@@ -14,6 +14,8 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ANGEL_DIVE = 1298022421U;
+        static const AkUniqueID MUSIC_REGION = 3741135221U;
+        static const AkUniqueID MUSIC_TITLESCREEN = 1532327793U;
         static const AkUniqueID PLAYER_DOUBLEJUMP = 979951458U;
         static const AkUniqueID PLAYER_FOOTSTEPS = 1730208058U;
         static const AkUniqueID PLAYER_GETHIT = 3945457670U;
@@ -45,6 +47,14 @@ namespace AK
     {
         static const AkUniqueID BOSS_PRIDE = 2336110745U;
     } // namespace GAME_PARAMETERS
+
+    namespace TRIGGERS
+    {
+        static const AkUniqueID STINGER_DEATH = 1216753638U;
+        static const AkUniqueID STINGER_DEFEATBOSS = 2389667606U;
+        static const AkUniqueID STINGER_GETABILITY = 2026489694U;
+        static const AkUniqueID STINGER_GETITEM = 3131651633U;
+    } // namespace TRIGGERS
 
     namespace BANKS
     {

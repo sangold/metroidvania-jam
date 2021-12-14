@@ -3,38 +3,66 @@ Event	ID	Name			Wwise Object Path	Notes
 	979951458	Player_DoubleJump			\Default Work Unit\Player_DoubleJump	
 	1298022421	Angel_Dive			\Default Work Unit\Angel_Dive	
 	1305133589	Player_Jump			\Default Work Unit\Player_Jump	
+	1532327793	Music_TitleScreen			\Music\SoundBank_Specific\Music_TitleScreen	
 	1565542225	Player_PunchEnemy			\Default Work Unit\Player_PunchEnemy	
 	1730208058	Player_Footsteps			\Default Work Unit\Player_Footsteps	
 	2625026092	Player_Slash			\Default Work Unit\Player_Slash	
 	3622567080	Player_SlashEnemy			\Default Work Unit\Player_SlashEnemy	
+	3741135221	Music_Region			\Music\General\Music_Region	
 	3850318246	Spider_Crawl			\Default Work Unit\Spider_Crawl	
 	3882007279	Player_Punch			\Default Work Unit\Player_Punch	
 	3945457670	Player_GetHit			\Default Work Unit\Player_GetHit	
 
+State Group	ID	Name			Wwise Object Path	Notes
+	2106907484	Music_Regions			\MusicStates\Music_Regions	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Music_Regions			
+	1370967373	Pride	Music_Regions			
+
+Trigger	ID	Name			Wwise Object Path	Notes
+	1216753638	Stinger_Death			\Music\Stinger_Death	
+	2026489694	Stinger_GetAbility			\Music\Stinger_GetAbility	
+	2389667606	Stinger_DefeatBoss			\Music\Stinger_DefeatBoss	
+	3131651633	Stinger_GetItem			\Music\Stinger_GetItem	
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	31089515	SD Punch_V2_01	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch_V2_61985FC1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2_01		98056
-	32757698	SD Spider Crawl V1_01	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_F8FA76D7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_01		75824
-	58866923	SD Footsteps V1	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Footsteps V1_C4CA8B4F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Footsteps\SD Footsteps V1		16356
-	60584037	SD Spider Crawl V1	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_AAAF27B1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1		78120
-	82904041	Angel_Dive	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Angel Dive_V1_183558EF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Angel_Dive		140756
-	110989935	SD Spider Crawl V1_03	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_1665482B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_03		78120
-	130705251	SD Spider Crawl V1_04	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_1CD73877.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_04		76972
-	138888369	SD Jump_V1	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Jump_V1_9DD97C4D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1		57460
-	164384842	SD Jump_V1_02	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Jump_V1_3050F42A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1_02		63196
-	194737210	Player_PunchEnemy	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch Enemy_V1_1A72E8B3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_PunchEnemy		78824
-	225734775	Player_GetHit	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Get Hit Low_V1_D6F1FA2B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_GetHit		164240
-	485389426	SD Double Jump_V1_01	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Double Jump_V1_12F4749D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1_01		178104
-	522860074	SD Landed_V1	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Landed_V1_FF2E8475.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Landed\SD Landed_V1		81212
-	569327657	SD Scythe Slash_1_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Scythe Slash_1_V2_5E5E87B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_1_V2		80876
-	654328402	Player_SlashEnemy	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Hit Enemy_CDDCB881.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_SlashEnemy		71940
-	690740967	SD Scythe Slash_3_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Scythe Slash_3_V2_508B2E4E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_3_V2		90028
-	708428644	SD Footsteps V1_01	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Footsteps V1_15CB76FA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Footsteps\SD Footsteps V1_01		11036
-	711512395	SD Spider Crawl V1_02	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_44E65782.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_02		76972
-	767607172	SD Double Jump_V1_02	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Double Jump_V1_1695382A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1_02		201072
-	862016300	SD Jump_V1_01	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Jump_V1_D0874156.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1_01		62048
-	891176297	SD Punch_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch_V2_0298B5CA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2		96008
-	895970190	SD Scythe Slash_2_V2	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Scythe Slash_2_V2_0F189DD8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_2_V2		80880
-	979312668	SD Double Jump_V1	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Double Jump_V1_48D65CDC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1		195332
-	990458219	SD Punch_V2_02	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch_V2_E701C117.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2_02		98056
-	1029014616	SD Landed_V1_01	Y:\Documents\GitHub\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Landed_V1_3C7C6022.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Landed\SD Landed_V1_01		75092
+	31089515	SD Punch_V2_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch_V2_61985FC1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2_01		98056
+	32757698	SD Spider Crawl V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_F8FA76D7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_01		75824
+	58866923	SD Footsteps V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Footsteps V1_C4CA8B4F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Footsteps\SD Footsteps V1		16356
+	60584037	SD Spider Crawl V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_AAAF27B1.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1		78120
+	82904041	Angel_Dive	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Angel Dive_V1_183558EF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Angel_Dive		140756
+	110989935	SD Spider Crawl V1_03	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_1665482B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_03		78120
+	130705251	SD Spider Crawl V1_04	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_1CD73877.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_04		76972
+	132287660	Pride_WhistleVerb_Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_WhistleVerb_Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_WhistleVerb_Stem_V2		9216192
+	138888369	SD Jump_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Jump_V1_9DD97C4D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1		57460
+	164384842	SD Jump_V1_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Jump_V1_3050F42A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1_02		63196
+	194737210	Player_PunchEnemy	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch Enemy_V1_1A72E8B3.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_PunchEnemy		78824
+	225734775	Player_GetHit	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Get Hit Low_V1_D6F1FA2B.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_GetHit		164240
+	318326606	Stinger_Get Item_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stinger_Get Item_V1_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\Stinger_GetItem\Stinger_Get Item_V1		517884
+	443445678	Pride_Arp - Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_Arp - Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_Arp - Stem_V2		9216192
+	477806836	Pride_ArcaneVocal - Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_ArcaneVocal - Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_ArcaneVocal - Stem_V2		9216192
+	485389426	SD Double Jump_V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Double Jump_V1_12F4749D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1_01		178104
+	522860074	SD Landed_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Landed_V1_FF2E8475.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Landed\SD Landed_V1		81212
+	569327657	SD Scythe Slash_1_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Scythe Slash_1_V2_5E5E87B6.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_1_V2		80876
+	607132199	Pride_TripletBass - Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_TripletBass - Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_TripletBass - Stem_V2		9216192
+	643196999	Pride_PianoHi_Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_PianoHi_Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_PianoHi_Stem_V2		9216192
+	654328402	Player_SlashEnemy	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Hit Enemy_CDDCB881.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_SlashEnemy		71940
+	665725687	Pride_PianoLowRev_Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_PianoLowRev_Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_PianoLowRev_Stem_V2		9216192
+	690740967	SD Scythe Slash_3_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Scythe Slash_3_V2_508B2E4E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_3_V2		90028
+	691669257	Stinger_Get Ability_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stinger_Get Ability_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\Stinger_GetAbility\Stinger_Get Ability_V2		2090748
+	702108096	Pride_PianoLow_Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_PianoLow_Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_PianoLow_Stem_V2		9216192
+	708428644	SD Footsteps V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Footsteps V1_15CB76FA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Footsteps\SD Footsteps V1_01		11036
+	711512395	SD Spider Crawl V1_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Spider Crawl V1_44E65782.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Spider_Crawl\SD Spider Crawl V1_02		76972
+	767607172	SD Double Jump_V1_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Double Jump_V1_1695382A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1_02		201072
+	834353626	Pride_Sustain_Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_Sustain_Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_Sustain_Stem_V2		9216192
+	862016300	SD Jump_V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Jump_V1_D0874156.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Jump\SD Jump_V1_01		62048
+	891176297	SD Punch_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch_V2_0298B5CA.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2		96008
+	895970190	SD Scythe Slash_2_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Scythe Slash_2_V2_0F189DD8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Slash\SD Scythe Slash_2_V2		80880
+	899881720	Stinger_Death_Guitar_V3	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stinger_Death_Guitar_V3_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\Stinger_Death\Stinger_Death_Guitar_V3		2090748
+	904046993	Stinger_Defeat Boss_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stinger_Defeat Boss_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Stingers\Stinger_DefeatBoss\Stinger_Defeat Boss_V2		3139124
+	921235342	Pride_PianoHiRev_Stem_V2	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\Stems\Pride_PianoHiRev_Stem_V2_D79FB2B7.wem		\Interactive Music Hierarchy\Music\Music_Regions\Pride\Pride_Layers\Pride_PianoHiRev_Stem_V2		9216192
+	979312668	SD Double Jump_V1	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Double Jump_V1_48D65CDC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_DoubleJump\SD Double Jump_V1		195332
+	990458219	SD Punch_V2_02	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Punch_V2_E701C117.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Punch\SD Punch_V2_02		98056
+	1029014616	SD Landed_V1_01	E:\CodingDir\metroidvania-jam\metroidvania-jam\metroidvania-jam_WwiseProject\.cache\Mac\SFX\SD Landed_V1_3C7C6022.wem		\Actor-Mixer Hierarchy\Default Work Unit\Sounds\Player_Landed\SD Landed_V1_01		75092
 
