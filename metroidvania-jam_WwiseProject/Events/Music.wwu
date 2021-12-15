@@ -16,11 +16,92 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Music_Bosses" ID="{33FBB157-7527-4B79-86AA-D62FF8BC3D54}">
+							<ChildrenList>
+								<Action Name="" ID="{FDB7060F-AA26-48FA-87B2-BB1AC4267D88}" ShortID="913951510">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Bosses" ID="{1DD8A2A6-8CF5-410A-AB89-AD42232D7B79}" WorkUnitID="{E8FD4741-2515-4031-8AC1-A36D80A7470F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="SoundBank_Specific" ID="{BD1F03D5-5AA6-4A12-9DF3-DFCF97EA7FBE}" ShortID="808478105">
 					<ChildrenList>
-						<Event Name="Music_TitleScreen" ID="{A32A77AE-55D8-4619-AE3D-24992D84CF6A}"/>
+						<Event Name="Music_TitleScreen" ID="{A32A77AE-55D8-4619-AE3D-24992D84CF6A}">
+							<ChildrenList>
+								<Action Name="" ID="{CB65C836-9735-45EC-94ED-92EF0FC84444}" ShortID="932399699">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_TitleScreen" ID="{D3E7D395-1E2E-4BFA-A059-E9AEE8B9C453}" WorkUnitID="{E8FD4741-2515-4031-8AC1-A36D80A7470F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Stingers" ID="{03F3BE9D-D908-4FEE-B21D-627E92C4C89B}" ShortID="524218923">
+					<ChildrenList>
+						<Event Name="Stinger_Death" ID="{7948F516-8C20-49E8-A42D-1C51E908C0CE}">
+							<ChildrenList>
+								<Action Name="" ID="{780EB223-4D79-44E5-9C27-69D7598F9B20}" ShortID="495423769">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Stinger_Death" ID="{001BAAAA-8BF3-4D74-992E-B562D4F0F2C7}" WorkUnitID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stinger_DefeatBoss" ID="{3175640C-AF6E-4C50-88A5-02BCFF1C412A}">
+							<ChildrenList>
+								<Action Name="" ID="{44348D89-2DEE-4F99-918F-CE7096069CE9}" ShortID="81024181">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Stinger_DefeatBoss" ID="{526F3259-2968-4681-8D48-D9B0C8112B73}" WorkUnitID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stinger_GetItem" ID="{4E787AB6-28F3-4C29-ADA8-23623585A6C7}">
+							<ChildrenList>
+								<Action Name="" ID="{1B02170D-E918-44C1-A2F6-A58202958803}" ShortID="670808135">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Stinger_GetItem" ID="{E2FE4A53-15BC-4F35-BFC5-BD33FF764F1E}" WorkUnitID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stinger_GetAbility" ID="{25F19FC0-2709-4674-B869-57E3F9AE0DAF}">
+							<ChildrenList>
+								<Action Name="" ID="{A73D4E1B-0D8A-4966-87B8-514BA27B970C}" ShortID="293885805">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Stinger_GetAbility" ID="{5C0EB8AF-CC26-4212-A7D0-0D8E77CC71F4}" WorkUnitID="{0A98CA5C-5618-49FD-AB61-B9A805C116C1}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{D6C65BDC-7152-44AD-8B5C-CA7237585612}" SchemaVersion="103">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{D6C65BDC-7152-44AD-8B5C-CA7237585612}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{D6C65BDC-7152-44AD-8B5C-CA7237585612}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Music" ID="{EAD4EEA0-A0D4-4407-A4FB-9532168914F3}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Music_Region" ID="{1D5C5FB9-10B0-4EBF-AA4C-20A920E65C22}" WorkUnitID="{255BD9A8-F962-42BE-804B-EC53BDB97E66}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Music_Bosses" ID="{33FBB157-7527-4B79-86AA-D62FF8BC3D54}" WorkUnitID="{255BD9A8-F962-42BE-804B-EC53BDB97E66}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="Boss_Pride" ID="{B5DBE470-B133-4DD6-B1FE-511CE3631BBC}"/>
+							<Value>100</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Pride" ID="{477E1792-EE18-4646-AA21-B4D3D89C7EBC}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>
