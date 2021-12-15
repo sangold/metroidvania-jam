@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca70798989b345f0963d40cb26319df, type: 3}
   m_Name: End PowerUp
   m_EditorClassIdentifier: 
-  Title: Is this the end ?
-  Content: You reached the end of this smal demo. Is it over ? Maybe, maybe not !
+  Title: Congratulations!
+  Content: You obtained the Cloak of Pride! You've reached the end of the demo -
+    be proud! (but not too proud)
   Image: {fileID: 21300000, guid: 6973939e2f586364496bd2d6eaba511c, type: 3}
