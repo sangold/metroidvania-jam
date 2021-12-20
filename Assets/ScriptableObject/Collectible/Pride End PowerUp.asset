@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cdb07327a79294eb53f5008e1d666d, type: 3}
+  m_Name: Pride End PowerUp
+  m_EditorClassIdentifier: 
+  CollectableType: 2
+  Color: {r: 0.39049494, g: 0, b: 0.9622642, a: 0}
+  PowerUpType: 0
+  Description: {fileID: 11400000, guid: 37c4f0f6e2f444340b710759af90c7fe, type: 2}

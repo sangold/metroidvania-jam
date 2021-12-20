@@ -61,9 +61,12 @@ public class PatrolAIState : IState
             
             if (_lineOfSight == null) return;
 
+            if (_lineOfSight.OnGround)
+                _animator.SetBool("isJumping", false);
             if ((dir.x > 0 && _lineOfSight.OnRightWall) || (dir.x < 0 && _lineOfSight.OnLeftWall))
             {
                 _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+                _animator.SetBool("isJumping", true);
             }
         }
         else

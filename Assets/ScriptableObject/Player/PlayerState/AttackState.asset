@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AttackState
   m_EditorClassIdentifier: 
   StateType: 2
-  GravityScale: 0
-  HorizontalSpeed: 5
-  JumpForce: 0
+  GravityScale: 5
+  HorizontalSpeed: 7.25
+  JumpForce: 20.5
   VerticalSpeed: 0
   CanMove: 0
   CanDash: 0

@@ -53,6 +53,7 @@ public class Portal : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.Instance.GoToGameLoopState();
         yield return new WaitForSeconds(.25f);
+        FindObjectOfType<HealthHUD>().ReattachTarget();
         Destroy(gameObject);
     }
 

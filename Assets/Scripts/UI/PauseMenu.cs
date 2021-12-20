@@ -18,6 +18,11 @@ public class PauseMenu : MonoBehaviour
         MapView.Open();
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ShowChoices()
     {
         MapView.Close();
