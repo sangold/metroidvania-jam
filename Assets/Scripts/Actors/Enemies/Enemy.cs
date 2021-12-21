@@ -24,7 +24,23 @@ public abstract class Enemy : Actor
     protected float _moveSpeed, _jumpForce;
     protected AIStateMachine _stateMachine;
     protected IState _previousState;
+    protected UniqueID UUID;
 
+    public EnemyData Save()
+    {
+        var saveData = new EnemyData();
+        saveData.UUID = UUID.ToString();
+        saveData.position = transform.position;
+        saveData.isKilled = _healthComponent.Health <= 0;
+
+        return saveData;
+    }
+
+    public void Load(EnemyData data)
+    {
+        if (data.isKilled)
+            gameObject.SetActive(false);
+    }
     public void ReturnToPreviousState()
     {
         if(_previousState != null)
@@ -36,6 +52,7 @@ public abstract class Enemy : Actor
 
     protected virtual void Awake()
     {
+        UUID = new UniqueID();
         _healthComponent = GetComponent<HealthComponent>();
         Rb = GetComponent<Rigidbody2D>();
         _patrolPoints = new Vector3[_patrolGizmos.Length];
@@ -46,10 +63,12 @@ public abstract class Enemy : Actor
         }
 
         _stateMachine = new AIStateMachine();
+        UUID.Init(gameObject);
     }
 
     protected virtual void Start()
     {
+
         _healthComponent.OnDamageTaken += OnDamageTaken;
         CanMove = true;
     }
@@ -64,7 +83,7 @@ public abstract class Enemy : Actor
     protected virtual void OnDamageTaken(int hp, Vector3 attackOrigin)
     {
         if (hp <= 0)
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
     }
 
     protected virtual void FixedUpdate()

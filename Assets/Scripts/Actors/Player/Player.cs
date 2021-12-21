@@ -8,6 +8,7 @@ public class Player : Humanoid
 {
     [SerializeField]
     private PlayerStatsSO _playerStats;
+    public PlayerStatsSO GetStats => _playerStats;
     [SerializeField]
     private float _fallMultiplier = 3f;
     [SerializeField]

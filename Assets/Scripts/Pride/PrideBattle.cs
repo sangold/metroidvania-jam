@@ -75,6 +75,7 @@ public class PrideBattle: MonoBehaviour
         {
             _fightHasEnded = true;
             _outroDirector.StartCutscene();
+            GameManager.Instance.AddBossKill("Pride");
             GameManager.Instance.GoToCutSceneState();
             _prideBossEnd.Raise();
         }

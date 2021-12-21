@@ -12,6 +12,11 @@ public class PauseMenu : MonoBehaviour
         MapView.gameObject.SetActive(false);
     }
 
+    public void Save()
+    {
+        GameDataManager.SaveLevel(1);
+    }
+
     public void ShowMap()
     {
         PauseMenuChoices.SetActive(false);

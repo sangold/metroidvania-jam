@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum World
@@ -33,6 +34,19 @@ public class Level
     public void LoadFromData()
     {
 
+    }
+
+    public LevelData Save()
+    {
+        LevelData data = new LevelData();
+        data.UUID = UUID;
+        data._enemies = new List<EnemyData>();
+        foreach(Enemy enemy in GameObject.FindObjectsOfType<Enemy>(true))
+        {
+            data._enemies.Add(enemy.Save());
+        }
+
+        return data;
     }
 
     public static Color GetMainColor(World worldType)

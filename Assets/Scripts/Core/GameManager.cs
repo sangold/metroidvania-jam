@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
 
     private List<string> _bossesDone;
+    public List<string> BossesDone => _bossesDone;
     private List<Level> _levels;
 
     
@@ -103,5 +104,11 @@ public class GameManager : MonoBehaviour
         level.IsActive = true;
         level.IsExplored = true;
         _currentLevel = level;
+    }
+
+    public void AddBossKill(string bossName)
+    {
+        if (!_bossesDone.Contains(bossName))
+            _bossesDone.Add(bossName);
     }
 }
