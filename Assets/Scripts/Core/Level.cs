@@ -40,7 +40,7 @@ public class Level
     {
         LevelData data = new LevelData();
         data.UUID = UUID;
-        data._enemies = new List<EnemyData>();
+        data._enemies = new List<Enemy.EnemyData>();
         foreach(Enemy enemy in GameObject.FindObjectsOfType<Enemy>(true))
         {
             data._enemies.Add(enemy.Save());

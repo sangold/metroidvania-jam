@@ -18,7 +18,7 @@ public class GameData
 public class LevelData
 {
     public string UUID;
-    public List<EnemyData> _enemies;
+    public List<Enemy.EnemyData> _enemies;
     public List<CollectibleData> _collectibles;
 }
 
@@ -27,12 +27,4 @@ public class CollectibleData
 {
     public string UUID;
     public Vector3 Position;
-}
-
-[System.Serializable]
-public class EnemyData
-{
-    public string UUID; //gameObject name
-    public bool isKilled;
-    public Vector3 position;
 }

@@ -1,11 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Reapling.SaveLoad;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthComponent))]
-public abstract class Enemy : Actor
+public abstract class Enemy : Actor, ISaveable
 {
+
+    [System.Serializable]
+    public struct EnemyData
+    {
+        public bool isKilled;
+        public Vector3 position;
+    }
+
     public Animator Animator;
     public Rigidbody2D Rb;
     [HideInInspector]
@@ -26,10 +32,31 @@ public abstract class Enemy : Actor
     protected IState _previousState;
     protected UniqueID UUID;
 
+    public object CaptureState()
+    {
+        return new EnemyData
+        {
+            position = transform.position,
+            isKilled = _healthComponent.Health <= 0
+        };
+    }
+
+    public void RestoreState(object state)
+    {
+        EnemyData saveData = (EnemyData)state;
+
+        if (saveData.isKilled)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        transform.position = saveData.position;
+    }
+
     public EnemyData Save()
     {
         var saveData = new EnemyData();
-        saveData.UUID = UUID.ToString();
         saveData.position = transform.position;
         saveData.isKilled = _healthComponent.Health <= 0;
 
