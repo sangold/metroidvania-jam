@@ -43,7 +43,7 @@ public abstract class Enemy : Actor, ISaveable
 
     public void RestoreState(object state)
     {
-        EnemyData saveData = (EnemyData)state;
+        EnemyData saveData = JsonSerializer.Deserialize<EnemyData>(state);
 
         if (saveData.isKilled)
         {
@@ -54,20 +54,6 @@ public abstract class Enemy : Actor, ISaveable
         transform.position = saveData.position;
     }
 
-    public EnemyData Save()
-    {
-        var saveData = new EnemyData();
-        saveData.position = transform.position;
-        saveData.isKilled = _healthComponent.Health <= 0;
-
-        return saveData;
-    }
-
-    public void Load(EnemyData data)
-    {
-        if (data.isKilled)
-            gameObject.SetActive(false);
-    }
     public void ReturnToPreviousState()
     {
         if(_previousState != null)

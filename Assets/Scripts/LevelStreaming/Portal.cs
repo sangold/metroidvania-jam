@@ -1,4 +1,5 @@
 using MJ.GameState;
+using Reapling.SaveLoad;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,7 @@ public class Portal : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
         bool PlayerIsTurnToTheLeft = player.IsTurnToTheLeft();
+        SaveLoadManager.Instance.Save(2);
         yield return new WaitForSeconds(.35f);
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         Time.timeScale = 0f;
@@ -51,6 +53,7 @@ public class Portal : MonoBehaviour
         Portal destPortal = GetDestinationPortal();
         UpdatePlayer(destPortal, PlayerIsTurnToTheLeft);
         Time.timeScale = 1f;
+        SaveLoadManager.Instance.Load(2);
         GameManager.Instance.GoToGameLoopState();
         yield return new WaitForSeconds(.25f);
         FindObjectOfType<HealthHUD>().ReattachTarget();

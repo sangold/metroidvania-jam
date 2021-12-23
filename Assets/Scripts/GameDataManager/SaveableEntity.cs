@@ -27,8 +27,9 @@ namespace Reapling.SaveLoad
 
         public void RestoreState(object state)
         {
-            Dictionary<string, object> stateDictionary = (Dictionary<string, object>)state;
-
+            if (state.ToString() == "{}") return;
+            Dictionary<string, object> stateDictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(state);
+            
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
                 string typeName = saveable.GetType().ToString();

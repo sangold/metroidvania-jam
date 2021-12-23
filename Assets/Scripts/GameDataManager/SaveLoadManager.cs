@@ -6,7 +6,27 @@ namespace Reapling.SaveLoad
 {
     public class SaveLoadManager: MonoBehaviour
     {
-        private string SavePath => $"{Application.persistentDataPath}/";
+        public static SaveLoadManager Instance
+        {
+            get
+            {
+                return _instance ?? (_instance = new GameObject("SaveLoadManager").AddComponent<SaveLoadManager>());
+            }
+
+            private set
+            {
+                _instance = value;
+            }
+        }
+
+        private static SaveLoadManager _instance;
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
+
+        private string SavePath => $"";
 
         public void Save(int saveNumber)
         {
@@ -23,10 +43,9 @@ namespace Reapling.SaveLoad
 
         private void SaveFile(int saveNumber, object state)
         {
-            string jsonData = JsonUtility.ToJson(state);
             using (StreamWriter sw = new StreamWriter(SavePath + $"save{saveNumber}.json"))
             {
-                sw.Write(jsonData);
+                sw.Write(JsonSerializer.Serialize(state));
             }
         }
 
@@ -35,16 +54,16 @@ namespace Reapling.SaveLoad
             if (!File.Exists(SavePath + $"save{saveNumber}.json"))
                 return new Dictionary<string, object>();
 
-            using (StreamReader sr = new StreamReader($"SaveGame{saveNumber}.json"))
+            using (StreamReader sr = new StreamReader(SavePath + $"save{saveNumber}.json"))
             {
                 string json = sr.ReadToEnd();
-                return JsonUtility.FromJson<Dictionary<string, object>>(json);
+                return JsonSerializer.Deserialize<Dictionary<string, object>>(json);
             }
         }
 
         private void CaptureState(Dictionary<string, object> state)
         {
-            foreach (var saveable in FindObjectsOfType<SaveableEntity>())
+            foreach (var saveable in FindObjectsOfType<SaveableEntity>(true))
             {
                 state[saveable.Id] = saveable.CaptureState();
             }
@@ -52,10 +71,12 @@ namespace Reapling.SaveLoad
 
         private void RestoreState(Dictionary<string, object> state)
         {
-            foreach (var saveable in FindObjectsOfType<SaveableEntity>())
+            foreach (var saveable in FindObjectsOfType<SaveableEntity>(true))
             {
                 if (state.TryGetValue(saveable.Id, out object value))
+                {
                     saveable.RestoreState(value);
+                }
             }
         }
     }

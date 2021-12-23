@@ -43,7 +43,7 @@ public class Level
         data._enemies = new List<Enemy.EnemyData>();
         foreach(Enemy enemy in GameObject.FindObjectsOfType<Enemy>(true))
         {
-            data._enemies.Add(enemy.Save());
+            data._enemies.Add((Enemy.EnemyData)enemy.CaptureState());
         }
 
         return data;
