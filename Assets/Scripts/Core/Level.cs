@@ -31,23 +31,6 @@ public class Level
     [HideInInspector]
     public bool IsActive;
 
-    public void LoadFromData()
-    {
-
-    }
-
-    public LevelData Save()
-    {
-        LevelData data = new LevelData();
-        data.UUID = UUID;
-        data._enemies = new List<Enemy.EnemyData>();
-        foreach(Enemy enemy in GameObject.FindObjectsOfType<Enemy>(true))
-        {
-            data._enemies.Add((Enemy.EnemyData)enemy.CaptureState());
-        }
-
-        return data;
-    }
 
     public static Color GetMainColor(World worldType)
     {

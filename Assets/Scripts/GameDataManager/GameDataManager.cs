@@ -13,15 +13,6 @@ public static class GameDataManager
         gameData.bossesDone = GameManager.Instance.BossesDone;
         
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        gameData.playerPosition = player.transform.position;
-        gameData.PlayerStats = player.GetStats;
-
-        List<LevelData> ld = new List<LevelData>();
-        foreach(Level l in GameManager.Instance.Levels)
-        {
-            ld.Add(l.Save());
-        }
-        gameData.Levels = ld;
 
         string jsonData = JsonUtility.ToJson(gameData);
         using(StreamWriter sw = new StreamWriter($"SaveGame{saveNumber}.json"))

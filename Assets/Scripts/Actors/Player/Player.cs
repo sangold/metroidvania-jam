@@ -374,16 +374,6 @@ public class Player : Humanoid
     public override void Update()
     {
         base.Update();
-        /* debug buttons */
-        if (GameDataManager.hasDebugButtons){
-            if (Input.GetKeyDown(KeyCode.Alpha1)){
-                GameDataManager.saveData();
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                GameDataManager.loadData();
-            }
-        }
     }
 
     public bool CheckAbility(PowerUpType type)
