@@ -11,7 +11,7 @@ namespace Reapling.SaveLoad
         private string id = string.Empty;
 
         [ContextMenu("Generate ID")]
-        private void GenerateId() => id = Guid.NewGuid().ToString();
+        public void GenerateId() => id = Guid.NewGuid().ToString();
 
         public object CaptureState()
         {
