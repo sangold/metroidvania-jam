@@ -65,6 +65,7 @@ namespace Reapling.SaveLoad
         {
             foreach (var saveable in FindObjectsOfType<SaveableEntity>(true))
             {
+                if (saveable.Id == string.Empty) continue;
                 state[saveable.Id] = saveable.CaptureState();
             }
         }

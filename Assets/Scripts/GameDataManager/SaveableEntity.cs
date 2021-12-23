@@ -15,6 +15,7 @@ namespace Reapling.SaveLoad
 
         public object CaptureState()
         {
+            if (id == string.Empty) return null;
             Dictionary<string, object> state = new Dictionary<string, object>();
 
             foreach (ISaveable saveable in GetComponents<ISaveable>())
