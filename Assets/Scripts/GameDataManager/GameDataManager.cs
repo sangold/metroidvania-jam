@@ -5,36 +5,7 @@ using System.IO;
 using UnityEngine;
 
 public static class GameDataManager
-{    
-
-    public static void SaveLevel(int saveNumber)
-    {
-        GameData gameData = new GameData();
-        gameData.bossesDone = GameManager.Instance.BossesDone;
-        
-        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
-
-        string jsonData = JsonUtility.ToJson(gameData);
-        using(StreamWriter sw = new StreamWriter($"SaveGame{saveNumber}.json"))
-        {
-            sw.Write(jsonData);
-        }
-    }
-
-    public static GameData Load(int saveNumber)
-    {
-        GameData data = new GameData();
-        using(StreamReader sr = new StreamReader($"SaveGame{saveNumber}.json"))
-        {
-            string json = sr.ReadToEnd();
-
-            data = JsonUtility.FromJson<GameData>(json);
-
-        }
-
-        return data;
-    }
-    public static bool hasDebugButtons = true;
+{   
     public static void saveData(){
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
         Vector2 position = player.transform.position;
