@@ -2,6 +2,7 @@ using MJ.GameState;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     }
 
     private List<string> _bossesDone;
+    public List<string> BossesDone => _bossesDone;
     private List<Level> _levels;
 
     
@@ -51,6 +53,25 @@ public class GameManager : MonoBehaviour
         _levels = new List<Level>();
         _mirrorVisibles = new List<string>();
         _stateMachine = new StateMachine();
+    }
+
+    public void CaptureState(Dictionary<string, object> state)
+    {
+        GameData gameData = new GameData();
+        gameData.bossesDone = _bossesDone;
+        gameData.CurrentLevelUUID = CurrentLevel.UUID;
+
+        state["GameData"] = gameData;
+    }
+
+    public void RestoreState(Dictionary<string, object> state)
+    {
+        if (state.TryGetValue("GameData", out object value))
+        {
+            GameData data = JsonSerializer.Deserialize<GameData>(value);
+
+            _bossesDone = data.bossesDone;
+        }
     }
 
     #region State changes function
@@ -103,5 +124,11 @@ public class GameManager : MonoBehaviour
         level.IsActive = true;
         level.IsExplored = true;
         _currentLevel = level;
+    }
+
+    public void AddBossKill(string bossName)
+    {
+        if (!_bossesDone.Contains(bossName))
+            _bossesDone.Add(bossName);
     }
 }

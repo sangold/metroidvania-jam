@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4041428142296669553}
   - component: {fileID: 8203111300491092142}
   - component: {fileID: 952884764414893129}
+  - component: {fileID: 3129150543183344688}
   m_Layer: 10
   m_Name: Crawler
   m_TagString: Untagged
@@ -191,12 +192,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746c400bc5e956443b7fc9e8d52285c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 0
+  _currentHealth: 3
   _maxHealth: 3
   _healthPiecesCollected: 0
   _sr: {fileID: 347964579065457877}
   StunDuration: 0.3
   IsShielded: 0
+--- !u!114 &3129150543183344688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428489086132026699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbaae1fc04e20347afb22d74b9702ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
 --- !u!1 &6968725762490429392
 GameObject:
   m_ObjectHideFlags: 0

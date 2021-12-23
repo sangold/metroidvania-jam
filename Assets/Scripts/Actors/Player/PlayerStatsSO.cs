@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[Serializable]
 [CreateAssetMenu(fileName = "PlayerStatsSO", menuName = "Assets/Player/Stats")]
 public class PlayerStatsSO: ScriptableObject
 {

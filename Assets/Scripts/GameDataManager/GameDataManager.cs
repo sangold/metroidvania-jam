@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public static class GameDataManager
-{
-    public static bool hasDebugButtons = true;
+{   
     public static void saveData(){
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
         Vector2 position = player.transform.position;

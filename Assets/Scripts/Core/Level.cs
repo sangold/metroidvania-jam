@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum World
@@ -30,10 +31,6 @@ public class Level
     [HideInInspector]
     public bool IsActive;
 
-    public void LoadFromData()
-    {
-
-    }
 
     public static Color GetMainColor(World worldType)
     {

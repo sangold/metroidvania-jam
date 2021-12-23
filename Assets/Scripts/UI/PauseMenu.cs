@@ -1,4 +1,5 @@
 using MJ.GameState;
+using Reapling.SaveLoad;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -10,6 +11,11 @@ public class PauseMenu : MonoBehaviour
     private void OnEnable()
     {
         MapView.gameObject.SetActive(false);
+    }
+
+    public void Save()
+    {
+        SaveLoadManager.Instance.Save(2);
     }
 
     public void ShowMap()

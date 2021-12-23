@@ -1,11 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Reapling.SaveLoad;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthComponent))]
-public abstract class Enemy : Actor
+public abstract class Enemy : Actor, ISaveable
 {
+
+    [System.Serializable]
+    public struct EnemyData
+    {
+        public bool isKilled;
+        public Vector3 position;
+    }
+
     public Animator Animator;
     public Rigidbody2D Rb;
     [HideInInspector]
@@ -24,6 +30,29 @@ public abstract class Enemy : Actor
     protected float _moveSpeed, _jumpForce;
     protected AIStateMachine _stateMachine;
     protected IState _previousState;
+    protected UniqueID UUID;
+
+    public object CaptureState()
+    {
+        return new EnemyData
+        {
+            position = transform.position,
+            isKilled = _healthComponent.Health <= 0
+        };
+    }
+
+    public void RestoreState(object state)
+    {
+        EnemyData saveData = JsonSerializer.Deserialize<EnemyData>(state);
+
+        if (saveData.isKilled)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        transform.position = saveData.position;
+    }
 
     public void ReturnToPreviousState()
     {
@@ -36,6 +65,7 @@ public abstract class Enemy : Actor
 
     protected virtual void Awake()
     {
+        UUID = new UniqueID();
         _healthComponent = GetComponent<HealthComponent>();
         Rb = GetComponent<Rigidbody2D>();
         _patrolPoints = new Vector3[_patrolGizmos.Length];
@@ -46,10 +76,12 @@ public abstract class Enemy : Actor
         }
 
         _stateMachine = new AIStateMachine();
+        UUID.Init(gameObject);
     }
 
     protected virtual void Start()
     {
+
         _healthComponent.OnDamageTaken += OnDamageTaken;
         CanMove = true;
     }
@@ -64,7 +96,7 @@ public abstract class Enemy : Actor
     protected virtual void OnDamageTaken(int hp, Vector3 attackOrigin)
     {
         if (hp <= 0)
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
     }
 
     protected virtual void FixedUpdate()

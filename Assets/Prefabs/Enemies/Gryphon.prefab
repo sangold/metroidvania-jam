@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 732778256803000684}
   - component: {fileID: 732778256803000689}
   - component: {fileID: 5021597712206486190}
+  - component: {fileID: 2311906510761243688}
   m_Layer: 10
   m_Name: Gryphon
   m_TagString: Untagged
@@ -175,6 +176,19 @@ MonoBehaviour:
   _actorDetector: {fileID: 732778257510464166}
   _bulletGO: {fileID: 6677129319429244444, guid: 003fedc51b95b5347a03d9aab3ec7a69, type: 3}
   ShootingPoint: {fileID: 3987769696833073976}
+--- !u!114 &2311906510761243688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732778256803000686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbaae1fc04e20347afb22d74b9702ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
 --- !u!1 &732778256917904414
 GameObject:
   m_ObjectHideFlags: 0
