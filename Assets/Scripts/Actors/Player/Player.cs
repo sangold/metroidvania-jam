@@ -1,10 +1,11 @@
 using MV.Player;
+using Reapling.SaveLoad;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Humanoid
+public class Player : Humanoid, ISaveable
 {
     [SerializeField]
     private PlayerStatsSO _playerStats;
@@ -67,12 +68,41 @@ public class Player : Humanoid
     private bool _canDoChargeAttack;
     private float _chargeAttackTimer = 0;
 
+    public struct PlayerData
+    {
+        public bool hasScythe;
+        public bool hasDoubleJump;
+        public bool hasWallJump;
+        public bool hasGhostDash;
+        public bool hasDash;
+        public bool hasChargeAttack;
+        public bool hasMirror;
+    }
+
+    public object CaptureState() => new PlayerData
+    {
+        hasChargeAttack = _playerStats.HasChargeAttack,
+        hasDash = _playerStats.HasDash,
+        hasDoubleJump = _playerStats.HasDoubleJump,
+        hasGhostDash = _playerStats.HasGhostDash,
+        hasMirror = _playerStats.HasMirror,
+        hasScythe = _playerStats.HasScythe,
+        hasWallJump = _playerStats.HasWallJump
+    };
+
+
+    public void RestoreState(object state)
+    {
+        PlayerData data = JsonSerializer.Deserialize<PlayerData>(state);
+        _playerStats.LoadData(_healthComponent.Health, _healthComponent.MaxHealth, data);
+    }
+
     public void LoadData(float x, float y, int currentHealth, int maxHealth, bool hasScythe, bool hasMirror, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
     {
-        transform.position = new Vector2(x, y);
-        Health = currentHealth;
-        MaxHealth = maxHealth;
-        _playerStats.LoadData(currentHealth, maxHealth, hasScythe, hasMirror, hasDoubleJump, hasWallJump, hasGhostDash, hasDash, hasChargeAttack);
+        //transform.position = new Vector2(x, y);
+        //Health = currentHealth;
+        //MaxHealth = maxHealth;
+        //_playerStats.LoadData(currentHealth, maxHealth, hasScythe, hasMirror, hasDoubleJump, hasWallJump, hasGhostDash, hasDash, hasChargeAttack);
     }
 
     protected override void Awake()

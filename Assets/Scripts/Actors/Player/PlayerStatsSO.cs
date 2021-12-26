@@ -42,18 +42,18 @@ public class PlayerStatsSO: ScriptableObject
         ManaCollectible = 0;
     }
 
-    public void LoadData(int currentHealth, int maxHealth, bool hasScythe, bool hasMirror, bool hasDoubleJump, bool hasWallJump, bool hasGhostDash, bool hasDash, bool hasChargeAttack)
+    public void LoadData(int currentHealth, int maxHealth, Player.PlayerData data)
     {
         CurrentHealth = currentHealth;
         MaxHealth = maxHealth;
 
-        HasScythe = hasScythe;
-        HasMirror = hasMirror;
-        HasDoubleJump = hasDoubleJump;
-        HasWallJump = hasWallJump;
-        HasGhostDash = hasGhostDash;
-        HasDash = hasDash;
-        HasChargeAttack = hasChargeAttack;
+        HasScythe = data.hasScythe;
+        HasMirror = data.hasMirror;
+        HasDoubleJump = data.hasDoubleJump;
+        HasWallJump = data.hasWallJump;
+        HasGhostDash = data.hasGhostDash;
+        HasDash = data.hasDash;
+        HasChargeAttack = data.hasChargeAttack;
     }
 
     public void UnlockAbility(PowerUpType type)
